@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://mt8vitibkaxh"]
+
+[ext_resource type="Script" uid="uid://d4vt7h307ufk" path="res://enemy_ai/enemy_ai.gd" id="1_nm3mo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02pas"]
+
+[node name="EnemyAi" type="CharacterBody3D"]
+script = ExtResource("1_nm3mo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_02pas")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://da6l747csh3pq"]
+
+[ext_resource type="Environment" uid="uid://bgq4csmdrk7a5" path="res://core/default_environment.tres" id="1_epaos"]
+[ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="2_ak260"]
+[ext_resource type="PackedScene" uid="uid://mt8vitibkaxh" path="res://enemy_ai/enemy_ai.tscn" id="2_fyei3"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ak260"]
+vertices = PackedVector3Array(3, 1, -1.25, 3.5, 1, 0, 4.25, 1, 0, 4.25, 1, -4.25, -4.25, 1, 0, -3.25, 1, 0, -2.75, 1, -1.25, -4.25, 1, -4.25, 3, 1, 1.5, 4.25, 1, 4.25, -2.75, 1, 1.5, -4.25, 1, 4.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(0, 6, 3), PackedInt32Array(3, 6, 7), PackedInt32Array(1, 2, 8), PackedInt32Array(8, 2, 9), PackedInt32Array(5, 10, 4), PackedInt32Array(4, 10, 11), PackedInt32Array(8, 9, 10), PackedInt32Array(10, 9, 11)]
+agent_height = 2.0
+agent_radius = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_aevbc"]
+
+[node name="TestEnemyAi" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_epaos")
+
+[node name="EnemyAi" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("2_fyei3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.05744)
+target_node = NodePath("../PlayerCharacter")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_ak260")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.84449)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ak260")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="NavigationRegion3D"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_aevbc")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="NavigationRegion3D"]
+transform = Transform3D(5, 0, 0, 0, -4.37114e-08, -5, 0, 1, -2.18557e-07, 0, 2, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_aevbc")
