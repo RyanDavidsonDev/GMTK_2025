@@ -30,31 +30,26 @@ func _physics_process(_delta):
 			doorIsAlreadyOpen = true
 
 func receiveCollision(body):
-	print("ping")
 	if(body.is_in_group("BlockDoorTurn")):
 		doorIsAlreadyOpen = true
 		doorIsOpening = false
 
 func resetDoor():
-	print("rotation ", pivot_point.rotation_degrees.y)
 	doorIsAlreadyOpen = false
 	doorIsOpening = false
 	pivot_point.rotation_degrees.y= 0
 	#pivot_point.rotate_y(-pivot_point.rotation.y)
-	print("rotation ", pivot_point.rotation_degrees.y)
 	
 
 func open() -> void:
-	print("rotation ", pivot_point.rotation_degrees.y)
 	doorIsOpening = true;
 	#root.translate(Vector3(1,1,1))
-	print("received openDoor func")
 
-func interact(player: Node3D) -> void :
+func interact(player: PlayerCharacter) -> void :
 	if(NeedsKey):		
-		assert("HasKey" in player, "ERROR: player param in door.Interact() does not have the HasKey property")
-		if(!player.HasKey):
-			print("you need a key")
+		assert("has_key" in player, "ERROR: player param in door.Interact() does not have the HasKey property")
+		if(!player.has_key):
+			print("you need a key!")
 			return
 	
 	open()

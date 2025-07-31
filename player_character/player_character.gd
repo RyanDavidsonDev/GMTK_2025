@@ -13,6 +13,8 @@ var _input_mouse_direction : Vector2 = Vector2.ZERO
 
 var _camera_3d : Camera3D = null
 
+var has_key: bool = false
+
 func _ready() -> void:
 	
 	_camera_3d = $Camera3D
@@ -78,7 +80,6 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if(!result.is_empty()):
-		print("found something at")
 		
 		var collider:Node3D = result.collider
 		if Input.is_action_just_pressed("Interact"):
