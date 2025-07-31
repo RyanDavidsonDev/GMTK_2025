@@ -37,6 +37,10 @@ move_right={
 ]
 }
 
+[global_group]
+
+BlockDoorTurn=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
