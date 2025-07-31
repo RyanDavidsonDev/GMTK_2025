@@ -10,9 +10,8 @@ var _camera_3d : Camera3D = null
 func _ready() -> void:
 	
 	_camera_3d = $Camera3D
-	
-	# WARNING: This should be handeled in game management
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+	GameManager.register_player_character(self)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

@@ -17,9 +17,8 @@ agent_radius = 1.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_epaos")
 
-[node name="EnemyAi" parent="." node_paths=PackedStringArray("_target_node") instance=ExtResource("2_fyei3")]
+[node name="EnemyAi" parent="." instance=ExtResource("2_fyei3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4.05744)
-_target_node = NodePath("../PlayerCharacter")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_ak260")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.84449)

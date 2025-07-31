@@ -1,0 +1,53 @@
+extends Node
+
+@export var game_scene : PackedScene = null
+
+var player_character : PlayerCharacter = null
+var enemy_ai : EnemyAI = null
+
+func register_player_character(instance: PlayerCharacter) -> void:
+	
+	if player_character != null:
+		printerr("Reference to player character is already set. Ensure cleanup of previous character before registering a new one.")
+		return
+	
+	player_character = instance
+	
+func register_enemy_ai(instance: EnemyAI) -> void:
+	
+	if enemy_ai != null:
+		printerr("Reference to enemy ai is already set. Ensure cleanup of previous enemy before registering a new one.")
+		return
+	
+	enemy_ai = instance
+
+func player_character_killed() -> void:
+	
+	_cleanup_game()
+	_load_game()
+	
+func _cleanup_game() -> void:
+	
+	print(get_tree().current_scene)
+	
+	if get_tree().current_scene.scene_file_path != game_scene.resource_path:
+		printerr("Attempting to clean up game but game is not loaded.")
+		return
+		
+	get_tree().unload_current_scene()
+	player_character = null
+	enemy_ai = null
+	
+func _load_game() -> void:
+	
+	if get_tree().current_scene != null && get_tree().current_scene.scene_file_path == game_scene.resource_path:
+		printerr("Attempting to load game but game is already loaded.")
+		return
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	get_tree().change_scene_to_packed(game_scene)
+
+func _ready() -> void:
+	
+	_load_game.call_deferred()

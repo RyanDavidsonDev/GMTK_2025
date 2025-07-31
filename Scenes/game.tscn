@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc3wiq8fwac0v"]
+
+[ext_resource type="Environment" uid="uid://bgq4csmdrk7a5" path="res://core/default_environment.tres" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://mt8vitibkaxh" path="res://enemy_ai/enemy_ai.tscn" id="3_wrm1d"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_wrm1d"]
+vertices = PackedVector3Array(-4, 1, -4, -4, 1, 4, 4, 1, 4, 4, 1, -4)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_radius = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2poj3"]
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_ebmjs")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_qxrlw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3.41013)
+
+[node name="EnemyAi" parent="." instance=ExtResource("3_wrm1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3.23131)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_wrm1d")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="NavigationRegion3D"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_2poj3")
