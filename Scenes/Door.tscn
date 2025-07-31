@@ -1,29 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://c50tkqyp5fejp"]
+[gd_scene load_steps=5 format=3 uid="uid://c50tkqyp5fejp"]
 
-[ext_resource type="Script" uid="uid://cxqhi5wqp70r2" path="res://Scripts/door.gd" id="1_38ogf"]
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_38ogf"]
+[ext_resource type="Script" path="res://Scripts/InteractableCollider.gd" id="2_j21vs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri6yp"]
-size = Vector3(3.6, 8, 0.2)
+size = Vector3(1.8, 4, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_38ogf"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Door" type="Node3D"]
 script = ExtResource("1_38ogf")
 
 [node name="PivotPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, -4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, -2.5, 0)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="PivotPoint"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 4, 0)
+[node name="RigidBody3D" type="RigidBody3D" parent="PivotPoint" node_paths=PackedStringArray("parent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 2.5, 0)
+collision_layer = 4
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 1
+script = ExtResource("2_j21vs")
+parent = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PivotPoint/RigidBody3D"]
 unique_name_in_owner = true
 shape = SubResource("BoxShape3D_ri6yp")
-debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PivotPoint/RigidBody3D/CollisionShape3D"]
-transform = Transform3D(3.6, 0, 0, 0, 8, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(2.25, 0, 0, 0, 5, 0, 0, 0, 0.125, 0, 0, 0)
 mesh = SubResource("BoxMesh_38ogf")
