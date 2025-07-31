@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://txtn7cvv5vn4"]
+
+[ext_resource type="Environment" uid="uid://bgq4csmdrk7a5" path="res://core/default_environment.tres" id="1_dx0le"]
+[ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="2_lb0os"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_aevbc"]
+
+[node name="TestPlayerMovement" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_dx0le")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_lb0os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_aevbc")

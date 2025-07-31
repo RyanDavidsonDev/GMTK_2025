@@ -9,7 +9,6 @@ size = Vector3(3.6, 8, 0.2)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_38ogf")
-RotationTimeSec = null
 
 [node name="PivotPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, -4, 0)
@@ -17,6 +16,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, -4, 0)
 [node name="RigidBody3D" type="RigidBody3D" parent="PivotPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 4, 0)
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PivotPoint/RigidBody3D"]
 unique_name_in_owner = true
