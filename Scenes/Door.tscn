@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c50tkqyp5fejp"]
+
+[ext_resource type="Script" uid="uid://cxqhi5wqp70r2" path="res://Scripts/door.gd" id="1_38ogf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ri6yp"]
+size = Vector3(3.6, 8, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_38ogf"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_38ogf")
+RotationTimeSec = null
+
+[node name="PivotPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, -4, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="PivotPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 4, 0)
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PivotPoint/RigidBody3D"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_ri6yp")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PivotPoint/RigidBody3D/CollisionShape3D"]
+transform = Transform3D(3.6, 0, 0, 0, 8, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_38ogf")
