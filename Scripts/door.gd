@@ -1,4 +1,4 @@
-extends Node
+class_name Door extends Node
 
 @onready var root: Node3D = $"."
 
