@@ -67,6 +67,7 @@ texture = ExtResource("1_0y05l")
 stretch_mode = 3
 
 [node name="Reload Bar" type="TextureProgressBar" parent="HUD"]
+visible = false
 material = SubResource("ShaderMaterial_xm1do")
 anchors_preset = 7
 anchor_left = 0.5
@@ -90,7 +91,8 @@ stretch_margin_bottom = 25
 texture_over = ExtResource("3_xm1do")
 texture_progress = ExtResource("4_c4rab")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD"]
+[node name="Reload Text" type="RichTextLabel" parent="HUD"]
+visible = false
 material = SubResource("ShaderMaterial_06sim")
 anchors_preset = 10
 anchor_right = 1.0
