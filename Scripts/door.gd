@@ -1,4 +1,5 @@
-class_name Door extends Node
+class_name Door extends Node3D
+
 
 @onready var root: Node3D = $"."
 
@@ -6,9 +7,15 @@ class_name Door extends Node
 @export var RotationTimeSec: float = .8;
 @export var NeedsKey: bool = false;
 
-@onready var rigid_body_3d: RigidBody3D = $PivotPoint/RigidBody3D
+@onready var rigid_body_3d: RigidBody3D = $RigidBody3D
 @onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
-@onready var pivot_point: Node3D = $PivotPoint
+#@onready var pivot_point: PivotPoint = $PivotPoint
+
+@onready var pivot_point: PivotPoint = $PivotPoint
+
+#@onready var rigid_body_3d: RigidBody3D = $PivotPoint/RigidBody3D
+#@onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
+#@onready var pivot_point: PivotPoint = $PivotPoint
 
 var doorIsOpening : bool = false;
 var doorIsAlreadyOpen : bool = false;
@@ -42,7 +49,8 @@ func resetDoor():
 	
 
 func open() -> void:
-	doorIsOpening = true;
+	pivot_point.pivot_around_point(self, global_basis.y, OutwardRotationDeg)
+	#doorIsOpening = true;
 	#root.translate(Vector3(1,1,1))
 
 func interact(player: PlayerCharacter) -> void :

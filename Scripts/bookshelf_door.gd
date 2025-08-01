@@ -3,7 +3,6 @@ extends Door
 const Book = preload("res://Scripts/Book.gd")
 
 var insertionOrder: Array[Book] = []
-@export var intendedOrder: Array[Book] = []
 
 @export var books: Array[Book] = []
 
@@ -15,14 +14,19 @@ func receive_book_interact(book:Book):
 	insertionOrder.append(book)
 	return
 
+func remove_book(book:Book):
+	var index :int = insertionOrder.find(book) 
+	
+	if index != 1:
+		insertionOrder.remove_at(index)
 
 func _check_if_door_can_be_opened(player: PlayerCharacter) ->bool:
-	if insertionOrder == intendedOrder:
+	if insertionOrder == books:
 		print("The way is open")
 		return true
 	else:
 		print("that is not the correct order")
 		for book in insertionOrder:
-			book.reset_book()
+			book.untilt_book()
 		insertionOrder.clear()
 		return false

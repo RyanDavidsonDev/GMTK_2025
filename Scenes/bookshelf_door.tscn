@@ -1,21 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmrfi17x0node"]
+[gd_scene load_steps=6 format=3 uid="uid://bmrfi17x0node"]
 
 [ext_resource type="Script" uid="uid://dlwa8np6ox305" path="res://Scripts/bookshelf_door.gd" id="1_itdt4"]
 [ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_y4pih"]
+[ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="3_y4pih"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pb3tf"]
 size = Vector3(1.8, 4, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vcu3w"]
 
-[node name="BookshelfDoor" type="Node3D" node_paths=PackedStringArray("intendedOrder")]
+[node name="BookshelfDoor" type="Node3D"]
 script = ExtResource("1_itdt4")
-intendedOrder = [1, 2, 3]
 
-[node name="PivotPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, -2.5, 0)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="PivotPoint" node_paths=PackedStringArray("parent")]
+[node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("parent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 2.5, 0)
 collision_layer = 5
 gravity_scale = 0.0
@@ -23,12 +20,16 @@ freeze = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("2_y4pih")
-parent = NodePath("../..")
+parent = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PivotPoint/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 unique_name_in_owner = true
 shape = SubResource("BoxShape3D_pb3tf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PivotPoint/RigidBody3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
 transform = Transform3D(2.25, 0, 0, 0, 5, 0, 0, 0, 0.125, 0, 0, 0)
 mesh = SubResource("BoxMesh_vcu3w")
+
+[node name="PivotPoint" type="Node3D" parent="."]
+script = ExtResource("3_y4pih")
+metadata/_custom_type_script = "uid://vkvc081bupt5"
