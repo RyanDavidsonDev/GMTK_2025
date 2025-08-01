@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cij6v1tlolo4f"]
+[gd_scene load_steps=6 format=3 uid="uid://cij6v1tlolo4f"]
 
 [ext_resource type="Script" uid="uid://da74k452rnaxg" path="res://Scripts/Book.gd" id="1_4ovs5"]
+[ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="2_85ged"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_47267"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_avxmo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_85ged"]
 
 [node name="RigidBody3D" type="RigidBody3D"]
 collision_layer = 4
@@ -16,3 +19,10 @@ shape = SubResource("BoxShape3D_47267")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("BoxMesh_avxmo")
+
+[node name="pivot_point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+script = ExtResource("2_85ged")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="pivot_point"]
+mesh = SubResource("SphereMesh_85ged")

@@ -2,8 +2,8 @@ extends Door
 
 const Book = preload("res://Scripts/Book.gd")
 
-var insertionOrder: Array[int] = []
-@export var intendedOrder: Array[int] = []
+var insertionOrder: Array[Book] = []
+@export var intendedOrder: Array[Book] = []
 
 @export var books: Array[Book] = []
 
@@ -11,8 +11,8 @@ func _ready():
 	for book in books:
 		book.door = self
 
-func receive_book_interact(index:int):
-	insertionOrder.append(index)
+func receive_book_interact(book:Book):
+	insertionOrder.append(book)
 	return
 
 
@@ -22,7 +22,7 @@ func _check_if_door_can_be_opened(player: PlayerCharacter) ->bool:
 		return true
 	else:
 		print("that is not the correct order")
-		for book in books:
+		for book in insertionOrder:
 			book.reset_book()
 		insertionOrder.clear()
 		return false

@@ -8,9 +8,9 @@ size = Vector3(1.8, 4, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vcu3w"]
 
-[node name="BookshelfDoor" type="Node3D"]
+[node name="BookshelfDoor" type="Node3D" node_paths=PackedStringArray("intendedOrder")]
 script = ExtResource("1_itdt4")
-intendedOrder = Array[int]([1, 2, 3])
+intendedOrder = [1, 2, 3]
 
 [node name="PivotPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, -2.5, 0)
