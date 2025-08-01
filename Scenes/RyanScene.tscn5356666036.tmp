@@ -22,7 +22,7 @@ offset_right = 89.0
 offset_bottom = 43.0
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_sfcxm")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.12893, 2.35196, 5.89916)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12893, 2.35196, 5.89916)
 _move_speed = 4.0
 _look_sensitivity = 0.5
 
@@ -31,18 +31,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
 
 [node name="BookshelfDoor" parent="." node_paths=PackedStringArray("books") instance=ExtResource("4_tumfj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 3, 6)
-books = [NodePath("../b1"), NodePath("../b2"), NodePath("../b3")]
+books = [NodePath("../b1"), NodePath("../b2"), NodePath("../b3"), NodePath("../b4")]
 
 [node name="b1" parent="." instance=ExtResource("5_xam7q")]
-transform = Transform3D(-1.19209e-07, 0, 1, 0, 1, 0, -1, 0, -1.19209e-07, 0, -1, 9)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, -1, 9)
 index = 1
 
 [node name="b2" parent="." instance=ExtResource("5_xam7q")]
-transform = Transform3D(-1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, -1, -2, -1, 9)
+transform = Transform3D(-1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, -1, -7, -1, 9)
 index = 2
 
 [node name="b3" parent="." instance=ExtResource("5_xam7q")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, -1, 9)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, -1, 9)
 index = 3
+
+[node name="b4" parent="." instance=ExtResource("5_xam7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1, 9)
+index = 1
 
 [connection signal="pressed" from="Button" to="Door" method="_on_button_pressed"]

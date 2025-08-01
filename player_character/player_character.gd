@@ -7,6 +7,9 @@ const INTERACTION_DISTANCE: float = 5
 @export_flags_3d_physics var raycast_collison_mask = 0
 
 @onready var camera: Camera3D = $Camera3D
+@onready var ui_overlay: Node = $UiOverlay
+#@onready var crosshair
+@onready var crosshair:TextureRect = ui_overlay.find_child("crosshair")
 
 var _input_move_direction : Vector2 = Vector2.ZERO
 var _input_mouse_direction : Vector2 = Vector2.ZERO
@@ -18,7 +21,7 @@ var has_key: bool = false
 func _ready() -> void:
 	
 	_camera_3d = $Camera3D
-
+	
 	GameManager.register_player_character(self)
 
 func _input(event: InputEvent) -> void:
@@ -46,8 +49,6 @@ func _process(delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	
-	
 	# Update character rotation
 	rotation_degrees.y -= _input_mouse_direction.x
 	
@@ -68,7 +69,9 @@ func _physics_process(delta: float) -> void:
 	#raycast 
 	var space_state = get_world_3d().direct_space_state
 	#camera.get_window().wid
-	var mousepos = get_viewport().get_mouse_position()
+	
+	#var mousepos = get_viewport().get_mouse_position()
+	var mousepos = crosshair.position
 	
 	var origin = camera.project_ray_origin(mousepos)
 	var end = origin + camera.project_ray_normal(mousepos) * INTERACTION_DISTANCE
@@ -76,8 +79,6 @@ func _physics_process(delta: float) -> void:
 	query.collide_with_areas = true
 	query.collision_mask = (raycast_collison_mask)
 	var result:Dictionary = space_state.intersect_ray(query)
-	
-	
 	
 	if(!result.is_empty()):
 		
