@@ -7,6 +7,16 @@ var _nav_agent_3d : NavigationAgent3D = null
 
 var _killing_player : bool = false
 
+func get_path_distance_from_player() -> float:
+	
+	var path : PackedVector3Array = _nav_agent_3d.get_current_navigation_path()
+	var total_distance : float = 0.0
+	for i: int in range(path.size() - 1):
+		total_distance += path[i].distance_to(path[i + 1])
+	return total_distance
+	
+	return _nav_agent_3d.distance_to_target()
+
 func _kill_player() -> void:
 	
 	print("YOUR ASS IS GRASS!")
