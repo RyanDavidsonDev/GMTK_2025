@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://1p5avy66el8t"]
+
+[node name="DoorWall" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -0.25)
+size = Vector3(4, 4, 0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+operation = 2
+size = Vector3(2, 3, 1)

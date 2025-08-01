@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbxrja4pb2r53"]
 
-[ext_resource type="Script" path="res://player_character/player_character.gd" id="1_qlps6"]
+[ext_resource type="Script" uid="uid://l8u643plyhow" path="res://player_character/player_character.gd" id="1_qlps6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2i27r"]
 
@@ -19,3 +19,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00504051, 0.474974, -0.865
 gizmo_extents = 0.59
 
 [node name="Node3D" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
