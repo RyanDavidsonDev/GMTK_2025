@@ -46,12 +46,12 @@ func open() -> void:
 	#root.translate(Vector3(1,1,1))
 
 func interact(player: PlayerCharacter) -> void :
-	if(check_if_door_can_be_opened(player)):
+	if(_check_if_door_can_be_opened(player)):
 		open()
 	
 
 #intended to be overridden with other doors
-func check_if_door_can_be_opened(player: PlayerCharacter) ->bool:
+func _check_if_door_can_be_opened(player: PlayerCharacter) ->bool:
 	if(NeedsKey):		
 		assert("has_key" in player, "ERROR: player param in door.Interact() does not have the HasKey property")
 		
