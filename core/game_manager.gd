@@ -4,6 +4,7 @@ extends Node
 
 var player_character : PlayerCharacter = null
 var enemy_ai : EnemyAI = null
+var hud_controller : HUDController = null
 
 func register_player_character(instance: PlayerCharacter) -> void:
 	
@@ -20,6 +21,13 @@ func register_enemy_ai(instance: EnemyAI) -> void:
 		return
 	
 	enemy_ai = instance
+
+func register_hud(instance: HUDController):
+	if hud_controller != null:
+		printerr("Reference to hud controller is already set. Ensure cleanup of previous hud controller before registering a new one.")
+		return
+	
+	hud_controller = instance
 
 func player_character_killed() -> void:
 	
