@@ -8,7 +8,8 @@ const INTERACTION_DISTANCE: float = 5
 
 @onready var camera: Camera3D = $Camera3D
 @onready var ui_overlay: Node = $UiOverlay
-@onready var crosshair = ui_overlay.find_child("crosshair")
+#@onready var crosshair
+@onready var crosshair:TextureRect = ui_overlay.find_child("crosshair")
 
 var _input_move_direction : Vector2 = Vector2.ZERO
 var _input_mouse_direction : Vector2 = Vector2.ZERO
@@ -69,7 +70,8 @@ func _physics_process(delta: float) -> void:
 	var space_state = get_world_3d().direct_space_state
 	#camera.get_window().wid
 	
-	var mousepos = crosshair
+	#var mousepos = get_viewport().get_mouse_position()
+	var mousepos = crosshair.position
 	
 	var origin = camera.project_ray_origin(mousepos)
 	var end = origin + camera.project_ray_normal(mousepos) * INTERACTION_DISTANCE
