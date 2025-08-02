@@ -1,8 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c4ep4njqkiq13"]
 
 [ext_resource type="Texture2D" uid="uid://bx57h61s4ju3s" path="res://assets/UI/crosshair_dot.png" id="1_0y05l"]
-[ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders/shakeyLinesUIShader.gdshader" id="1_akoq1"]
-[ext_resource type="Script" path="res://Scenes/HUD_Controller.gd" id="1_c4rab"]
 [ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders & Themes/shakeyLinesUIShader.gdshader" id="1_akoq1"]
 [ext_resource type="Script" uid="uid://1gceiipwr5en" path="res://Scripts/HUD_Controller.gd" id="1_c4rab"]
 [ext_resource type="Texture2D" uid="uid://djy3tfxb44pr0" path="res://assets/UI/white_rounded_border.png" id="3_xm1do"]
