@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://w1f50baq2qas"]
+
+[ext_resource type="Script" uid="uid://dc0hejuojqxl1" path="res://Scripts/bullet.gd" id="1_lbb0w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fv4em"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8vvk8"]
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 5
+script = ExtResource("1_lbb0w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fv4em")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("BoxMesh_8vvk8")

@@ -1,3 +1,116 @@
-[gd_scene format=3 uid="uid://c3437dd1rbc42"]
+[gd_scene load_steps=10 format=3 uid="uid://c3437dd1rbc42"]
+
+[ext_resource type="Texture2D" uid="uid://csl1nb5dk65g6" path="res://assets/UI/temporary image.jpg" id="1_n45e2"]
+[ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders & Themes/shakeyLinesUIShader.gdshader" id="2_opfnp"]
+[ext_resource type="FontFile" uid="uid://cepcdefmsk5u2" path="res://assets/UI/Lumenharmaa.ttf" id="3_cp0ys"]
+[ext_resource type="FontFile" uid="uid://dbjf8cichqm70" path="res://assets/UI/Leander.ttf" id="4_yhxw7"]
+[ext_resource type="Theme" uid="uid://b1frqnmpmcxlw" path="res://Scripts/Shaders & Themes/Menu_Button_Theme.tres" id="5_trj04"]
+[ext_resource type="Script" uid="uid://ccamawjk2n20c" path="res://Scripts/buttonHover_animationComponent.gd" id="6_opfnp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16hvj"]
+shader = ExtResource("2_opfnp")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 2.0
+shader_parameter/noise_scale = 5.0
+shader_parameter/noise_speed = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vr1f0"]
+shader = ExtResource("2_opfnp")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 2.0
+shader_parameter/noise_scale = 50.0
+shader_parameter/noise_speed = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1dhk"]
+bg_color = Color(0, 0, 0, 0.545098)
+border_width_left = 50
+border_width_right = 50
+border_color = Color(0, 0, 0, 0)
+border_blend = true
 
 [node name="MainMenu" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TEMP BG" type="TextureRect" parent="CanvasLayer"]
+offset_left = -2.0
+offset_top = -46.0
+offset_right = 1156.0
+offset_bottom = 831.0
+texture = ExtResource("1_n45e2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_16hvj")
+offset_left = 59.0
+offset_top = -30.0
+offset_right = 672.0
+offset_bottom = 608.0
+theme_override_fonts/normal_font = ExtResource("3_cp0ys")
+theme_override_fonts/italics_font = ExtResource("4_yhxw7")
+theme_override_font_sizes/italics_font_size = 45
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[i]GMTK Jam 2025[/i]
+"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_vr1f0")
+offset_left = 51.0
+offset_top = 75.0
+offset_right = 664.0
+offset_bottom = 713.0
+theme_override_fonts/normal_font = ExtResource("3_cp0ys")
+theme_override_fonts/italics_font = ExtResource("4_yhxw7")
+theme_override_font_sizes/italics_font_size = 45
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "untitled game"
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_right = -57.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t1dhk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.5
+offset_top = 5.0
+offset_right = 105.5
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_trj04")
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer/Play"]
+script = ExtResource("6_opfnp")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Credits" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Credits"
+
+[node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/Credits"]
+script = ExtResource("6_opfnp")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"

@@ -9,11 +9,10 @@ var tilted:bool = false
 @export var index:int 
 @export var door: bdDoor 
 
-@onready var pivot_point: PivotPoint = $pivot_point
+@onready var pivot_point: PivotPoint = $CollisionShape3D/MeshInstance3D/pivot_point
 
 func interact(player:PlayerCharacter):
 	if(!tilted):
-		print("activated book number", index)
 		assert(door.has_method("receive_book_interact"), "the door on this book does not have an interact method")
 		door.receive_book_interact(self)
 		tilt_book()

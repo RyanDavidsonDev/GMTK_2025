@@ -49,7 +49,7 @@ func resetDoor():
 	
 
 func open() -> void:
-	pivot_point.pivot_around_point(self, global_basis.y, OutwardRotationDeg)
+	pivot_point.pivot_around_point(self, global_basis.y, OutwardRotationDeg, RotationTimeSec)
 	#doorIsOpening = true;
 	#root.translate(Vector3(1,1,1))
 
@@ -64,7 +64,7 @@ func _check_if_door_can_be_opened(player: PlayerCharacter) ->bool:
 		assert("has_key" in player, "ERROR: player param in door.Interact() does not have the HasKey property")
 		
 		if(!player.has_key):
-			print("you need a key!")
+			GameManager.hud_controller.show_text("I need a key")
 			return false
 		else:
 			return true

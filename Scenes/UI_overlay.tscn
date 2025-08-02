@@ -1,10 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4ep4njqkiq13"]
+[gd_scene load_steps=20 format=3 uid="uid://c4ep4njqkiq13"]
 
 [ext_resource type="Texture2D" uid="uid://bx57h61s4ju3s" path="res://assets/UI/crosshair_dot.png" id="1_0y05l"]
+[ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders & Themes/shakeyLinesUIShader.gdshader" id="1_akoq1"]
+[ext_resource type="Script" uid="uid://1gceiipwr5en" path="res://Scripts/HUD_Controller.gd" id="1_c4rab"]
+[ext_resource type="Texture2D" uid="uid://djy3tfxb44pr0" path="res://assets/UI/white_rounded_border.png" id="3_xm1do"]
+[ext_resource type="Texture2D" uid="uid://bhis57iy4jq74" path="res://assets/UI/white_rounded_bar.png" id="4_c4rab"]
+[ext_resource type="FontFile" uid="uid://dbjf8cichqm70" path="res://assets/UI/Leander.ttf" id="5_c4rab"]
+[ext_resource type="Theme" uid="uid://b1frqnmpmcxlw" path="res://Scripts/Shaders & Themes/Menu_Button_Theme.tres" id="7_omg4o"]
+[ext_resource type="Script" uid="uid://ccamawjk2n20c" path="res://Scripts/buttonHover_animationComponent.gd" id="8_06sim"]
+[ext_resource type="Texture2D" uid="uid://bllubssoovyxi" path="res://assets/UI/pistol-gun.png" id="9_h4s5t"]
+[ext_resource type="Script" uid="uid://bxijs8ci6f4s3" path="res://Scripts/specialHover_animationComponent.gd" id="9_qili6"]
+[ext_resource type="Texture2D" uid="uid://djds8id7a3nha" path="res://assets/UI/white_key.png" id="10_evxos"]
+[ext_resource type="FontFile" uid="uid://cepcdefmsk5u2" path="res://assets/UI/Lumenharmaa.ttf" id="11_evxos"]
 
-[node name="UiOverlay" type="Node"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omg4o"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 10.0
 
-[node name="Control" type="Control" parent="."]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xm1do"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 7.0
+shader_parameter/noise_speed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06sim"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 3.0
+shader_parameter/noise_scale = 7.0
+shader_parameter/noise_speed = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06sim"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.686275)
+border_width_left = 75
+border_width_right = 75
+border_color = Color(0.109804, 0.109804, 0.109804, 0)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qili6"]
+bg_color = Color(0, 0, 0, 0.545098)
+border_width_left = 50
+border_width_right = 50
+border_color = Color(0, 0, 0, 0)
+border_blend = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3xdp"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 2.0
+shader_parameter/noise_scale = 50.0
+shader_parameter/noise_speed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x4gfa"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 2.0
+shader_parameter/noise_scale = 5.0
+shader_parameter/noise_speed = 2.0
+
+[node name="UiOverlay" type="Node" node_paths=PackedStringArray("_pause_menu")]
+process_mode = 3
+script = ExtResource("1_c4rab")
+_pause_menu = NodePath("HUD/Pause Menu")
+
+[node name="Post Processing Layer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -20,7 +87,8 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="crosshair" type="TextureRect" parent="Control"]
+[node name="crosshair" type="TextureRect" parent="HUD/Control"]
+material = SubResource("ShaderMaterial_omg4o")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,3 +103,328 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0y05l")
 stretch_mode = 3
+
+[node name="Boss Health" type="TextureProgressBar" parent="HUD"]
+visible = false
+material = SubResource("ShaderMaterial_xm1do")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -217.5
+offset_top = 26.0
+offset_right = 217.5
+offset_bottom = 76.0
+grow_horizontal = 2
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.0
+step = 33.0
+value = 66.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 25
+stretch_margin_top = 25
+stretch_margin_right = 25
+stretch_margin_bottom = 25
+texture_over = ExtResource("3_xm1do")
+texture_progress = ExtResource("4_c4rab")
+tint_over = Color(0.571643, 0, 0.0411451, 1)
+tint_progress = Color(0.572549, 0, 0.0392157, 1)
+
+[node name="Reload Bar" type="TextureProgressBar" parent="HUD"]
+visible = false
+material = SubResource("ShaderMaterial_xm1do")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = 205.0
+offset_right = 214.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.0
+value = 55.0
+nine_patch_stretch = true
+stretch_margin_left = 25
+stretch_margin_top = 25
+stretch_margin_right = 25
+stretch_margin_bottom = 25
+texture_over = ExtResource("3_xm1do")
+texture_progress = ExtResource("4_c4rab")
+
+[node name="Message Text" type="RichTextLabel" parent="HUD"]
+material = SubResource("ShaderMaterial_06sim")
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -69.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("5_c4rab")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]Press 'R' to Reload"
+autowrap_mode = 0
+
+[node name="Pause Menu" type="Panel" parent="HUD"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -325.5
+offset_right = 260.0
+offset_bottom = 325.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_06sim")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Pause Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Pause Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 125
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Game Paused Text" type="RichTextLabel" parent="HUD/Pause Menu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_c4rab")
+theme_override_fonts/italics_font = ExtResource("5_c4rab")
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Game Paused"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HUD/Pause Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = -20
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PM_Flavor_Text" type="RichTextLabel" parent="HUD/Pause Menu/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_c4rab")
+theme_override_fonts/italics_font = ExtResource("5_c4rab")
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center][i]00:00 elapsed"
+
+[node name="Button Stack" type="VBoxContainer" parent="HUD/Pause Menu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_omg4o")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Pause Menu/VBoxContainer/Button Stack"]
+layout_mode = 2
+theme_override_constants/margin_top = 133
+
+[node name="Resume" type="Button" parent="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="BH_AnimationComponent" type="Node" parent="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer/Resume"]
+script = ExtResource("8_06sim")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HUD/Pause Menu/VBoxContainer/Button Stack"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit Game"
+
+[node name="BH_AnimationComponent" type="Node" parent="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2/Quit"]
+script = ExtResource("8_06sim")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"
+
+[node name="Gun Idea" type="VBoxContainer" parent="HUD"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -276.0
+offset_right = -28.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Gun Idea"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_bottom = -10
+
+[node name="TextureRect2" type="TextureRect" parent="HUD/Gun Idea/MarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_0y05l")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="HUD/Gun Idea"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_bottom = -10
+
+[node name="TextureRect2" type="TextureRect" parent="HUD/Gun Idea/MarginContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_0y05l")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer3" type="MarginContainer" parent="HUD/Gun Idea"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = -10
+theme_override_constants/margin_bottom = -10
+
+[node name="TextureRect2" type="TextureRect" parent="HUD/Gun Idea/MarginContainer3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_0y05l")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="HUD/Gun Idea"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("9_h4s5t")
+expand_mode = 3
+stretch_mode = 4
+flip_h = true
+
+[node name="Key Icon" type="TextureRect" parent="HUD"]
+visible = false
+custom_minimum_size = Vector2(75, 75)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -89.0
+offset_right = 95.0
+offset_bottom = -25.0
+grow_vertical = 0
+texture = ExtResource("10_evxos")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Game Over" type="Panel" parent="CanvasLayer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -338.0
+offset_right = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qili6")
+
+[node name="You Died" type="RichTextLabel" parent="CanvasLayer/Game Over"]
+material = SubResource("ShaderMaterial_b3xdp")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -308.0
+offset_top = 41.0
+offset_right = 305.0
+offset_bottom = 679.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("11_evxos")
+theme_override_fonts/italics_font = ExtResource("5_c4rab")
+theme_override_font_sizes/italics_font_size = 45
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]you died"
+
+[node name="time?" type="RichTextLabel" parent="CanvasLayer/Game Over/You Died"]
+material = SubResource("ShaderMaterial_x4gfa")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -306.5
+offset_top = 77.0
+offset_right = 306.5
+offset_bottom = 715.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("11_evxos")
+theme_override_fonts/italics_font = ExtResource("5_c4rab")
+theme_override_font_sizes/italics_font_size = 45
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center][i]00:00[/i]
+"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/Game Over"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.5
+offset_top = 84.0
+offset_right = 276.5
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_omg4o")
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Game Over/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 50
+
+[node name="Play" type="Button" parent="CanvasLayer/Game Over/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Game Over/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 100
+
+[node name="WakeUp" type="Button" parent="CanvasLayer/Game Over/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Wake Up "
+
+[node name="SpecialH_AnimationComponent" type="Node" parent="CanvasLayer/Game Over/VBoxContainer/MarginContainer2/WakeUp"]
+script = ExtResource("9_qili6")
+
+[connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2/Quit" to="." method="_on_quit_pressed"]

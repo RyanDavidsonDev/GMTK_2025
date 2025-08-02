@@ -22,10 +22,10 @@ func remove_book(book:Book):
 
 func _check_if_door_can_be_opened(player: PlayerCharacter) ->bool:
 	if insertionOrder == books:
-		print("The way is open")
+		GameManager.hud_controller.show_text("The Way Is Open")
 		return true
-	else:
-		print("that is not the correct order")
+	else:		
+		GameManager.hud_controller.show_text("that is not the correct order")
 		for book in insertionOrder:
 			book.untilt_book()
 		insertionOrder.clear()

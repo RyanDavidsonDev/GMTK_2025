@@ -1,0 +1,205 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsmnrejkh565x"]
+
+[ext_resource type="Texture2D" uid="uid://dknw5krh3wetd" path="res://assets/UI/temporary image 2.png" id="1_jj3p2"]
+[ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders & Themes/shakeyLinesUIShader.gdshader" id="2_xuvmf"]
+[ext_resource type="FontFile" uid="uid://cepcdefmsk5u2" path="res://assets/UI/Lumenharmaa.ttf" id="3_b7tim"]
+[ext_resource type="FontFile" uid="uid://dbjf8cichqm70" path="res://assets/UI/Leander.ttf" id="4_emf1i"]
+[ext_resource type="Theme" uid="uid://b1frqnmpmcxlw" path="res://Scripts/Shaders & Themes/Menu_Button_Theme.tres" id="5_gaibv"]
+[ext_resource type="Script" uid="uid://ccamawjk2n20c" path="res://Scripts/buttonHover_animationComponent.gd" id="6_1mrn1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vr1f0"]
+shader = ExtResource("2_xuvmf")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 2.0
+shader_parameter/noise_scale = 50.0
+shader_parameter/noise_speed = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj3p2"]
+bg_color = Color(0, 0, 0, 0.545098)
+border_width_top = 75
+border_color = Color(0, 0, 0, 0)
+border_blend = true
+
+[node name="MainMenu" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TEMP BG" type="TextureRect" parent="CanvasLayer"]
+offset_left = -2.0
+offset_top = -95.0
+offset_right = 1156.0
+offset_bottom = 782.0
+texture = ExtResource("1_jj3p2")
+flip_h = true
+flip_v = true
+
+[node name="Meet the Team" type="RichTextLabel" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_vr1f0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 9.0
+offset_bottom = -466.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_b7tim")
+theme_override_fonts/italics_font = ExtResource("4_emf1i")
+theme_override_font_sizes/italics_font_size = 45
+theme_override_font_sizes/normal_font_size = 140
+bbcode_enabled = true
+text = "[center]meet the team[/center]"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 192.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Someones Name" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_vr1f0")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_b7tim")
+theme_override_fonts/italics_font = ExtResource("4_emf1i")
+theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/normal_font_size = 140
+bbcode_enabled = true
+text = "[center][i]Name McName
+[b][i]did this[/i][/b]"
+
+[node name="Someones Name2" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_vr1f0")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_b7tim")
+theme_override_fonts/italics_font = ExtResource("4_emf1i")
+theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/normal_font_size = 140
+bbcode_enabled = true
+text = "[center][i]Name McName
+[b][i]did this[/i][/b]"
+
+[node name="Someones Name3" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_vr1f0")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_b7tim")
+theme_override_fonts/italics_font = ExtResource("4_emf1i")
+theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/normal_font_size = 140
+bbcode_enabled = true
+text = "[center][i]Name McName
+[b][i]did this[/i][/b]"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Someones Name" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+material = SubResource("ShaderMaterial_vr1f0")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_b7tim")
+theme_override_fonts/italics_font = ExtResource("4_emf1i")
+theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/normal_font_size = 140
+bbcode_enabled = true
+text = "[center][i]FIONA BOLEN
+[b][i]super cool and awesome[/i][/b]"
+
+[node name="Someones Name2" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+material = SubResource("ShaderMaterial_vr1f0")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_b7tim")
+theme_override_fonts/italics_font = ExtResource("4_emf1i")
+theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/normal_font_size = 140
+bbcode_enabled = true
+text = "[center][i]Name McName
+[b][i]did this[/i][/b]"
+
+[node name="Someones Name3" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+material = SubResource("ShaderMaterial_vr1f0")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_b7tim")
+theme_override_fonts/italics_font = ExtResource("4_emf1i")
+theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/normal_font_size = 140
+bbcode_enabled = true
+text = "[center][i]Name McName
+[b][i]did this[/i][/b]"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 100
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1160.0
+offset_top = 498.0
+offset_right = 12.0
+offset_bottom = 14.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jj3p2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -98.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("5_gaibv")
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 55
+
+[node name="Exit" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Go Back
+"
+
+[node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/Exit"]
+script = ExtResource("6_1mrn1")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"

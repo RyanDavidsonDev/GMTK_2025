@@ -29,7 +29,7 @@ func get_path_distance_from_player() -> float:
 
 func _kill_player() -> void:
 	
-	print("YOUR ASS IS GRASS!")
+	GameManager.hud_controller.show_text("you died")
 	_killing_player = true
 	
 	GameManager.player_character_killed()
