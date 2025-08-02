@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://d4vt7h307ufk" path="res://enemy_ai/enemy_ai.gd" id="1_nm3mo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02pas"]
+radius = 0.25
 
 [node name="EnemyAi" type="CharacterBody3D"]
 script = ExtResource("1_nm3mo")
+_move_speed = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_02pas")

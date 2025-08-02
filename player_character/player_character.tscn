@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://c4ep4njqkiq13" path="res://Scenes/UI_overlay.tscn" id="2_1ty04"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2i27r"]
+radius = 0.25
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
 script = ExtResource("1_qlps6")
+_move_speed = 3.0
 raycast_collison_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

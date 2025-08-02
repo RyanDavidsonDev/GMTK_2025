@@ -5,4 +5,4 @@
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_mo2mb")
-killer_track = ExtResource("2_drlug")
+_killer_default_track = ExtResource("2_drlug")

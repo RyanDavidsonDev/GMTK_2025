@@ -7,6 +7,16 @@ var _nav_agent_3d : NavigationAgent3D = null
 
 var _killing_player : bool = false
 
+func can_see_player() -> bool:
+	
+	var params : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
+	params.from = global_position
+	params.to = GameManager.player_character.global_position
+	
+	var hit : Dictionary = get_world_3d().direct_space_state.intersect_ray(params)
+	
+	return hit.collider is PlayerCharacter
+
 func get_path_distance_from_player() -> float:
 	
 	var path : PackedVector3Array = _nav_agent_3d.get_current_navigation_path()

@@ -20,7 +20,7 @@ func register_enemy_ai(instance: EnemyAI) -> void:
 		return
 	
 	enemy_ai = instance
-	AudioManager.initialize_killer_track(enemy_ai)
+	AudioManager.initialize_killer_audio(enemy_ai)
 
 func player_character_killed() -> void:
 	
