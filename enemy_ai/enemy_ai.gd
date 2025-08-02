@@ -29,7 +29,7 @@ func get_path_distance_from_player() -> float:
 
 func _kill_player() -> void:
 	
-	GameManager.hud_controller.show_text("you died")
+	#GameManager.hud_controller.show_text_timer("you died")
 	_killing_player = true
 	
 	GameManager.player_character_killed()

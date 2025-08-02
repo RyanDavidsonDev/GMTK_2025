@@ -3,21 +3,51 @@ class_name HUDController extends Node
 @onready var reload_bar: TextureProgressBar = $"HUD/Reload Bar"
 @onready var crosshair: TextureRect = $HUD/Control/crosshair
 @onready var message_text: RichTextLabel = $"HUD/Message Text"
+@onready var hide_text_timer: Timer = $Timer
 
 @export var _pause_menu : Panel = null
 
+signal sig_hide_continual_text()
+
 const DEFAULT_MESSAGE_DURATION = 2
 
+var target_image = load("res://assets/UI/crosshair_target.png")
+var dot_image = load("res://assets/UI/crosshair_dot.png")
+var interact_image = load("res://assets/UI/crosshair_hand.png")
+	
 func _ready():
 	message_text.visible = false
 	GameManager.register_hud(self)
+	
+	
 
-func show_text(message: String, duration: float = DEFAULT_MESSAGE_DURATION):
+func clear_pending_hides():
+	if(sig_hide_continual_text != null):
+		var array = sig_hide_continual_text.get_connections()
+		for sig in array:
+			sig_hide_continual_text.emit()
+	
+	if hide_text_timer !=null:
+		hide_text_timer.stop()
+
+func show_text_continual(message: String):
+	
+	clear_pending_hides()
+	
 	message_text.text = message
 	message_text.visible = true
 	
-	await get_tree().create_timer(duration).timeout
-	#print("after") #commented this out cause it was getting annoying. but the fact that it was pringitn so much might be a concern
+	if !sig_hide_continual_text.is_connected(hide_text):
+		
+		sig_hide_continual_text.connect(hide_text)
+
+func show_text_timer(message: String, duration: float = DEFAULT_MESSAGE_DURATION):
+	message_text.text = message
+	message_text.visible = true
+	
+	hide_text_timer.start(duration)
+	await hide_text_timer.timeout
+	print("after") #commented this out cause it was getting annoying. but the fact that it was pringitn so much might be a concern
 	message_text.visible = false;
 	
 	return
@@ -39,6 +69,15 @@ func toggle_pause_menu() -> bool:
 
 func hide_reload_bar():
 	reload_bar.visible = false
+	
+func target_crosshair():
+	crosshair.texture = target_image
+
+func normal_crosshair():
+	crosshair.texture = dot_image
+
+func interact_crosshair():
+	crosshair.texture = interact_image
 
 func _process(delta: float) -> void:
 	
