@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxqhi5wqp70r2" path="res://Scripts/door.gd" id="1_38ogf"]
 [ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="2_7mbvs"]
-[ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_j21vs"]
+[ext_resource type="Script" uid="uid://e68h0nc7epf7" path="res://Scripts/InteractableCollider.gd" id="2_j21vs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri6yp"]
 size = Vector3(2.25, 5, 0.1)
@@ -14,7 +14,7 @@ script = ExtResource("1_38ogf")
 OutwardRotationDeg = -90.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("parent")]
-collision_layer = 5
+collision_layer = 6
 gravity_scale = 0.0
 freeze = true
 contact_monitor = true
