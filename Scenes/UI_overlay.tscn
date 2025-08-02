@@ -9,7 +9,7 @@
 [ext_resource type="Theme" uid="uid://b1frqnmpmcxlw" path="res://Scripts/Shaders & Themes/Menu_Button_Theme.tres" id="7_omg4o"]
 [ext_resource type="Script" uid="uid://ccamawjk2n20c" path="res://Scripts/buttonHover_animationComponent.gd" id="8_06sim"]
 [ext_resource type="Texture2D" uid="uid://bllubssoovyxi" path="res://assets/UI/pistol-gun.png" id="9_h4s5t"]
-[ext_resource type="Script" path="res://Scripts/specialHover_animationComponent.gd" id="9_qili6"]
+[ext_resource type="Script" uid="uid://bxijs8ci6f4s3" path="res://Scripts/specialHover_animationComponent.gd" id="9_qili6"]
 [ext_resource type="Texture2D" uid="uid://djds8id7a3nha" path="res://assets/UI/white_key.png" id="10_evxos"]
 [ext_resource type="FontFile" uid="uid://cepcdefmsk5u2" path="res://assets/UI/Lumenharmaa.ttf" id="11_evxos"]
 

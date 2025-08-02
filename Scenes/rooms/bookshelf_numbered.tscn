@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmr8jc3rubln8"]
+[gd_scene load_steps=5 format=3 uid="uid://bae1vsi50gnrp"]
 
-[ext_resource type="PackedScene" uid="uid://1p5avy66el8t" path="res://Scenes/door_wall.tscn" id="1_v3lyb"]
-[ext_resource type="PackedScene" uid="uid://c50tkqyp5fejp" path="res://Scenes/Door.tscn" id="2_0eo5k"]
-[ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="3_ssior"]
-[ext_resource type="PackedScene" uid="uid://mqvu01asw6f6" path="res://Scenes/key.tscn" id="4_lwglt"]
+[ext_resource type="PackedScene" uid="uid://1p5avy66el8t" path="res://Scenes/door_wall.tscn" id="1_wqbpv"]
+[ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="3_qf25u"]
+[ext_resource type="PackedScene" uid="uid://bmrfi17x0node" path="res://Scenes/bookshelf_door.tscn" id="4_fp51o"]
+[ext_resource type="PackedScene" uid="uid://cij6v1tlolo4f" path="res://Scenes/Book.tscn" id="5_t3vml"]
 
-[node name="key_basic" type="Node3D"]
+[node name="BookshelfNumbered" type="Node3D"]
 
 [node name="LevelGeom" type="Node3D" parent="."]
 
@@ -21,7 +21,7 @@ size = Vector3(4, 0.5, 11)
 transform = Transform3D(7.10543e-15, 1.39091e-08, 1, -1, -8.74228e-08, -3.55271e-15, 8.74228e-08, -1, 1.39091e-08, -5.5, 2.5, 5)
 size = Vector3(4, 0.5, 11)
 
-[node name="DoorWall15" parent="LevelGeom" instance=ExtResource("1_v3lyb")]
+[node name="DoorWall15" parent="LevelGeom" instance=ExtResource("1_wqbpv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.25, 0, 2)
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="LevelGeom"]
@@ -36,7 +36,7 @@ size = Vector3(4, 0.5, 3)
 transform = Transform3D(-8.74228e-08, 1, -5.76205e-08, -1, -8.74228e-08, -3.55271e-15, 3.28406e-15, 5.76205e-08, 1, 1.52903e-07, 4.08423, 0.0654802)
 size = Vector3(0.831543, 0.5, 6.5)
 
-[node name="DoorWall16" parent="LevelGeom" instance=ExtResource("1_v3lyb")]
+[node name="DoorWall16" parent="LevelGeom" instance=ExtResource("1_wqbpv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.5476, 0, 2)
 
 [node name="CSGBox3D21" type="CSGBox3D" parent="LevelGeom"]
@@ -51,41 +51,29 @@ size = Vector3(4, 0.5, 3)
 transform = Transform3D(-8.74228e-08, 1, -5.76205e-08, -1, -8.74228e-08, -3.55271e-15, 3.28406e-15, 5.76205e-08, 1, -10.7976, 4.08423, 0.0654802)
 size = Vector3(0.831543, 0.5, 6.5)
 
-[node name="Door" parent="." instance=ExtResource("2_0eo5k")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 1.5, 0)
-NeedsKey = true
-
-[node name="PlayerCharacter" parent="." instance=ExtResource("3_ssior")]
+[node name="PlayerCharacter" parent="." instance=ExtResource("3_qf25u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 2, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(7.10543e-15, 1.39091e-08, 1, -1, -8.74228e-08, 8.3214e-15, 8.74228e-08, -1, 1.39091e-08, -9, 4, -4.76837e-07)
 
-[node name="Key" parent="." instance=ExtResource("4_lwglt")]
-transform = Transform3D(7.10543e-15, 1.39091e-08, 1, -1, -8.74228e-08, -3.55271e-15, 8.74228e-08, -1, 1.39091e-08, -9.5, 0.5, -3.5)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Key"]
-light_color = Color(0.933333, 0.94902, 0.215686, 1)
-omni_range = 2.0
-omni_attenuation = 1.8
-
 [node name="Furniture" type="Node3D" parent="."]
 
-[node name="TV" type="CSGBox3D" parent="Furniture"]
-transform = Transform3D(5.37312e-16, -1.01332e-07, -1, -1, -8.74228e-08, -3.55271e-15, -8.74228e-08, 1, -1.01332e-07, -5, 1.75, 4)
-size = Vector3(2.5, 0.5, 4)
+[node name="Bookshelf" type="CSGBox3D" parent="Furniture"]
+transform = Transform3D(5.37312e-16, -1.01332e-07, -1, -1, -8.74228e-08, -3.55271e-15, -8.74228e-08, 1, -1.01332e-07, -4.5, 2.25, 3.875)
+size = Vector3(3.5, 0.75, 2)
 
-[node name="couch" type="CSGBox3D" parent="Furniture"]
-transform = Transform3D(5.37312e-16, -1.01332e-07, -1, -1, -8.74228e-08, -3.55271e-15, -8.74228e-08, 1, -1.01332e-07, -5, 1.25, -3)
-operation = 2
-size = Vector3(1.5, 1.5, 4)
+[node name="B1" parent="Furniture" instance=ExtResource("5_t3vml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 2.5, 3.5)
 
-[node name="indent" type="CSGBox3D" parent="Furniture/couch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, 0)
-operation = 2
-size = Vector3(1, 1, 4)
+[node name="B2" parent="Furniture" instance=ExtResource("5_t3vml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 3.5, 3.5)
 
-[node name="end_table" type="CSGBox3D" parent="Furniture"]
-transform = Transform3D(5.37312e-16, -1.01332e-07, -1, -1, -8.74228e-08, -3.55271e-15, -8.74228e-08, 1, -1.01332e-07, -9.25, 1, -3.5)
-operation = 2
-size = Vector3(1, 0.5, 0.5)
+[node name="B3" parent="Furniture" instance=ExtResource("5_t3vml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 3, 3.5)
+
+[node name="BookshelfDoor" parent="." node_paths=PackedStringArray("books") instance=ExtResource("4_fp51o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.75, 0, -1)
+books = [NodePath("../Furniture/B1"), NodePath("../Furniture/B2"), NodePath("../Furniture/B3")]
+OutwardRotationDeg = -90.0
+RotationTimeSec = 3.0
