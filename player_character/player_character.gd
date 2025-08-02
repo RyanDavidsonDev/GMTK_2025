@@ -20,6 +20,8 @@ var _camera_3d : Camera3D = null
 
 var has_key: bool = false
 
+var was_looking_at_interactable: bool = false
+
 func _ready() -> void:
 	
 	_camera_3d = $Camera3D
@@ -82,19 +84,32 @@ func _physics_process(delta: float) -> void:
 	var result:Dictionary = space_state.intersect_ray(query)
 	
 	var EnemyIsInSight : bool = false
+	
+	#if we see something
 	if(!result.is_empty()):
 		var position: Vector3 = result.position
 		var collider: Node3D = result.collider
 		
 		if collider is EnemyAI:
 			if(GameManager.player_character.gun.is_loaded):
-				GameManager.hud_controller.show_text("Press \'E\' or click Left Mouse Button to fire")
+				if !was_looking_at_interactable:
+					GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to fire")
+			else :
+				if !was_looking_at_interactable:
+					GameManager.hud_controller.show_text_timer("Press 'R' to reload")
 			EnemyIsInSight = true
 		else: if (position.distance_to(origin) < INTERACTION_DISTANCE):
-			GameManager.hud_controller.show_text("Press \'E\' or click Left Mouse Button to interact")
+			if !was_looking_at_interactable:
+				GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to interact")
 			#hide text on look away?
 			if Input.is_action_just_pressed("Interact"):
 				collider.interact(self)
+		was_looking_at_interactable = true
+	else: if was_looking_at_interactable:
+		was_looking_at_interactable = false
+		print("hiding")
+		#might still wipe unrelated - consider splitting into separate signals or wipe correspective signals
+		GameManager.hud_controller.sig_hide_continual_text.emit()
 	
 	if Input.is_action_just_pressed("Interact"):
 		if EnemyIsInSight:

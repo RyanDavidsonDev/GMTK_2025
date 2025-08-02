@@ -16,11 +16,11 @@ func try_fire():
 	if is_loaded:
 		fire()
 	else :
-		GameManager.hud_controller.show_text("\"my gun isn't loaded\"")
+		GameManager.hud_controller.show_text_timer("\"my gun isn't loaded\"")
 
 func fire():
-	print("bang")
-	GameManager.hud_controller.show_text("bang")
+	print("\"bang\"")
+	GameManager.hud_controller.show_text_timer("\"bang\"")
 	
 	is_loaded = false
 	bullet_count -=1 
@@ -28,7 +28,7 @@ func fire():
 
 func reload():
 	if(bullet_count<1):
-		GameManager.hud_controller.show_text("I don't have any bullets")
+		GameManager.hud_controller.show_text_timer("I don't have any bullets")
 		return
 	if(!is_reloading):
 		is_reloading = true
@@ -39,7 +39,7 @@ func reload():
 
 func finish_reload()->void:
 	is_reloading = false
-	GameManager.hud_controller.show_text("It's ready to fire")
+	GameManager.hud_controller.show_text_timer("It's ready to fire")
 	print("finished reload")
 	is_loaded = true
 	bullet_count-=1
