@@ -49,6 +49,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("reload"):
 		gun.reload()
 		
+	if _input_move_direction != Vector2.ZERO && gun.is_reloading:
+		GameManager.hud_controller.show_text_timer("\"I'm not familiar enough with this gun to reload it and keep walking\"")
+		gun.interrupt_reload()
+		
 	_input_move_direction = _input_move_direction.normalized()
 
 func _physics_process(delta: float) -> void:
@@ -94,6 +98,7 @@ func _physics_process(delta: float) -> void:
 			GameManager.hud_controller.target_crosshair()
 			if(GameManager.player_character.gun.is_loaded):
 				if !was_looking_at_interactable:
+					#gameman.hudcont.switchcrosshair(fire)
 					GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to fire")
 			else :
 				if !was_looking_at_interactable:
@@ -106,11 +111,11 @@ func _physics_process(delta: float) -> void:
 			#hide text on look away?
 			if Input.is_action_just_pressed("Interact"):
 				GameManager.hud_controller.interact_crosshair()
+			#gameman.hudcont.switchcrosshair(fire) also maybe
 				collider.interact(self)
 		was_looking_at_interactable = true
 	else: if was_looking_at_interactable:
 		was_looking_at_interactable = false
-		print("hiding")
 		#might still wipe unrelated - consider splitting into separate signals or wipe correspective signals
 		GameManager.hud_controller.sig_hide_continual_text.emit()
 		GameManager.hud_controller.normal_crosshair()
