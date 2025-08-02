@@ -89,7 +89,6 @@ func _physics_process(delta: float) -> void:
 				collider.interact(self)
 		else :
 			if collider is EnemyAI:
-				print("it's the enemy")
 				if Input.is_action_just_pressed("Interact"):
 					gun.try_fire()
 	else: 

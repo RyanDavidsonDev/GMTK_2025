@@ -7,12 +7,16 @@ class_name HUDController extends Node
 @export var _pause_menu : Panel = null
 
 func _ready():
+	message_text.visible = false
 	GameManager.register_hud(self)
 
 func show_text(message: String):
 	message_text.text = message
 	message_text.visible = true
 	
+	await get_tree().create_timer(2.0).timeout
+	print("after")
+	message_text.visible = false;
 	
 	return
 	
