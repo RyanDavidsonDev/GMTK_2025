@@ -1,6 +1,7 @@
 extends Node
 
 @export var game_scene : PackedScene = null
+@export var menu_scene : PackedScene = null
 
 var player_character : PlayerCharacter = null
 var enemy_ai : EnemyAI = null
@@ -34,6 +35,11 @@ func player_character_killed() -> void:
 	_cleanup_game()
 	_load_game()
 	
+func load_menu() -> void:
+	
+	_cleanup_game()
+	get_tree().change_scene_to_packed(menu_scene)
+	
 func _cleanup_game() -> void:
 	
 	print(get_tree().current_scene)
@@ -55,7 +61,22 @@ func _load_game() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	get_tree().change_scene_to_packed(game_scene)
-
+	
 func _ready() -> void:
+	
+	
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#_load_game.call_deferred()
+
+# Returns true if game becomes paused and false if it becomes unpaused
+func toggle_game_paused() -> bool:
+	
+	if get_tree().paused:
+		get_tree().paused = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		return false
+	else:
+		get_tree().paused = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		return true

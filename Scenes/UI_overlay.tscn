@@ -37,8 +37,10 @@ border_width_right = 75
 border_color = Color(0.109804, 0.109804, 0.109804, 0)
 border_blend = true
 
-[node name="UiOverlay" type="Node"]
+[node name="UiOverlay" type="Node" node_paths=PackedStringArray("_pause_menu")]
+process_mode = 3
 script = ExtResource("1_c4rab")
+_pause_menu = NodePath("HUD/Pause Menu")
 
 [node name="Post Processing Layer" type="CanvasLayer" parent="."]
 
@@ -199,3 +201,6 @@ text = "Quit Game"
 [node name="BH_AnimationComponent" type="Node" parent="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2/Quit"]
 script = ExtResource("8_06sim")
 metadata/_custom_type_script = "uid://ccamawjk2n20c"
+
+[connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2/Quit" to="." method="_on_quit_pressed"]

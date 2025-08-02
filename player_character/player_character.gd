@@ -46,11 +46,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("reload"):
 		gun.reload()
 		
-		
-		
 	_input_move_direction = _input_move_direction.normalized()
-	
-	
 
 func _physics_process(delta: float) -> void:
 	# Update character rotation
