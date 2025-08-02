@@ -6,6 +6,7 @@ const INTERACTION_DISTANCE: float = 5
 @export var _look_sensitivity: float = 1.0
 @export_flags_3d_physics var raycast_collison_mask = 0
 
+@onready var gun: Gun = $gun
 @onready var camera: Camera3D = $Camera3D
 @onready var ui_overlay: Node = $UiOverlay
 #@onready var crosshair
@@ -42,6 +43,9 @@ func _process(delta: float) -> void:
 		_input_move_direction.x += 1.0
 	if Input.is_action_pressed("move_left"):
 		_input_move_direction.x -= 1.0
+	if Input.is_action_pressed("reload"):
+		gun.reload()
+		
 		
 		
 	_input_move_direction = _input_move_direction.normalized()
@@ -80,8 +84,10 @@ func _physics_process(delta: float) -> void:
 	query.collision_mask = (raycast_collison_mask)
 	var result:Dictionary = space_state.intersect_ray(query)
 	
-	if(!result.is_empty()):
-		
+	if(!result.is_empty()):		
 		var collider:Node3D = result.collider
 		if Input.is_action_just_pressed("Interact"):
 			collider.interact(self)
+	else: 
+		if Input.is_action_just_pressed("Interact"):
+			gun.try_fire()
