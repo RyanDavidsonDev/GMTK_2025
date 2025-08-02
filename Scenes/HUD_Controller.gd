@@ -11,7 +11,6 @@ func show_text(message: String):
 	message_text.text = message
 	message_text.visible = true
 	
-	var tween = get_tree().create_tween().set_parallel(true)
 	
 	return
 	

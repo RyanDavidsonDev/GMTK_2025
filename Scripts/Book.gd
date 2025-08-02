@@ -13,7 +13,6 @@ var tilted:bool = false
 
 func interact(player:PlayerCharacter):
 	if(!tilted):
-		print("activated book number", index)
 		assert(door.has_method("receive_book_interact"), "the door on this book does not have an interact method")
 		door.receive_book_interact(self)
 		tilt_book()
