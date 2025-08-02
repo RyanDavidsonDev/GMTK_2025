@@ -91,6 +91,7 @@ func _physics_process(delta: float) -> void:
 		var collider: Node3D = result.collider
 		
 		if collider is EnemyAI:
+			GameManager.hud_controller.target_crosshair()
 			if(GameManager.player_character.gun.is_loaded):
 				if !was_looking_at_interactable:
 					GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to fire")
@@ -100,9 +101,11 @@ func _physics_process(delta: float) -> void:
 			EnemyIsInSight = true
 		else: if (position.distance_to(origin) < INTERACTION_DISTANCE):
 			if !was_looking_at_interactable:
+				GameManager.hud_controller.interact_crosshair()
 				GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to interact")
 			#hide text on look away?
 			if Input.is_action_just_pressed("Interact"):
+				GameManager.hud_controller.interact_crosshair()
 				collider.interact(self)
 		was_looking_at_interactable = true
 	else: if was_looking_at_interactable:
@@ -110,6 +113,7 @@ func _physics_process(delta: float) -> void:
 		print("hiding")
 		#might still wipe unrelated - consider splitting into separate signals or wipe correspective signals
 		GameManager.hud_controller.sig_hide_continual_text.emit()
+		GameManager.hud_controller.normal_crosshair()
 	
 	if Input.is_action_just_pressed("Interact"):
 		if EnemyIsInSight:

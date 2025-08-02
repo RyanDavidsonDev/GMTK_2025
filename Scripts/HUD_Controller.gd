@@ -11,9 +11,14 @@ signal sig_hide_continual_text()
 
 const DEFAULT_MESSAGE_DURATION = 2
 
+var target_image = load("res://assets/UI/crosshair_target.png")
+var dot_image = load("res://assets/UI/crosshair_dot.png")
+var interact_image = load("res://assets/UI/crosshair_hand.png")
+	
 func _ready():
 	message_text.visible = false
 	GameManager.register_hud(self)
+	
 	
 
 func clear_pending_hides():
@@ -64,6 +69,15 @@ func toggle_pause_menu() -> bool:
 
 func hide_reload_bar():
 	reload_bar.visible = false
+	
+func target_crosshair():
+	crosshair.texture = target_image
+
+func normal_crosshair():
+	crosshair.texture = dot_image
+
+func interact_crosshair():
+	crosshair.texture = interact_image
 
 func _process(delta: float) -> void:
 	
