@@ -94,4 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1512, 0, -2.78022)
 
+[node name="RigidBody3D" parent="." instance=ExtResource("6_i6g32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -1.5)
+
 [editable path="EnemyAi"]

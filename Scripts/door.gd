@@ -49,7 +49,7 @@ func resetDoor():
 	
 
 func open() -> void:
-	pivot_point.pivot_around_point(self, global_basis.y, OutwardRotationDeg)
+	pivot_point.pivot_around_point(self, global_basis.y, OutwardRotationDeg, RotationTimeSec)
 	#doorIsOpening = true;
 	#root.translate(Vector3(1,1,1))
 

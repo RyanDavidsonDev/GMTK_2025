@@ -3,7 +3,7 @@ class_name PivotPoint extends Node3D
 @export var trans_type :Tween.TransitionType = Tween.TransitionType.TRANS_LINEAR
 @export var ease_type :Tween.EaseType = Tween.EaseType.EASE_IN_OUT
 
-func pivot_around_point(object: Node3D,  axis:Vector3, delta:float):
+func pivot_around_point(object: Node3D,  axis:Vector3, delta:float, speed: float = 1):
 	#declare axis w syntax of:
 	# x_axis = Vector3(1, 0, 0)
 	
@@ -28,9 +28,8 @@ func pivot_around_point(object: Node3D,  axis:Vector3, delta:float):
 	var FinPos = self.global_position + gpivot_radius
 	var FinBasis = object.basis.rotated(axis, deg_to_rad(delta))
 	
-	const DUR = 1
-	tween.tween_property(object, "global_position", FinPos, DUR )
-	tween.tween_property(object, "global_basis", FinBasis, DUR )
+	tween.tween_property(object, "global_position", FinPos, speed )
+	tween.tween_property(object, "global_basis", FinBasis, speed )
 	
 	
 	
