@@ -9,7 +9,7 @@
 [ext_resource type="Theme" uid="uid://b1frqnmpmcxlw" path="res://Scripts/Shaders & Themes/Menu_Button_Theme.tres" id="7_omg4o"]
 [ext_resource type="Script" uid="uid://ccamawjk2n20c" path="res://Scripts/buttonHover_animationComponent.gd" id="8_06sim"]
 [ext_resource type="Texture2D" uid="uid://bllubssoovyxi" path="res://assets/UI/pistol-gun.png" id="9_h4s5t"]
-[ext_resource type="Script" uid="uid://bxijs8ci6f4s3" path="res://Scripts/specialHover_animationComponent.gd" id="9_qili6"]
+[ext_resource type="Script" path="res://Scripts/specialHover_animationComponent.gd" id="9_qili6"]
 [ext_resource type="Texture2D" uid="uid://djds8id7a3nha" path="res://assets/UI/white_key.png" id="10_evxos"]
 [ext_resource type="FontFile" uid="uid://cepcdefmsk5u2" path="res://assets/UI/Lumenharmaa.ttf" id="11_evxos"]
 
@@ -131,6 +131,7 @@ tint_over = Color(0.571643, 0, 0.0411451, 1)
 tint_progress = Color(0.572549, 0, 0.0392157, 1)
 
 [node name="Reload Bar" type="TextureProgressBar" parent="HUD"]
+visible = false
 material = SubResource("ShaderMaterial_xm1do")
 anchors_preset = 8
 anchor_left = 0.5
@@ -337,6 +338,7 @@ expand_mode = 3
 stretch_mode = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Game Over" type="Panel" parent="CanvasLayer"]
 anchors_preset = 13
@@ -423,7 +425,6 @@ text = "Wake Up "
 
 [node name="SpecialH_AnimationComponent" type="Node" parent="CanvasLayer/Game Over/VBoxContainer/MarginContainer2/WakeUp"]
 script = ExtResource("9_qili6")
-metadata/_custom_type_script = "uid://bxijs8ci6f4s3"
 
 [connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2/Quit" to="." method="_on_quit_pressed"]

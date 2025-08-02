@@ -1,15 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://mt8vitibkaxh"]
+[gd_scene load_steps=5 format=3 uid="uid://mt8vitibkaxh"]
 
 [ext_resource type="Script" uid="uid://d4vt7h307ufk" path="res://enemy_ai/enemy_ai.gd" id="1_nm3mo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02pas"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nm3mo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02pas"]
+
 [node name="EnemyAi" type="CharacterBody3D"]
 collision_layer = 5
 script = ExtResource("1_nm3mo")
+_move_speed = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_02pas")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_nm3mo")
+surface_material_override/0 = SubResource("StandardMaterial3D_02pas")

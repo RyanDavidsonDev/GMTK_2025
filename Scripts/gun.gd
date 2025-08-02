@@ -16,9 +16,10 @@ func try_fire():
 	if is_loaded:
 		fire()
 	else :
-		GameManager.hud_controller.show_text("my gun isn't loaded")
+		GameManager.hud_controller.show_text("\"my gun isn't loaded\"")
 
 func fire():
+	print("bang")
 	GameManager.hud_controller.show_text("bang")
 	
 	is_loaded = false

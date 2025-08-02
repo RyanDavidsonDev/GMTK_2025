@@ -1,6 +1,6 @@
 class_name PlayerCharacter extends CharacterBody3D
 
-const INTERACTION_DISTANCE: float = 5
+const INTERACTION_DISTANCE: float = 2
 const LOOK_DISTANCE: float = 50
 
 @export var _move_speed : float = 2.0
@@ -81,16 +81,26 @@ func _physics_process(delta: float) -> void:
 	query.collision_mask = (raycast_collison_mask)
 	var result:Dictionary = space_state.intersect_ray(query)
 	
+	var EnemyIsInSight : bool = false
 	if(!result.is_empty()):
 		var position: Vector3 = result.position
 		var collider: Node3D = result.collider
-		if(position.distance_to(origin) < INTERACTION_DISTANCE):
+		
+		if collider is EnemyAI:
+			if(GameManager.player_character.gun.is_loaded):
+				GameManager.hud_controller.show_text("Press \'E\' or click Left Mouse Button to fire")
+			EnemyIsInSight = true
+		else: if (position.distance_to(origin) < INTERACTION_DISTANCE):
+			GameManager.hud_controller.show_text("Press \'E\' or click Left Mouse Button to interact")
+			#hide text on look away?
 			if Input.is_action_just_pressed("Interact"):
 				collider.interact(self)
-		else :
-			if collider is EnemyAI:
-				if Input.is_action_just_pressed("Interact"):
-					gun.try_fire()
-	else: 
-		if Input.is_action_just_pressed("Interact"):
+	
+	if Input.is_action_just_pressed("Interact"):
+		if EnemyIsInSight:
+			print("bang")
 			gun.try_fire()
+			
+			
+
+			
