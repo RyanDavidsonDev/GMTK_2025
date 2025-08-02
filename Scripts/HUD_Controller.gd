@@ -4,6 +4,8 @@ class_name HUDController extends Node
 @onready var crosshair: TextureRect = $HUD/Control/crosshair
 @onready var message_text: RichTextLabel = $"HUD/Message Text"
 @onready var hide_text_timer: Timer = $Timer
+@onready var game_over_panel: Panel = $"CanvasLayer/Game Over"
+@onready var hud_layer: CanvasLayer = $HUD
 
 @export var _pause_menu : Panel = null
 
@@ -103,7 +105,15 @@ func _on_resume_pressed() -> void:
 	GameManager.toggle_game_paused()
 	_pause_menu.visible = false
 
-
 func _on_quit_pressed() -> void:
-	
 	GameManager.load_menu()
+
+func _on_wake_up_button_down() -> void:
+	GameManager._cleanup_game()
+	GameManager._load_game()
+	#unpause?
+
+func load_gameover_menu() -> void:
+	game_over_panel.visible = true;
+	hud_layer.visible = false;
+	

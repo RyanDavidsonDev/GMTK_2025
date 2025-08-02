@@ -33,8 +33,11 @@ func register_hud(instance: HUDController):
 
 func player_character_killed() -> void:
 	
-	_cleanup_game()
-	_load_game()
+	toggle_game_paused()
+	hud_controller.load_gameover_menu()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	#_load_game()
 	
 func load_menu() -> void:
 	
@@ -64,8 +67,6 @@ func _load_game() -> void:
 	get_tree().change_scene_to_packed(game_scene)
 	
 func _ready() -> void:
-	
-	
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#_load_game.call_deferred()
