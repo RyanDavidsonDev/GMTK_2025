@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bmrfi17x0node" path="res://Scenes/bookshelf_door.tscn" id="4_tumfj"]
 [ext_resource type="PackedScene" uid="uid://cij6v1tlolo4f" path="res://Scenes/Book.tscn" id="5_xam7q"]
 [ext_resource type="PackedScene" uid="uid://w1f50baq2qas" path="res://Scenes/prefabs/bullet.tscn" id="6_xam7q"]
+[ext_resource type="PackedScene" path="res://Scenes/bookshelf_door.tscn" id="4_tumfj"]
+[ext_resource type="PackedScene" path="res://Scenes/Book.tscn" id="5_xam7q"]
 
 [node name="RyanScene" type="Node3D"]
 

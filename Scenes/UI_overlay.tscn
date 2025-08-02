@@ -1,32 +1,43 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4ep4njqkiq13"]
+[gd_scene load_steps=13 format=3 uid="uid://c4ep4njqkiq13"]
 
 [ext_resource type="Texture2D" uid="uid://bx57h61s4ju3s" path="res://assets/UI/crosshair_dot.png" id="1_0y05l"]
 [ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders/shakeyLinesUIShader.gdshader" id="1_akoq1"]
 [ext_resource type="Script" path="res://Scenes/HUD_Controller.gd" id="1_c4rab"]
+[ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders & Themes/shakeyLinesUIShader.gdshader" id="1_akoq1"]
+[ext_resource type="Script" uid="uid://1gceiipwr5en" path="res://Scripts/HUD_Controller.gd" id="1_c4rab"]
 [ext_resource type="Texture2D" uid="uid://djy3tfxb44pr0" path="res://assets/UI/white_rounded_border.png" id="3_xm1do"]
 [ext_resource type="Texture2D" uid="uid://bhis57iy4jq74" path="res://assets/UI/white_rounded_bar.png" id="4_c4rab"]
 [ext_resource type="FontFile" uid="uid://dbjf8cichqm70" path="res://assets/UI/Leander.ttf" id="5_c4rab"]
+[ext_resource type="Theme" uid="uid://b1frqnmpmcxlw" path="res://Scripts/Shaders & Themes/Menu_Button_Theme.tres" id="7_omg4o"]
+[ext_resource type="Script" uid="uid://ccamawjk2n20c" path="res://Scripts/buttonHover_animationComponent.gd" id="8_06sim"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_omg4o"]
 shader = ExtResource("1_akoq1")
 shader_parameter/shaking = true
 shader_parameter/amplitude = 1.0
 shader_parameter/noise_scale = 2.0
-shader_parameter/noise_speed = 5.0
+shader_parameter/noise_speed = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xm1do"]
 shader = ExtResource("1_akoq1")
 shader_parameter/shaking = true
-shader_parameter/amplitude = 0.5
-shader_parameter/noise_scale = 10.0
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 7.0
 shader_parameter/noise_speed = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_06sim"]
 shader = ExtResource("1_akoq1")
 shader_parameter/shaking = true
-shader_parameter/amplitude = 0.6
-shader_parameter/noise_scale = 10.0
-shader_parameter/noise_speed = 5.0
+shader_parameter/amplitude = 3.0
+shader_parameter/noise_scale = 7.0
+shader_parameter/noise_speed = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06sim"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.54902)
+border_width_left = 75
+border_width_right = 75
+border_color = Color(0.109804, 0.109804, 0.109804, 0)
+border_blend = true
 
 [node name="UiOverlay" type="Node"]
 script = ExtResource("1_c4rab")
@@ -69,7 +80,6 @@ texture = ExtResource("1_0y05l")
 stretch_mode = 3
 
 [node name="Reload Bar" type="TextureProgressBar" parent="HUD"]
-visible = false
 material = SubResource("ShaderMaterial_xm1do")
 anchors_preset = 7
 anchor_left = 0.5
@@ -94,7 +104,6 @@ texture_over = ExtResource("3_xm1do")
 texture_progress = ExtResource("4_c4rab")
 
 [node name="Message Text" type="RichTextLabel" parent="HUD"]
-visible = false
 material = SubResource("ShaderMaterial_06sim")
 anchors_preset = 10
 anchor_right = 1.0
@@ -106,3 +115,89 @@ theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]Press 'R' to Reload"
 autowrap_mode = 0
+
+[node name="Pause Menu" type="Panel" parent="HUD"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -325.5
+offset_right = 260.0
+offset_bottom = 325.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_06sim")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Pause Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Pause Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 125
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Game Paused Text" type="RichTextLabel" parent="HUD/Pause Menu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_c4rab")
+theme_override_fonts/italics_font = ExtResource("5_c4rab")
+theme_override_font_sizes/italics_font_size = 14
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]Game Paused"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HUD/Pause Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = -20
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PM_Flavor_Text" type="RichTextLabel" parent="HUD/Pause Menu/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_c4rab")
+theme_override_fonts/italics_font = ExtResource("5_c4rab")
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center][i]00:00 elapsed"
+
+[node name="Button Stack" type="VBoxContainer" parent="HUD/Pause Menu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_omg4o")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Pause Menu/VBoxContainer/Button Stack"]
+layout_mode = 2
+theme_override_constants/margin_top = 133
+
+[node name="Resume" type="Button" parent="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="BH_AnimationComponent" type="Node" parent="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer/Resume"]
+script = ExtResource("8_06sim")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HUD/Pause Menu/VBoxContainer/Button Stack"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit Game"
+
+[node name="BH_AnimationComponent" type="Node" parent="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2/Quit"]
+script = ExtResource("8_06sim")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"

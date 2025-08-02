@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://b1frqnmpmcxlw"]
+
+[ext_resource type="FontFile" uid="uid://dbjf8cichqm70" path="res://assets/UI/Leander.ttf" id="1_3yjy6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yjy6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct7my"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f64m8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvoto"]
+bg_color = Color(1, 1, 1, 1)
+
+[resource]
+Button/colors/font_color = Color(0.78776, 0.787759, 0.787759, 1)
+Button/colors/font_focus_color = Color(0.964742, 0.964742, 0.964742, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 37
+Button/fonts/font = ExtResource("1_3yjy6")
+Button/styles/focus = SubResource("StyleBoxFlat_3yjy6")
+Button/styles/hover = SubResource("StyleBoxFlat_ct7my")
+Button/styles/normal = SubResource("StyleBoxFlat_f64m8")
+Button/styles/pressed = SubResource("StyleBoxFlat_cvoto")
+MarginContainer/constants/margin_bottom = 30
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 30
