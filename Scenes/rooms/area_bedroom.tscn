@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdwg6htj7w2qk"]
 
-[ext_resource type="PackedScene" uid="uid://demqn0lui25if" path="res://Scenes/objects/world_object_bed.tscn" id="1_i2vxj"]
+[ext_resource type="PackedScene" uid="uid://demqn0lui25if" path="res://Scenes/objects/bedroom_bed.tscn" id="1_i2vxj"]
 [ext_resource type="Material" uid="uid://b8myhavi8tssq" path="res://materials/bedroom_floor.tres" id="1_unrsi"]
 [ext_resource type="Material" uid="uid://droeypd8ulw24" path="res://materials/bedroom_wall.tres" id="2_ses7x"]
-[ext_resource type="PackedScene" uid="uid://dfgoilaatgf0a" path="res://Scenes/objects/world_object_nightstand.tscn" id="2_wluau"]
+[ext_resource type="PackedScene" uid="uid://dfgoilaatgf0a" path="res://Scenes/objects/bedroom_nightstand.tscn" id="2_wluau"]
 [ext_resource type="PackedScene" uid="uid://pfcfwwfeocue" path="res://Scenes/objects/bedroom_door.tscn" id="5_ses7x"]
 
 [node name="AreaBedroom" type="Node3D"]

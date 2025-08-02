@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://mt8vitibkaxh" path="res://enemy_ai/enemy_ai.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://1p5avy66el8t" path="res://Scenes/door_wall.tscn" id="4_3dryh"]
-[ext_resource type="PackedScene" uid="uid://cgnqw7fh8a4we" path="res://Scenes/rooms/PathToPuzzle1.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://cgnqw7fh8a4we" path="res://Scenes/rooms/area_bathroom.tscn" id="5_wowpa"]
 [ext_resource type="PackedScene" uid="uid://cdwg6htj7w2qk" path="res://Scenes/rooms/area_bedroom.tscn" id="6_i6g32"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wrm1d"]
@@ -23,7 +23,6 @@ _move_speed = 3.0
 
 [node name="EnemyAi" parent="." instance=ExtResource("3_wrm1d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.23473, 1.66879, -1.96957)
-_move_speed = 0.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_wrm1d")
@@ -86,15 +85,9 @@ size = Vector3(4, 0.5, 4)
 [node name="DoorWall" parent="NavigationRegion3D/StartingRoom" instance=ExtResource("4_3dryh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
-[node name="PathToPuzzle1" parent="NavigationRegion3D" instance=ExtResource("5_wowpa")]
+[node name="AreaBathroom" parent="NavigationRegion3D" instance=ExtResource("5_wowpa")]
 
 [node name="AreaBedroom" parent="NavigationRegion3D" instance=ExtResource("6_i6g32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1512, 0, -2.78022)
-
-[node name="RigidBody3D" parent="." instance=ExtResource("6_i6g32")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -1.5)
 
 [editable path="EnemyAi"]
