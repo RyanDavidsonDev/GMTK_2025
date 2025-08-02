@@ -45,7 +45,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fk0vb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e3fyk"]
-size = Vector3(1.04245, 1.66766, 0.648071)
+size = Vector3(0.692863, 0.698592, 0.552521)
 
 [node name="BathroomToilet" type="StaticBody3D"]
 
@@ -58,5 +58,5 @@ mesh = SubResource("ArrayMesh_si7rq")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140488, 0.106781, 0.0022583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.129017, -0.377753, 0.00361627)
 shape = SubResource("BoxShape3D_e3fyk")
