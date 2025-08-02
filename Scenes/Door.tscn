@@ -11,6 +11,7 @@ size = Vector3(2.25, 5, 0.1)
 
 [node name="Door" type="Node3D"]
 script = ExtResource("1_38ogf")
+OutwardRotationDeg = -90.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("parent")]
 collision_layer = 5

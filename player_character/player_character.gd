@@ -1,6 +1,7 @@
 class_name PlayerCharacter extends CharacterBody3D
 
-const INTERACTION_DISTANCE: float = 5
+const INTERACTION_DISTANCE: float = 2
+const LOOK_DISTANCE: float = 50
 
 @export var _move_speed : float = 2.0
 @export var _look_sensitivity: float = 1.0
@@ -18,6 +19,8 @@ var _input_mouse_direction : Vector2 = Vector2.ZERO
 var _camera_3d : Camera3D = null
 
 var has_key: bool = false
+
+var was_looking_at_interactable: bool = false
 
 func _ready() -> void:
 	
@@ -74,16 +77,45 @@ func _physics_process(delta: float) -> void:
 	var mousepos = crosshair.position
 	
 	var origin = camera.project_ray_origin(mousepos)
-	var end = origin + camera.project_ray_normal(mousepos) * INTERACTION_DISTANCE
+	var end = origin + camera.project_ray_normal(mousepos) * LOOK_DISTANCE
 	var query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_areas = true
 	query.collision_mask = (raycast_collison_mask)
 	var result:Dictionary = space_state.intersect_ray(query)
 	
-	if(!result.is_empty()):		
-		var collider:Node3D = result.collider
-		if Input.is_action_just_pressed("Interact"):
-			collider.interact(self)
-	else: 
-		if Input.is_action_just_pressed("Interact"):
+	var EnemyIsInSight : bool = false
+	
+	#if we see something
+	if(!result.is_empty()):
+		var position: Vector3 = result.position
+		var collider: Node3D = result.collider
+		
+		if collider is EnemyAI:
+			if(GameManager.player_character.gun.is_loaded):
+				if !was_looking_at_interactable:
+					GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to fire")
+			else :
+				if !was_looking_at_interactable:
+					GameManager.hud_controller.show_text_timer("Press 'R' to reload")
+			EnemyIsInSight = true
+		else: if (position.distance_to(origin) < INTERACTION_DISTANCE):
+			if !was_looking_at_interactable:
+				GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to interact")
+			#hide text on look away?
+			if Input.is_action_just_pressed("Interact"):
+				collider.interact(self)
+		was_looking_at_interactable = true
+	else: if was_looking_at_interactable:
+		was_looking_at_interactable = false
+		print("hiding")
+		#might still wipe unrelated - consider splitting into separate signals or wipe correspective signals
+		GameManager.hud_controller.sig_hide_continual_text.emit()
+	
+	if Input.is_action_just_pressed("Interact"):
+		if EnemyIsInSight:
+			print("bang")
 			gun.try_fire()
+			
+			
+
+			
