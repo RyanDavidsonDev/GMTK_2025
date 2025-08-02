@@ -86,7 +86,7 @@ script = ExtResource("1_1tmfm")
 OutwardRotationDeg = -90.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("parent")]
-collision_layer = 5
+collision_layer = 6
 gravity_scale = 0.0
 freeze = true
 contact_monitor = true
