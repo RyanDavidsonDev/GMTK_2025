@@ -336,7 +336,9 @@ texture = ExtResource("10_evxos")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Game Over" type="Panel" parent="HUD"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Game Over" type="Panel" parent="CanvasLayer"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -348,7 +350,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_qili6")
 
-[node name="You Died" type="RichTextLabel" parent="HUD/Game Over"]
+[node name="You Died" type="RichTextLabel" parent="CanvasLayer/Game Over"]
 material = SubResource("ShaderMaterial_b3xdp")
 layout_mode = 1
 anchors_preset = 5
@@ -366,7 +368,7 @@ theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "[center]you died"
 
-[node name="time?" type="RichTextLabel" parent="HUD/Game Over/You Died"]
+[node name="time?" type="RichTextLabel" parent="CanvasLayer/Game Over/You Died"]
 material = SubResource("ShaderMaterial_x4gfa")
 layout_mode = 1
 anchors_preset = 5
@@ -385,7 +387,7 @@ bbcode_enabled = true
 text = "[center][i]00:00[/i]
 "
 
-[node name="VBoxContainer" type="HBoxContainer" parent="HUD/Game Over"]
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/Game Over"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -401,25 +403,25 @@ grow_vertical = 2
 theme = ExtResource("7_omg4o")
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD/Game Over/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Game Over/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 50
 
-[node name="Play" type="Button" parent="HUD/Game Over/VBoxContainer/MarginContainer"]
+[node name="Play" type="Button" parent="CanvasLayer/Game Over/VBoxContainer/MarginContainer"]
 layout_mode = 2
 text = "Quit"
 
-[node name="MarginContainer2" type="MarginContainer" parent="HUD/Game Over/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Game Over/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 100
 
-[node name="WakeUp" type="Button" parent="HUD/Game Over/VBoxContainer/MarginContainer2"]
+[node name="WakeUp" type="Button" parent="CanvasLayer/Game Over/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 text = "Wake Up "
 
-[node name="SpecialH_AnimationComponent" type="Node" parent="HUD/Game Over/VBoxContainer/MarginContainer2/WakeUp"]
+[node name="SpecialH_AnimationComponent" type="Node" parent="CanvasLayer/Game Over/VBoxContainer/MarginContainer2/WakeUp"]
 script = ExtResource("9_qili6")
 metadata/_custom_type_script = "uid://bxijs8ci6f4s3"
 
