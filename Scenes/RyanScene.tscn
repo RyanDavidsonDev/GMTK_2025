@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c50tkqyp5fejp" path="res://Scenes/Door.tscn" id="1_1trb4"]
 [ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="2_sfcxm"]
 [ext_resource type="PackedScene" uid="uid://mqvu01asw6f6" path="res://Scenes/key.tscn" id="3_3fb54"]
-[ext_resource type="PackedScene" uid="uid://bmrfi17x0node" path="res://Scenes/bookshelf_door.tscn" id="4_tumfj"]
-[ext_resource type="PackedScene" uid="uid://cij6v1tlolo4f" path="res://Scenes/Book.tscn" id="5_xam7q"]
+[ext_resource type="PackedScene" path="res://Scenes/bookshelf_door.tscn" id="4_tumfj"]
+[ext_resource type="PackedScene" path="res://Scenes/Book.tscn" id="5_xam7q"]
 
 [node name="RyanScene" type="Node3D"]
 
