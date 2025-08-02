@@ -17,6 +17,7 @@ _move_speed = 0.0
 shape = SubResource("CapsuleShape3D_02pas")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
 debug_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
