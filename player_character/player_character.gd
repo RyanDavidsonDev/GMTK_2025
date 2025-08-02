@@ -6,11 +6,10 @@ const INTERACTION_DISTANCE: float = 5
 @export var _look_sensitivity: float = 1.0
 @export_flags_3d_physics var raycast_collison_mask = 0
 
-@onready var gun: Gun = $gun
-@onready var camera: Camera3D = $Camera3D
-@onready var ui_overlay: Node = $UiOverlay
-#@onready var crosshair
-@onready var crosshair:TextureRect = ui_overlay.find_child("crosshair")
+var gun: Gun = null
+var camera: Camera3D = null
+var ui_overlay: Node = null
+var crosshair:TextureRect = null
 
 var _input_move_direction : Vector2 = Vector2.ZERO
 var _input_mouse_direction : Vector2 = Vector2.ZERO
@@ -22,6 +21,10 @@ var has_key: bool = false
 func _ready() -> void:
 	
 	_camera_3d = $Camera3D
+	gun = $gun
+	camera = $Camera3D
+	ui_overlay = $UiOverlay
+	crosshair = ui_overlay.find_child("crosshair")
 	
 	GameManager.register_player_character(self)
 

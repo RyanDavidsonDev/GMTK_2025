@@ -59,3 +59,16 @@ func _load_game() -> void:
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#_load_game.call_deferred()
+
+func _process(delta: float) -> void:
+	
+	if Input.is_action_pressed("pause_game"):
+		
+		if get_tree().paused == false:
+			var success : bool = hud_controller.open_pause_menu()
+			if success:
+				get_tree().paused = true
+		else:
+			var success : bool = hud_controller.close_pause_menu()
+			if success:
+				get_tree().paused = false

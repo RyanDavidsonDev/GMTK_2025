@@ -20,6 +20,9 @@ environment = ExtResource("1_ebmjs")
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2, 1.5, -2.09373)
 _move_speed = 4.0
 
+[node name="UiOverlay" parent="PlayerCharacter" index="4"]
+script = null
+
 [node name="EnemyAi" parent="." instance=ExtResource("3_wrm1d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.23473, 1.66879, -1.96957)
 _move_speed = 3.0
@@ -87,4 +90,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
 [node name="PathToPuzzle1" parent="NavigationRegion3D" instance=ExtResource("5_wowpa")]
 
+[editable path="PlayerCharacter"]
 [editable path="EnemyAi"]
