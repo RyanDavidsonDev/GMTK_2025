@@ -33,7 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
 [node name="BookshelfDoor" parent="." node_paths=PackedStringArray("books") instance=ExtResource("4_tumfj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, 6)
 books = [NodePath("../b1"), NodePath("../b2"), NodePath("../b3")]
-open_door_automatically = true
 NeedsKey = true
 
 [node name="b1" parent="." instance=ExtResource("5_xam7q")]

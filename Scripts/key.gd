@@ -6,4 +6,5 @@ func interact(player:PlayerCharacter):
 		GameManager.hud_controller.show_text("My hands are full. I can't hold more than one Key")
 	else :
 		player.has_key = true;
+		GameManager.hud_controller.show_key()
 		queue_free()
