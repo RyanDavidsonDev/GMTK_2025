@@ -1,23 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3aiiw6s5keqx"]
+[gd_scene load_steps=11 format=3 uid="uid://c3aiiw6s5keqx"]
 
 [ext_resource type="Material" uid="uid://cnjnxehb7ipi2" path="res://materials/library_floor.tres" id="1_no3b1"]
 [ext_resource type="Material" uid="uid://bvh4p4gmf2j7g" path="res://materials/library_wall.tres" id="2_6bn86"]
 [ext_resource type="PackedScene" uid="uid://o80nxrv2tou6" path="res://Scenes/objects/library_bookshelf_door.tscn" id="2_x15rk"]
+[ext_resource type="PackedScene" uid="uid://dv63bhteue4ny" path="res://Scenes/prefabs/books/Book_K.tscn" id="3_loweg"]
 [ext_resource type="PackedScene" uid="uid://5i12atpu8aon" path="res://Scenes/prefabs/books/bookshelf.tscn" id="4_6bn86"]
+[ext_resource type="PackedScene" uid="uid://bxknmh1qvwise" path="res://Scenes/prefabs/books/Book_E.tscn" id="4_eopk5"]
 [ext_resource type="PackedScene" uid="uid://bcia16jpf27mn" path="res://Scenes/prefabs/books/Book_1.tscn" id="5_4gaix"]
+[ext_resource type="PackedScene" uid="uid://6r7sqbjeykp2" path="res://Scenes/prefabs/books/Book_Y.tscn" id="5_d1dhy"]
 [ext_resource type="PackedScene" uid="uid://dwwp7ppklqsmo" path="res://Scenes/prefabs/books/Book_3.tscn" id="6_1bnwu"]
-[ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="7_4w0xo"]
 [ext_resource type="PackedScene" uid="uid://cb388nvj6x8mi" path="res://Scenes/prefabs/books/Book_2.tscn" id="8_loweg"]
 
 [node name="AreaBookshelfPuzzle" type="Node3D"]
 
 [node name="BookshelfDoor3" parent="." instance=ExtResource("2_x15rk")]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -19.7313, 1.97336, 5.40325)
-
-[node name="BookshelfDoor2" parent="." instance=ExtResource("2_x15rk")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -8.01623, 1.97336, -3.03615)
-
-[node name="Node3D" type="Node3D" parent="BookshelfDoor2"]
 
 [node name="Books_seq" type="Node3D" parent="."]
 
@@ -36,9 +33,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.15,
 
 [node name="book2" parent="Books_seq" instance=ExtResource("8_loweg")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.95, 1.6, 10.55)
-
-[node name="PlayerCharacter" parent="." instance=ExtResource("7_4w0xo")]
-transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, -2.95, 2.6, 7.45)
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -4.26127, 1.97336, 8.40325)
@@ -145,3 +139,23 @@ transform = Transform3D(1, 1.21973e-19, -1.02318e-12, -3.68459e-20, 1, 0, 1.0231
 operation = 2
 use_collision = true
 size = Vector3(3.61542, 0.857422, 1.49695)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.2662, 1.97336, 0.26385)
+
+[node name="BookshelfDoor2" parent="." node_paths=PackedStringArray("books") instance=ExtResource("2_x15rk")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -7.89256, 1.95, -2.93127)
+books = [NodePath("../book_k"), NodePath("../book_E"), NodePath("../book_Y")]
+OutwardRotationDeg = -90.0
+
+[node name="BookShelf2" parent="." instance=ExtResource("4_6bn86")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -9.27991, 2.72664, -0.994015)
+
+[node name="book_k" parent="." instance=ExtResource("3_loweg")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10.0299, 1.32664, -0.344016)
+
+[node name="book_E" parent="." instance=ExtResource("4_eopk5")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -9.2299, 2.02664, -1.14402)
+
+[node name="book_Y" parent="." instance=ExtResource("5_d1dhy")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10.2799, 2.02664, -0.0940161)
