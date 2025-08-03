@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c4ep4njqkiq13"]
+[gd_scene load_steps=27 format=3 uid="uid://c4ep4njqkiq13"]
 
 [ext_resource type="Texture2D" uid="uid://bx57h61s4ju3s" path="res://assets/UI/crosshair_dot.png" id="1_0y05l"]
 [ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders & Themes/shakeyLinesUIShader.gdshader" id="1_akoq1"]
@@ -40,6 +40,48 @@ border_width_left = 75
 border_width_right = 75
 border_color = Color(0.109804, 0.109804, 0.109804, 0)
 border_blend = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qili6"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 3.0
+shader_parameter/noise_scale = 5.0
+shader_parameter/noise_speed = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3m7y"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 4.0
+shader_parameter/noise_speed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fxmtr"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 3.0
+shader_parameter/noise_scale = 5.0
+shader_parameter/noise_speed = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d73b4"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 4.0
+shader_parameter/noise_speed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdfhg"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 3.0
+shader_parameter/noise_scale = 5.0
+shader_parameter/noise_speed = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hvvd"]
+shader = ExtResource("1_akoq1")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 4.0
+shader_parameter/noise_speed = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eoino"]
 shader = ExtResource("1_akoq1")
@@ -263,17 +305,26 @@ script = ExtResource("8_06sim")
 metadata/_custom_type_script = "uid://ccamawjk2n20c"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
-layout_direction = 2
-offset_left = 905.0
-offset_top = 553.0
-offset_right = 1138.0
-offset_bottom = 632.0
+layout_direction = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1141.0
+offset_top = -91.0
+offset_right = -928.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = -10
 alignment = 2
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HUD/HBoxContainer"]
 layout_mode = 2
 
 [node name="BulletIcon" type="TextureRect" parent="HUD/HBoxContainer/VBoxContainer3"]
+material = SubResource("ShaderMaterial_qili6")
 custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -281,41 +332,45 @@ size_flags_vertical = 3
 texture = ExtResource("9_b3xdp")
 expand_mode = 3
 stretch_mode = 4
+flip_h = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HUD/HBoxContainer/VBoxContainer3"]
+material = SubResource("ShaderMaterial_g3m7y")
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("5_c4rab")
 text = "Loaded"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/HBoxContainer"]
 layout_mode = 2
 
 [node name="BulletIcon" type="TextureRect" parent="HUD/HBoxContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_fxmtr")
 custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_vertical = 6
 texture = ExtResource("9_b3xdp")
 expand_mode = 3
 stretch_mode = 4
+flip_h = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HUD/HBoxContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_d73b4")
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("5_c4rab")
 text = "Loaded"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HUD/HBoxContainer"]
 layout_mode = 2
 
 [node name="BulletIcon" type="TextureRect" parent="HUD/HBoxContainer/VBoxContainer2"]
+material = SubResource("ShaderMaterial_xdfhg")
 custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -323,30 +378,32 @@ size_flags_vertical = 3
 texture = ExtResource("9_b3xdp")
 expand_mode = 3
 stretch_mode = 4
+flip_h = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HUD/HBoxContainer/VBoxContainer2"]
+material = SubResource("ShaderMaterial_6hvvd")
 custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("5_c4rab")
 text = "Loaded"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Key Icon" type="TextureRect" parent="HUD"]
 material = SubResource("ShaderMaterial_eoino")
-custom_minimum_size = Vector2(75, 75)
+custom_minimum_size = Vector2(55, 55)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 31.0
-offset_top = -100.0
-offset_right = 106.0
+offset_top = -86.0
+offset_right = 92.0
 offset_bottom = -25.0
 grow_vertical = 0
 texture = ExtResource("10_evxos")
 expand_mode = 3
 stretch_mode = 4
+flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
