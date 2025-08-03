@@ -84,7 +84,13 @@ func _physics_process(delta: float) -> void:
 	
 	# Get the movement direction from the navigation path
 	var move_dir : Vector3 = _nav_agent_3d.get_next_path_position() - global_position
-	velocity = move_dir.normalized() * _move_speed
+	move_dir = move_dir.normalized()
+	velocity = move_dir * _move_speed
+	
+	# Rotation
+	var angle : float = Vector3.FORWARD.angle_to(move_dir)
+	var progress : float = angle - rotation.y
+	rotate_y(progress * delta)
 	
 	move_and_slide()
 
