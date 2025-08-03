@@ -5,6 +5,9 @@ class_name EnemyAI extends CharacterBody3D
 
 @onready var animation_player: AnimationPlayer = $Stranger/AnimationPlayer
 
+@export var winscene_ps:PackedScene
+var winScene
+
 const flop_time = 2
 const rise_time = 4
 
@@ -57,10 +60,12 @@ func get_hit() ->void:
 		
 		await get_tree().create_timer(5).timeout
 		
+		winScene.visible =true
+		#end game logic
 		
 		
 		return
-		#end game logic
+		
 	
 	animation_player.play("StrangerAnimLibrary/Flop Animation")
 	var p_move_speed = _move_speed
@@ -80,6 +85,9 @@ func _ready() -> void:
 	_nav_agent_3d = $NavigationAgent3D
 	
 	GameManager.register_enemy_ai(self)
+	
+	winScene = winscene_ps.instantiate()
+	self.add_child(winScene)
 
 func _physics_process(delta: float) -> void:
 	

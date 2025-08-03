@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://mt8vitibkaxh"]
+[gd_scene load_steps=5 format=3 uid="uid://mt8vitibkaxh"]
 
 [ext_resource type="Script" uid="uid://d4vt7h307ufk" path="res://enemy_ai/enemy_ai.gd" id="1_nm3mo"]
 [ext_resource type="PackedScene" uid="uid://6hossul7kxad" path="res://assets/Enemy/stranger.tscn" id="2_02pas"]
+[ext_resource type="PackedScene" uid="uid://dsw1s127wrfsn" path="res://Scenes/win_menu.tscn" id="2_x3wti"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02pas"]
 radius = 0.25
@@ -10,6 +11,7 @@ radius = 0.25
 collision_layer = 5
 script = ExtResource("1_nm3mo")
 _move_speed = 2.0
+winscene_ps = ExtResource("2_x3wti")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
