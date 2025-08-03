@@ -60,9 +60,9 @@ func load_game() -> void:
 	get_tree().change_scene_to_packed(game_scene)
 	
 	_in_game = true
+	
 func _ready() -> void:
 	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	#_load_game.call_deferred()
 	late_ready.emit()
 
