@@ -6,7 +6,7 @@ const LOOK_DISTANCE: float = 50
 @export var _move_speed : float = 2.0
 @export var _look_sensitivity: float = 1.0
 @export_flags_3d_physics var raycast_collison_mask = 0
-@onready var gun = %gun
+@onready var gun:Gun = %gun
 
 @onready var camera: Camera3D = $Camera3D
 @onready var ui_overlay: Node = $UiOverlay
@@ -104,7 +104,7 @@ func _physics_process(delta: float) -> void:
 		
 		if collider is EnemyAI:
 			GameManager.hud_controller.target_crosshair()
-			if(GameManager.player_character.gun.is_loaded):
+			if GameManager.player_character.gun.loaded_bullet_count >0 :
 				if !was_looking_at_enemy:
 					#gameman.hudcont.switchcrosshair(fire)
 					GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to fire")

@@ -6,14 +6,14 @@ class_name Gun extends Node3D
 
 var bullet_count: int = 1
 
-var is_loaded: bool = false
+@export var loaded_bullet_count:float = 0
 var is_reloading: bool = false
 
 func _ready() ->void:
 	reload_timer.timeout.connect(finish_reload)
 
 func try_fire():
-	if is_loaded:
+	if loaded_bullet_count >0:
 		fire()
 	else :
 		GameManager.hud_controller.show_text_timer("\"my gun isn't loaded\"")
@@ -29,7 +29,9 @@ func fire():
 	
 	GameManager.enemy_ai.get_hit()
 	
-	is_loaded = false
+	GameManager.hud_controller.show_health_bar()
+	
+	loaded_bullet_count -=1
 
 func interrupt_reload():
 	if(is_reloading):
@@ -67,5 +69,5 @@ func finish_reload()->void:
 	is_reloading = false
 	GameManager.hud_controller.show_text_timer("It's ready to fire")
 	GameManager.hud_controller.show_next_ready_text()
-	is_loaded = true
+	loaded_bullet_count+=1
 	bullet_count-=1

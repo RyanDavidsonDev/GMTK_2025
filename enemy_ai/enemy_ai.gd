@@ -8,6 +8,9 @@ class_name EnemyAI extends CharacterBody3D
 const flop_time = 2
 const rise_time = 4
 
+const max_health: float = 3
+var health: float = 3
+
 var _nav_agent_3d : NavigationAgent3D = null
 
 var _killing_player : bool = false
@@ -42,6 +45,13 @@ func _kill_player() -> void:
 	
 
 func get_hit() ->void:
+	health -=1
+	
+	if health == 0:
+		animation_player.play("StrangerAnimLibrary/Dies")
+		return
+		#end game logic
+	
 	animation_player.play("StrangerAnimLibrary/Flop Animation")
 	var p_move_speed = _move_speed
 	_move_speed = 0

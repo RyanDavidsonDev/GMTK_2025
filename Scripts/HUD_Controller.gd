@@ -7,6 +7,7 @@ class_name HUDController extends Node
 @onready var game_over_panel: Panel = $"CanvasLayer/Game Over"
 @onready var hud_layer: CanvasLayer = $HUD
 @onready var key_icon: TextureRect = $"HUD/Key Icon"
+@onready var boss_health: TextureProgressBar = $"HUD/Boss Health"
 
 @onready var h_box_container: HBoxContainer = $HUD/HBoxContainer
 
@@ -156,6 +157,11 @@ func _process(delta: float) -> void:
 		reload_bar.value = lerp(0, 100, (gun.reload_time - gun.reload_timer.time_left)/gun.reload_time)
 	else :
 		reload_bar.visible = false
+
+func show_health_bar():
+	boss_health.visible = true
+	var enemy:EnemyAI = GameManager.enemy_ai
+	boss_health.value = lerp(0,100, ( enemy.health)/enemy.max_health)
 
 func _on_resume_pressed() -> void:
 	

@@ -154,6 +154,7 @@ texture = ExtResource("1_0y05l")
 stretch_mode = 3
 
 [node name="Boss Health" type="TextureProgressBar" parent="HUD"]
+visible = false
 material = SubResource("ShaderMaterial_xm1do")
 anchors_preset = 5
 anchor_left = 0.5
@@ -167,7 +168,6 @@ size_flags_vertical = 8
 size_flags_stretch_ratio = 0.0
 step = 33.0
 value = 66.0
-fill_mode = 1
 nine_patch_stretch = true
 stretch_margin_left = 25
 stretch_margin_top = 25
