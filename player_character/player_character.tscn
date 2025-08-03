@@ -23,6 +23,111 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="GunHandres" parent="Camera3D" instance=ExtResource("4_bvxdu")]
 transform = Transform3D(-0.0499181, 0, 0.00286077, -1.38805e-05, 0.0499994, -0.000242202, -0.00286074, -0.0002426, -0.0499175, 0.393013, -0.346976, -0.269971)
 
+[node name="Cylinder" parent="Camera3D/GunHandres/Armature/Skeleton3D" index="0"]
+transform = Transform3D(-8.40317e-05, 6.34499e-06, 0.00892375, -0.00539475, 0.00216247, -6.74146e-05, -0.00710848, -0.00164122, -5.43279e-05, 0.00026424, -0.00175765, 0.00306626)
+
+[node name="Cube_002" parent="Camera3D/GunHandres/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.00254489, 2.79787e-05, 6.20013e-05, -4.35712e-05, 0.00159407, 0.00378356, -1.43075e-06, 0.00122126, -0.00493998, 0.000394958, 0.0125407, 0.00552329)
+
+[node name="Bullet" parent="Camera3D/GunHandres/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.00764199, -0.0171848, 0.00804759)
+
+[node name="Cylinder_001" parent="Camera3D/GunHandres/Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.0013539, 0.000229867, 0.00837052, 0.00393434, -0.00776116, 0.000833708, 0.00739159, 0.00417315, 0.00108945, 0.00949677, -0.00863165, 0.00829091)
+
+[node name="Cube_012" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="0"]
+transform = Transform3D(-4.61224e-05, 8.35623e-06, -1.7172e-05, 9.8571e-06, 4.01044e-05, 2.01184e-06, 1.13139e-05, -8.75316e-07, -7.17563e-05, -0.0195321, 3.1336e-05, 0.00856831)
+
+[node name="Cube_013" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="1"]
+transform = Transform3D(-4.62936e-05, -2.1515e-05, 1.55306e-05, 1.01634e-05, 7.46175e-06, 6.25887e-05, 2.58514e-05, -4.14618e-05, 3.20489e-06, -0.0195874, 0.0139847, -0.00557407)
+
+[node name="Cube_025" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="2"]
+transform = Transform3D(2.04398e-05, -2.52363e-05, 1.48382e-05, -8.58392e-06, 1.01864e-06, 4.60551e-05, -1.21413e-05, -4.32053e-05, -7.58116e-06, -0.0157324, 0.0297821, -0.00457785)
+
+[node name="Cube_026" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="3"]
+transform = Transform3D(2.05352e-05, -2.49315e-05, -9.32538e-06, -8.66215e-06, 1.92966e-06, -2.79092e-05, -1.21955e-05, -4.3351e-05, 4.1208e-06, -0.0141962, 0.0347824, -0.00533243)
+
+[node name="Cube_030" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="4"]
+transform = Transform3D(7.77433e-07, -1.04712e-05, -1.99652e-05, -1.79602e-05, -5.56073e-06, 3.51742e-06, 6.17202e-06, -1.48624e-05, 1.27503e-05, -0.0130563, 0.0352954, -0.005498)
+
+[node name="Cube_029" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="5"]
+transform = Transform3D(-8.44476e-06, -9.49394e-06, 4.977e-06, 6.74619e-07, 2.6774e-06, 2.59829e-05, 9.48735e-06, -8.64101e-06, 2.58249e-06, -0.0125532, 0.0337137, -0.00636243)
+
+[node name="Cube_031" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="6"]
+transform = Transform3D(-5.05213e-07, -5.40949e-06, 2.27691e-05, 9.88894e-06, 3.16519e-07, 2.05316e-06, 6.48945e-07, -9.03465e-06, -1.35611e-05, -0.01458, 0.0309206, -0.00586)
+
+[node name="Cube_033" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="7"]
+transform = Transform3D(7.11353e-07, -8.70621e-06, -1.69409e-05, -1.62402e-05, -4.8126e-06, 2.82405e-06, 5.57905e-06, -1.2899e-05, 1.03806e-05, -0.0140216, 0.0355614, -0.00986286)
+
+[node name="Cube_034" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="8"]
+transform = Transform3D(-7.81384e-06, -8.17493e-06, 3.84975e-06, 6.18484e-07, 2.08043e-06, 2.18573e-05, 8.78e-06, -7.42191e-06, 1.88646e-06, -0.0134702, 0.0329422, -0.0106859)
+
+[node name="Cube_032" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="9"]
+transform = Transform3D(-5.08241e-07, -4.78412e-06, 1.88534e-05, 9.88852e-06, 2.59152e-07, 1.74352e-06, 6.52842e-07, -7.64987e-06, -1.17316e-05, -0.0151765, 0.030002, -0.0101442)
+
+[node name="Cube_036" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="10"]
+transform = Transform3D(1.53932e-05, -9.0508e-06, -7.23089e-06, -6.40058e-06, 1.39689e-06, -2.06096e-05, -9.12951e-06, -1.62399e-05, 2.25717e-06, -0.0115749, 0.0375331, -0.00270058)
+
+[node name="Cube_037" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="11"]
+transform = Transform3D(2.40138e-06, -6.2607e-06, -2.07846e-05, -1.22739e-05, -3.2535e-06, -1.68659e-06, 2.31584e-06, -1.07516e-05, 1.26134e-05, -0.00932314, 0.0397191, -0.00390755)
+
+[node name="Cube_035" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="12"]
+transform = Transform3D(-4.83698e-06, -7.3287e-06, -1.24071e-05, -3.57971e-06, -3.79512e-06, 2.08926e-05, 7.8903e-06, -6.2145e-06, 1.87273e-06, -0.00632315, 0.0389198, -0.00513822)
+
+[node name="Cylinder_004" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="13"]
+transform = Transform3D(-0.000695865, 0.000168368, 7.21923e-05, -0.000101131, -5.39701e-05, -0.000727458, 0.000225144, 0.000496141, -0.000103632, -0.00834127, 0.0372699, -0.00880608)
+
+[node name="Cube_028" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="14"]
+transform = Transform3D(8.95042e-06, 7.50783e-06, 2.79572e-05, -5.33866e-06, -1.51253e-05, 2.22205e-05, 1.24212e-05, -1.19108e-05, -1.05948e-05, -0.0113169, 0.0313508, -0.00337461)
+
+[node name="Cube_027" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="15"]
+transform = Transform3D(4.75056e-06, -1.06849e-05, -2.07522e-05, 2.91985e-06, 8.7027e-06, -2.77291e-05, 1.52458e-05, 1.66268e-06, 1.1777e-05, -0.007406, 0.0341698, -0.00462331)
+
+[node name="Cube_011" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="16"]
+transform = Transform3D(3.47937e-05, 2.69789e-05, 1.52448e-05, -1.79198e-05, 4.5606e-06, 6.82025e-05, -2.86477e-05, 2.99141e-05, -2.41469e-05, 0.0228112, 0.00436489, 0.0180195)
+
+[node name="Cube_010" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="17"]
+transform = Transform3D(5.38434e-05, -8.82792e-07, 4.5548e-06, -3.82324e-06, -6.64694e-07, 6.43963e-05, -9.58325e-07, -4.69482e-05, -9.97369e-07, 0.0253586, 0.0312239, 0.0129533)
+
+[node name="Cube_050" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="18"]
+transform = Transform3D(-2.13721e-05, 7.12838e-06, 2.52008e-05, 1.21859e-05, -1.05277e-05, 4.16538e-05, -5.79779e-06, -4.84042e-05, -5.34822e-06, 0.0271478, 0.0470842, 0.0129135)
+
+[node name="Cube_049" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="19"]
+transform = Transform3D(-2.41006e-05, 1.58007e-05, 6.18363e-07, -3.59984e-06, -1.82709e-05, -2.73399e-05, -7.18753e-06, -4.38306e-05, 1.16196e-05, 0.0291658, 0.0510743, 0.0121723)
+
+[node name="Cube_045" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="20"]
+transform = Transform3D(1.70084e-06, 1.10187e-05, 1.93986e-05, -1.88794e-05, -1.51347e-07, 2.76438e-06, 1.39408e-06, -1.54927e-05, 1.37696e-05, 0.0294559, 0.0533269, 0.0108626)
+
+[node name="Cube_046" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="21"]
+transform = Transform3D(3.91981e-06, 6.08792e-06, 2.2072e-05, -1.18249e-05, -5.00258e-07, 9.73848e-06, 2.56623e-06, -1.16042e-05, 1.11598e-05, 0.0263032, 0.0526737, 0.00869586)
+
+[node name="Cube_044" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="22"]
+transform = Transform3D(6.03307e-06, 8.35095e-06, -1.19228e-06, 1.5602e-06, -6.83026e-07, 2.61938e-05, 7.7224e-06, -6.38614e-06, -4.36064e-06, 0.0236663, 0.050393, 0.00781446)
+
+[node name="Cube_039" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="23"]
+transform = Transform3D(-3.49261e-06, 1.80032e-05, 4.03678e-06, 2.22131e-06, 3.86236e-06, -2.13275e-05, -1.85509e-05, -2.92703e-06, -3.31381e-06, 0.0266297, 0.054757, 0.0138294)
+
+[node name="Cube_038" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="24"]
+transform = Transform3D(2.14584e-06, 3.3599e-06, 2.31623e-05, -9.60421e-06, 8.41062e-06, -1.11505e-06, -8.05813e-06, -9.12962e-06, 7.49701e-06, 0.0259955, 0.0587149, 0.0144687)
+
+[node name="Cube_040" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="25"]
+transform = Transform3D(7.93089e-06, -5.82809e-06, 5.0525e-06, -2.64717e-07, 3.21615e-06, 2.31508e-05, -5.95806e-06, -7.90078e-06, 5.69691e-06, 0.0223278, 0.0583369, 0.0130814)
+
+[node name="Cube_042" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="26"]
+transform = Transform3D(-1.49918e-05, 6.10452e-06, 6.30303e-06, -6.28352e-06, -1.19502e-06, -1.86206e-05, -5.58016e-06, -1.50549e-05, 4.03382e-06, 0.0301048, 0.0524337, 0.00742382)
+
+[node name="Cube_041" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="27"]
+transform = Transform3D(-4.0653e-07, 6.03715e-06, 1.87695e-05, -1.12465e-05, -2.97519e-06, 2.88837e-06, 3.44635e-06, -8.99686e-06, 1.16397e-05, 0.0295255, 0.0541321, 0.00726375)
+
+[node name="Cube_043" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="28"]
+transform = Transform3D(7.4165e-06, 5.94168e-06, 2.00363e-06, -3.58931e-07, -8.56426e-07, 2.21586e-05, 6.58287e-06, -6.74081e-06, -1.04917e-06, 0.0272482, 0.0537026, 0.00587331)
+
+[node name="Cube_047" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="29"]
+transform = Transform3D(-1.54711e-05, 4.15821e-06, -8.25067e-06, -4.25073e-06, -4.24036e-06, 3.51255e-05, -2.33966e-06, -1.97924e-05, -9.25876e-06, 0.0219626, 0.049541, 0.0156261)
+
+[node name="Cube_048" parent="Camera3D/GunHandres/Armature_001/Skeleton3D" index="30"]
+transform = Transform3D(-1.4507e-05, 6.00689e-06, 4.34789e-06, -3.31511e-07, 3.12795e-06, -3.56334e-05, 7.27774e-06, 1.21162e-05, 7.04363e-06, 0.0210385, 0.0542288, 0.0142663)
+
 [node name="gun" parent="Camera3D/GunHandres" instance=ExtResource("3_5l2xy")]
 unique_name_in_owner = true
 transform = Transform3D(-19.9672, 0, -1.14431, 0, 20, 0, 1.14431, 0, -19.9672, 7.67425, -2.07864, -3.47072)

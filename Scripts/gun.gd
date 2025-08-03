@@ -27,6 +27,8 @@ func fire():
 	GameManager.hud_controller.hide_bullet()
 	GameManager.hud_controller.hide_ready_text()
 	
+	GameManager.enemy_ai.get_hit()
+	
 	is_loaded = false
 
 func interrupt_reload():

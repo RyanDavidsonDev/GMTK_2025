@@ -3,6 +3,11 @@ class_name EnemyAI extends CharacterBody3D
 @export var _move_speed : float = 1.0
 @export var _kill_distance : float = 1.5
 
+@onready var animation_player: AnimationPlayer = $Stranger/AnimationPlayer
+
+const flop_time = 2
+const rise_time = 4
+
 var _nav_agent_3d : NavigationAgent3D = null
 
 var _killing_player : bool = false
@@ -34,6 +39,21 @@ func _kill_player() -> void:
 	_killing_player = true
 	
 	GameManager.player_character_killed()
+	
+
+func get_hit() ->void:
+	animation_player.play("StrangerAnimLibrary/Flop Animation")
+	var p_move_speed = _move_speed
+	_move_speed = 0
+	await get_tree().create_timer(flop_time).timeout
+	
+	animation_player.play("StrangerAnimLibrary/Rise Animation")
+	await get_tree().create_timer(rise_time).timeout
+	
+	_move_speed = p_move_speed
+	
+	animation_player.play("StrangerAnimLibrary/Walk Animation")
+	
 
 func _ready() -> void:
 	
