@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://chmnpo4e8oyxg"]
+
+[ext_resource type="PackedScene" uid="uid://du17i1kd8yvtj" path="res://Scenes/rooms/area_key_puzzle.tscn" id="1_q2imx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_uk40s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uk40s"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="MainMenuGuyMove" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999919, 0.00555652, 0.0114298, 0.005493, 0.999969, -0.00558075, -0.0114605, -0.00551751, -0.999919, -3.13656, 1.44934, -0.29889)
+fov = 71.6
+
+[node name="AreaKeyPuzzle" parent="." instance=ExtResource("1_q2imx")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 9.342, 0, 0, 0, 1.528, 0.00439954, 1.64186, -2.22415)
+visible = false
+mesh = SubResource("QuadMesh_uk40s")
+surface_material_override/0 = SubResource("StandardMaterial3D_uk40s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(9.05047, 0, 0, 0, -1.84761e-07, 0.6907, 0, -4.22685, -3.01915e-08, -0.00684296, -0.343051, 1.91136)
+mesh = SubResource("QuadMesh_uk40s")
+surface_material_override/0 = SubResource("StandardMaterial3D_uk40s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.708525, 0, 0.705686, 0, 1, 0, -0.705686, 0, -0.708525, -2.21573, 0, 0)
+light_color = Color(0.815076, 0.295934, 0.234419, 1)
+shadow_enabled = true
