@@ -34,11 +34,12 @@ border_width_top = 75
 border_color = Color(0, 0, 0, 0)
 border_blend = true
 
-[node name="MainMenu" type="Node"]
+[node name="CreditsMenu" type="Node"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Credits_canvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="TEMP BG" type="TextureRect" parent="CanvasLayer"]
+[node name="TEMP BG" type="TextureRect" parent="Credits_canvasLayer"]
 offset_left = -2.0
 offset_top = -95.0
 offset_right = 1156.0
@@ -47,7 +48,7 @@ texture = ExtResource("1_jj3p2")
 flip_h = true
 flip_v = true
 
-[node name="Meet the Team" type="RichTextLabel" parent="CanvasLayer"]
+[node name="Meet the Team" type="RichTextLabel" parent="Credits_canvasLayer"]
 material = SubResource("ShaderMaterial_vr1f0")
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,7 +64,7 @@ theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
 text = "[center]meet the team[/center]"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits_canvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -72,20 +73,60 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Credits_canvasLayer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits_canvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NAME" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+[node name="NAME" type="VBoxContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Someones Name4" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME"]
+[node name="Someones Name4" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer/NAME"]
+material = SubResource("ShaderMaterial_jj3p2")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_b7tim")
+theme_override_fonts/italics_font = ExtResource("4_emf1i")
+theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/normal_font_size = 140
+bbcode_enabled = true
+text = "[center][i]RYAN DAVIDSON
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer/NAME"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/margin_top = -25
+
+[node name="Title" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer/NAME/MarginContainer"]
+material = SubResource("ShaderMaterial_xuvmf")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_b7tim")
+theme_override_fonts/italics_font = ExtResource("4_emf1i")
+theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
+theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/normal_font_size = 140
+bbcode_enabled = true
+text = "[center][b][i]superEST coolEST and awesomEST[/i][/b]"
+
+[node name="NAME3" type="VBoxContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Someones Name4" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer/NAME3"]
 material = SubResource("ShaderMaterial_jj3p2")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -100,13 +141,13 @@ bbcode_enabled = true
 text = "[center][i]FIONA BOLEN
 "
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME"]
+[node name="MarginContainer" type="MarginContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer/NAME3"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/margin_top = -25
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME/MarginContainer"]
+[node name="Title" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer/NAME3/MarginContainer"]
 material = SubResource("ShaderMaterial_xuvmf")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -120,12 +161,12 @@ theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
 text = "[center][b][i]super cool and awesome[/i][/b]"
 
-[node name="NAME3" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+[node name="NAME2" type="VBoxContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Someones Name4" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME3"]
+[node name="Someones Name4" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer/NAME2"]
 material = SubResource("ShaderMaterial_jj3p2")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -140,13 +181,13 @@ bbcode_enabled = true
 text = "[center][i]FIONA BOLEN
 "
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME3"]
+[node name="MarginContainer" type="MarginContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer/NAME2"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/margin_top = -25
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME3/MarginContainer"]
+[node name="Title" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer/NAME2/MarginContainer"]
 material = SubResource("ShaderMaterial_xuvmf")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -160,12 +201,16 @@ theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
 text = "[center][b][i]super cool and awesome[/i][/b]"
 
-[node name="NAME2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Credits_canvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NAME" type="VBoxContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Someones Name4" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME2"]
+[node name="Someones Name4" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2/NAME"]
 material = SubResource("ShaderMaterial_jj3p2")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -180,13 +225,13 @@ bbcode_enabled = true
 text = "[center][i]FIONA BOLEN
 "
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME2"]
+[node name="MarginContainer" type="MarginContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2/NAME"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/margin_top = -25
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME2/MarginContainer"]
+[node name="Title" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2/NAME/MarginContainer"]
 material = SubResource("ShaderMaterial_xuvmf")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -200,16 +245,12 @@ theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
 text = "[center][b][i]super cool and awesome[/i][/b]"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="NAME" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+[node name="NAME3" type="VBoxContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Someones Name4" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME"]
+[node name="Someones Name4" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2/NAME3"]
 material = SubResource("ShaderMaterial_jj3p2")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -224,13 +265,13 @@ bbcode_enabled = true
 text = "[center][i]FIONA BOLEN
 "
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME"]
+[node name="MarginContainer" type="MarginContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2/NAME3"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/margin_top = -25
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME/MarginContainer"]
+[node name="Title" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2/NAME3/MarginContainer"]
 material = SubResource("ShaderMaterial_xuvmf")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -244,12 +285,12 @@ theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
 text = "[center][b][i]super cool and awesome[/i][/b]"
 
-[node name="NAME3" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
+[node name="NAME2" type="VBoxContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Someones Name4" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME3"]
+[node name="Someones Name4" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2/NAME2"]
 material = SubResource("ShaderMaterial_jj3p2")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -264,13 +305,13 @@ bbcode_enabled = true
 text = "[center][i]FIONA BOLEN
 "
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME3"]
+[node name="MarginContainer" type="MarginContainer" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2/NAME2"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/margin_top = -25
 
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME3/MarginContainer"]
+[node name="Title" type="RichTextLabel" parent="Credits_canvasLayer/HBoxContainer/VBoxContainer2/NAME2/MarginContainer"]
 material = SubResource("ShaderMaterial_xuvmf")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -284,51 +325,11 @@ theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
 text = "[center][b][i]super cool and awesome[/i][/b]"
 
-[node name="NAME2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-size_flags_vertical = 2
-
-[node name="Someones Name4" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME2"]
-material = SubResource("ShaderMaterial_jj3p2")
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("3_b7tim")
-theme_override_fonts/italics_font = ExtResource("4_emf1i")
-theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
-theme_override_font_sizes/bold_italics_font_size = 30
-theme_override_font_sizes/italics_font_size = 40
-theme_override_font_sizes/normal_font_size = 140
-bbcode_enabled = true
-text = "[center][i]FIONA BOLEN
-"
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME2"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_constants/margin_top = -25
-
-[node name="Title" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME2/MarginContainer"]
-material = SubResource("ShaderMaterial_xuvmf")
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("3_b7tim")
-theme_override_fonts/italics_font = ExtResource("4_emf1i")
-theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
-theme_override_font_sizes/bold_italics_font_size = 30
-theme_override_font_sizes/italics_font_size = 40
-theme_override_font_sizes/normal_font_size = 140
-bbcode_enabled = true
-text = "[center][b][i]super cool and awesome[/i][/b]"
-
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Credits_canvasLayer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 100
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="Credits_canvasLayer"]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -341,7 +342,7 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jj3p2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits_canvasLayer/Panel"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -355,15 +356,15 @@ grow_vertical = 0
 theme = ExtResource("5_gaibv")
 alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Credits_canvasLayer/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 55
 
-[node name="Exit" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2"]
+[node name="Exit" type="Button" parent="Credits_canvasLayer/Panel/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 text = "Go Back
 "
 
-[node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/Exit"]
+[node name="BH_AnimationComponent" type="Node" parent="Credits_canvasLayer/Panel/VBoxContainer/MarginContainer2/Exit"]
 script = ExtResource("6_1mrn1")
 metadata/_custom_type_script = "uid://ccamawjk2n20c"

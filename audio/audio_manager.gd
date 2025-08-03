@@ -4,6 +4,8 @@ var _killer_surprise_audio_player : AudioStreamPlayer3D = null
 var _killer_default_audio_player : AudioStreamPlayer3D = null
 var _killer_chase_audio_player : AudioStreamPlayer3D = null
 
+@export var game_scene_name:String = "Game"
+
 var _required_out_of_sight_time_for_reset : float = 10.0
 var _chase_time_remaining : float = 0.0
 
@@ -12,10 +14,15 @@ func initialize_killer_audio(killer: EnemyAI) -> void:
 	_killer_surprise_audio_player = $KillerSurprisePlayer
 	_killer_default_audio_player = $KillerDefaultPlayer
 	_killer_chase_audio_player = $KillerChasePlayer
+	if get_tree().current_scene.name == game_scene_name:
+		print("Gameplay scene", get_tree().current_scene.name, " ", GameManager.game_scene)
+		_killer_default_audio_player.play()
+		_killer_chase_audio_player.volume_linear = 0.0
+		_killer_chase_audio_player.play()
+	else:
+		print("menu scene", get_tree().current_scene.name)
 	
-	_killer_default_audio_player.play()
-	_killer_chase_audio_player.volume_linear = 0.0
-	_killer_chase_audio_player.play()
+	
 
 func _physics_process(delta: float) -> void:
 	

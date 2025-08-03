@@ -106,9 +106,11 @@ func _on_resume_pressed() -> void:
 	_pause_menu.visible = false
 
 func _on_quit_pressed() -> void:
+	GameManager.toggle_game_paused()
 	GameManager.load_menu()
 
 func _on_wake_up_button_down() -> void:
+	GameManager.toggle_game_paused()
 	GameManager._cleanup_game()
 	GameManager._load_game()
 	#unpause?
