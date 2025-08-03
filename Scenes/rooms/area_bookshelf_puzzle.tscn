@@ -1,104 +1,147 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3aiiw6s5keqx"]
+[gd_scene load_steps=9 format=3 uid="uid://c3aiiw6s5keqx"]
 
 [ext_resource type="Material" uid="uid://cnjnxehb7ipi2" path="res://materials/library_floor.tres" id="1_no3b1"]
-[ext_resource type="PackedScene" uid="uid://bt5tso3ttix1p" path="res://Scenes/objects/library_bookshelf.tscn" id="1_x15rk"]
 [ext_resource type="Material" uid="uid://bvh4p4gmf2j7g" path="res://materials/library_wall.tres" id="2_6bn86"]
 [ext_resource type="PackedScene" uid="uid://o80nxrv2tou6" path="res://Scenes/objects/library_bookshelf_door.tscn" id="2_x15rk"]
+[ext_resource type="PackedScene" uid="uid://5i12atpu8aon" path="res://Scenes/prefabs/books/bookshelf.tscn" id="4_6bn86"]
+[ext_resource type="PackedScene" uid="uid://bcia16jpf27mn" path="res://Scenes/prefabs/books/Book_1.tscn" id="5_4gaix"]
+[ext_resource type="PackedScene" uid="uid://dwwp7ppklqsmo" path="res://Scenes/prefabs/books/Book_3.tscn" id="6_1bnwu"]
+[ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="7_4w0xo"]
+[ext_resource type="PackedScene" uid="uid://cb388nvj6x8mi" path="res://Scenes/prefabs/books/Book_2.tscn" id="8_loweg"]
 
 [node name="AreaBookshelfPuzzle" type="Node3D"]
-
-[node name="CSGBox3D23" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.9884, 0.25, 2.08144)
-material_override = ExtResource("1_no3b1")
-use_collision = true
-size = Vector3(18.0232, 0.5, 23.9769)
-
-[node name="CSGBox3D31" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.0966, 3.6866, 2.06482)
-material_override = ExtResource("2_6bn86")
-use_collision = true
-size = Vector3(18.0232, 0.5, 23.9769)
-
-[node name="CSGBox3D24" type="CSGBox3D" parent="."]
-transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 1, 0, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, -0.25, 2.00974, 2.07721)
-material_override = ExtResource("2_6bn86")
-use_collision = true
-size = Vector3(3.61542, 0.5, 18.0814)
-
-[node name="CSGBox3D25" type="CSGBox3D" parent="CSGBox3D24"]
-transform = Transform3D(1, 3.81165e-20, -7.99361e-13, 2.5411e-20, 1, 7.99361e-13, 7.99361e-13, -7.99361e-13, 1, -1.90735e-06, 0.026764, 3.59332)
-operation = 2
-use_collision = true
-size = Vector3(3.61542, 0.739197, 2.98911)
-
-[node name="CSGBox3D26" type="CSGBox3D" parent="."]
-transform = Transform3D(1.91069e-15, 1, 4.37114e-08, 1, 0, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, -4.25, 2.00974, 2.07721)
-material_override = ExtResource("2_6bn86")
-use_collision = true
-size = Vector3(3.61542, 0.5, 18.0814)
-
-[node name="CSGBox3D27" type="CSGBox3D" parent="CSGBox3D26"]
-transform = Transform3D(1, 6.54333e-20, -1.3749e-12, 4.36222e-20, 1, 1.3749e-12, 1.3749e-12, -1.3749e-12, 1, -3.09944e-06, 0.00863647, -6.32589)
-operation = 2
-use_collision = true
-size = Vector3(3.61542, 0.709534, 1.48166)
-
-[node name="CSGBox3D25" type="CSGBox3D" parent="."]
-transform = Transform3D(4.37114e-08, -8.74228e-08, 1, 1, 3.67052e-22, -4.37114e-08, 3.82137e-15, 1, 8.74228e-08, -12.046, 2.00974, 11.0772)
-material_override = ExtResource("2_6bn86")
-use_collision = true
-size = Vector3(3.61542, 0.5, 23.6734)
-
-[node name="CSGBox3D27" type="CSGBox3D" parent="."]
-transform = Transform3D(4.37114e-08, -8.74228e-08, 1, 1, 3.67052e-22, -4.37114e-08, 3.82137e-15, 1, 8.74228e-08, -12.0424, 2.00974, -6.92279)
-material_override = ExtResource("2_6bn86")
-use_collision = true
-size = Vector3(3.61542, 0.5, 23.6662)
-
-[node name="CSGBox3D29" type="CSGBox3D" parent="."]
-transform = Transform3D(3.09086e-08, 0.707107, 0.707107, 1, 6.7764e-22, -4.37114e-08, -3.09086e-08, 0.707107, -0.707107, -13.1559, 2.00974, 2.07983)
-material_override = ExtResource("2_6bn86")
-use_collision = true
-size = Vector3(3.61542, 0.5, 25.5752)
-
-[node name="CSGBox3D30" type="CSGBox3D" parent="CSGBox3D29"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 1.77636e-15, 0, 1, -2.38419e-07, 0.100339, 7.26329)
-operation = 2
-use_collision = true
-size = Vector3(3.61542, 0.865723, 1.48794)
-
-[node name="CSGBox3D28" type="CSGBox3D" parent="."]
-transform = Transform3D(-5.73206e-15, -1, -1.31134e-07, 1, 6.7764e-22, -4.37114e-08, 4.37114e-08, -1.31134e-07, 1, -23.75, 2.01, 2.094)
-material_override = ExtResource("2_6bn86")
-use_collision = true
-size = Vector3(3.61542, 0.5, 18.2399)
-
-[node name="CSGBox3D31" type="CSGBox3D" parent="CSGBox3D28"]
-transform = Transform3D(1, 9.95264e-20, -8.34888e-13, -3.04932e-20, 1, 0, 8.34888e-13, 0, 1, 1.90735e-06, -0.0343628, -3.60038)
-operation = 2
-use_collision = true
-size = Vector3(3.61542, 0.788208, 2.96836)
-
-[node name="CSGBox3D30" type="CSGBox3D" parent="."]
-transform = Transform3D(-5.73206e-15, -1, -1.31134e-07, 1, 6.7764e-22, -4.37114e-08, 4.37114e-08, -1.31134e-07, 1, -19.75, 2.01, 2.094)
-material_override = ExtResource("2_6bn86")
-use_collision = true
-size = Vector3(3.61542, 0.5, 18.2399)
-
-[node name="CSGBox3D31" type="CSGBox3D" parent="CSGBox3D30"]
-transform = Transform3D(1, 1.21973e-19, -1.02318e-12, -3.68459e-20, 1, 0, 1.02318e-12, 0, 1, 0, 0.046875, 3.30561)
-operation = 2
-use_collision = true
-size = Vector3(3.61542, 0.857422, 1.49695)
-
-[node name="LibraryBookshelf" parent="." instance=ExtResource("1_x15rk")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.21812, 1.46108, 10.5711)
-
-[node name="BookshelfDoor" parent="." instance=ExtResource("2_x15rk")]
-transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -4.26127, 1.97336, 8.40325)
 
 [node name="BookshelfDoor3" parent="." instance=ExtResource("2_x15rk")]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -19.7313, 1.97336, 5.40325)
 
 [node name="BookshelfDoor2" parent="." instance=ExtResource("2_x15rk")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -8.01623, 1.97336, -3.03615)
+
+[node name="Node3D" type="Node3D" parent="BookshelfDoor2"]
+
+[node name="Books_seq" type="Node3D" parent="."]
+
+[node name="BookshelfDoor" parent="Books_seq" node_paths=PackedStringArray("books") instance=ExtResource("2_x15rk")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -4.26127, 1.97336, 8.40325)
+books = [NodePath("../book"), NodePath("../book2"), NodePath("../book3")]
+
+[node name="BookShelf" parent="Books_seq" instance=ExtResource("4_6bn86")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 3, 10.5)
+
+[node name="book" parent="Books_seq" instance=ExtResource("5_4gaix")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 2.3, 10.6)
+
+[node name="book3" parent="Books_seq" instance=ExtResource("6_1bnwu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.15, 2.35, 10.55)
+
+[node name="book2" parent="Books_seq" instance=ExtResource("8_loweg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.95, 1.6, 10.55)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("7_4w0xo")]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, -2.95, 2.6, 7.45)
+
+[node name="LevelGeometry" type="Node3D" parent="."]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -4.26127, 1.97336, 8.40325)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, 1, -6.32181, -1.72336, 7.72713)
+material_override = ExtResource("1_no3b1")
+use_collision = true
+size = Vector3(18.0232, 0.5, 23.9769)
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, 1, -6.33843, 1.71324, 7.83533)
+visible = false
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(18.0232, 0.5, 23.9769)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(-4.37114e-08, -1.58932e-08, -1, 1, 0, -4.37114e-08, 6.9471e-16, -1, 1.58932e-08, -6.32604, 0.0363802, -4.01127)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(3.61542, 0.5, 18.0814)
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="LevelGeometry/CSGBox3D24"]
+transform = Transform3D(1, 3.81165e-20, -7.99361e-13, 2.5411e-20, 1, 7.99361e-13, 7.99361e-13, -7.99361e-13, 1, -1.90735e-06, 0.026764, 3.59332)
+operation = 2
+use_collision = true
+size = Vector3(3.61542, 0.739197, 2.98911)
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(-4.37114e-08, -1.58932e-08, -1, 1, 0, -4.37114e-08, 6.9471e-16, -1, 1.58932e-08, -6.32604, 0.0363802, -0.0112696)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(3.61542, 0.5, 18.0814)
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="LevelGeometry/CSGBox3D26"]
+transform = Transform3D(1, 6.54333e-20, -1.3749e-12, 4.36222e-20, 1, 1.3749e-12, 1.3749e-12, -1.3749e-12, 1, -3.09944e-06, 0.00863647, -6.32589)
+operation = 2
+use_collision = true
+size = Vector3(3.61542, 0.709534, 1.48166)
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1.21597e-15, 1, 2.78182e-08, 1, 3.67052e-22, -4.37114e-08, -4.37114e-08, 2.78182e-08, -1, 2.67395, 0.0363802, 7.78473)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(3.61542, 0.5, 23.6734)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(-4.37114e-08, -1.58932e-08, -1, 1, 3.67052e-22, -4.37114e-08, 6.94716e-16, -1, 1.58932e-08, -0.0127487, 1.65367, -0.0152707)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(0.35, 0.5, 1.5)
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(-4.37114e-08, -1.58932e-08, -1, 1, 3.67052e-22, -4.37114e-08, 6.94716e-16, -1, 1.58932e-08, -3.01275, 1.65367, 15.4847)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(0.35, 0.5, 1.5)
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(-3.09086e-08, 0.707107, -0.707107, 1, 3.67052e-22, -4.37114e-08, -3.09086e-08, -0.707107, -0.707107, -11.4627, 1.65367, 3.73473)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(0.35, 0.5, 1.5)
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1.21597e-15, 1, 2.78182e-08, 1, 3.67052e-22, -4.37114e-08, -4.37114e-08, 2.78182e-08, -1, -15.326, 0.0363802, 7.78113)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(3.61542, 0.5, 23.6662)
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(-3.09086e-08, 0.707107, -0.707107, 1, 6.7764e-22, -4.37114e-08, -3.09086e-08, -0.707107, -0.707107, -6.32342, 0.0363802, 8.89463)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(3.61542, 0.5, 25.5752)
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="LevelGeometry/CSGBox3D29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.77636e-15, 0, 1, -2.38419e-07, 0.100339, 7.26329)
+operation = 2
+use_collision = true
+size = Vector3(3.61542, 0.865723, 1.48794)
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(4.37114e-08, -7.15294e-08, 1, 1, 6.7764e-22, -4.37114e-08, 3.12666e-15, 1, 7.15294e-08, -6.30925, 0.03664, 19.4887)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(3.61542, 0.5, 18.2399)
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="LevelGeometry/CSGBox3D28"]
+transform = Transform3D(1, 9.95264e-20, -8.34888e-13, -3.04932e-20, 1, 0, 8.34888e-13, 0, 1, 1.90735e-06, -0.0343628, -3.60038)
+operation = 2
+use_collision = true
+size = Vector3(3.61542, 0.788208, 2.96836)
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(4.37114e-08, -7.15294e-08, 1, 1, 6.7764e-22, -4.37114e-08, 3.12666e-15, 1, 7.15294e-08, -6.30925, 0.03664, 15.4887)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(3.61542, 0.5, 18.2399)
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="LevelGeometry/CSGBox3D30"]
+transform = Transform3D(1, 1.21973e-19, -1.02318e-12, -3.68459e-20, 1, 0, 1.02318e-12, 0, 1, 0, 0.046875, 3.30561)
+operation = 2
+use_collision = true
+size = Vector3(3.61542, 0.857422, 1.49695)

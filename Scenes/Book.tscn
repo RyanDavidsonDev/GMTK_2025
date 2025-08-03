@@ -1,16 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cij6v1tlolo4f"]
+[gd_scene load_steps=4 format=3 uid="uid://cij6v1tlolo4f"]
 
 [ext_resource type="Script" uid="uid://da74k452rnaxg" path="res://Scripts/Book.gd" id="1_4ovs5"]
-[ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="2_85ged"]
+[ext_resource type="PackedScene" uid="uid://dths1j1jigu0t" path="res://Scenes/prefabs/books/meshes/m_Book_1.tscn" id="2_85ged"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_47267"]
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.5, 0.5, 0.231)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85ged"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_85ged"]
-
-[node name="RigidBody3D" type="RigidBody3D"]
+[node name="book" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_4ovs5")
@@ -18,11 +14,9 @@ script = ExtResource("1_4ovs5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_47267")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-transform = Transform3D(-2.18557e-08, -0.5, -2.18557e-08, 0, -2.18557e-08, 0.5, -0.5, 2.18557e-08, 9.55343e-16, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_85ged")
-mesh = SubResource("PrismMesh_85ged")
+[node name="Book1" parent="CollisionShape3D" instance=ExtResource("2_85ged")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
-[node name="pivot_point" type="Node3D" parent="CollisionShape3D/MeshInstance3D"]
-transform = Transform3D(-4.37114e-08, 3.59989e-21, -1, -1, -4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1.91069e-15, -2.18557e-08, -0.5, -0.5)
-script = ExtResource("2_85ged")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/Book1/Cube_037" index="0"]
+
+[editable path="CollisionShape3D/Book1"]

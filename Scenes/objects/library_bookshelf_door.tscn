@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://o80nxrv2tou6"]
 
 [ext_resource type="Script" uid="uid://dlwa8np6ox305" path="res://Scripts/bookshelf_door.gd" id="1_mu0r0"]
-[ext_resource type="Script" uid="uid://e68h0nc7epf7" path="res://Scripts/InteractableCollider.gd" id="2_e6l0i"]
+[ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_e6l0i"]
 [ext_resource type="Texture2D" uid="uid://dloo3pvfadlvf" path="res://assets/Modeling/MapSwatches4Realz_9.png" id="3_0n8i7"]
 [ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="4_hmbxe"]
 
@@ -74,6 +74,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00396132, -0.00546265, 0.0
 shape = SubResource("BoxShape3D_pb3tf")
 
 [node name="PivotPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35881, 1.02112, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70881, 1.02112, 0)
 script = ExtResource("4_hmbxe")
 metadata/_custom_type_script = "uid://vkvc081bupt5"

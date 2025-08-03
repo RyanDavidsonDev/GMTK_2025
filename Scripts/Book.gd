@@ -9,7 +9,7 @@ var tilted:bool = false
 @export var index:int 
 @export var door: bdDoor 
 
-@onready var pivot_point: PivotPoint = $CollisionShape3D/MeshInstance3D/pivot_point
+@onready var pivot_point: PivotPoint = $CollisionShape3D/PivotPoint
 
 func interact(player:PlayerCharacter):
 	if(!tilted):

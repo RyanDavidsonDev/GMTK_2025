@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://6r7sqbjeykp2"]
+
+[ext_resource type="Script" uid="uid://da74k452rnaxg" path="res://Scripts/Book.gd" id="1_b0sun"]
+[ext_resource type="PackedScene" uid="uid://yoc6twjf3nml" path="res://Scenes/prefabs/books/meshes/m_Book_Y.tscn" id="2_4xuw8"]
+[ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="3_4xuw8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_47267"]
+size = Vector3(0.5, 0.5, 0.231)
+
+[node name="book" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_b0sun")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_47267")
+
+[node name="book_y" parent="CollisionShape3D" instance=ExtResource("2_4xuw8")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="PivotPoint" type="Node3D" parent="CollisionShape3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.25, -0.3, 0)
+script = ExtResource("3_4xuw8")
+metadata/_custom_type_script = "uid://vkvc081bupt5"

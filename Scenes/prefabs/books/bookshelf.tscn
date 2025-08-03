@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5i12atpu8aon"]
+
+[ext_resource type="PackedScene" uid="uid://bs4fsoi54dwx0" path="res://assets/Modeling/BookShelves.fbx" id="1_aq73i"]
+
+[node name="BookShelves" instance=ExtResource("1_aq73i")]
+
+[node name="Cube_073" parent="." index="0"]
+transform = Transform3D(0.199999, -0.000754665, 9.47165e-11, 0.000575441, 0.152501, -0.129395, 0.000488249, 0.129394, 0.152502, 0, 0, 0)
