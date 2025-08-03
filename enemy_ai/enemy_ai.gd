@@ -11,8 +11,8 @@ var winScene
 const flop_time = 2
 const rise_time = 4
 
-const max_health: float = 3
-var health: float = 3
+const max_health: float = 1
+var health: float = max_health
 
 var _nav_agent_3d : NavigationAgent3D = null
 
@@ -54,11 +54,15 @@ func _kill_player() -> void:
 
 func get_hit() ->void:
 	health -=1
+	var p_move_speed = _move_speed
+	_move_speed = 0
 	
 	if health == 0:
+		_kill_distance = 0
 		animation_player.play("StrangerAnimLibrary/Dies")
 		
 		await get_tree().create_timer(5).timeout
+		print("load win")
 		
 		GameManager.load_win()
 		
@@ -67,8 +71,7 @@ func get_hit() ->void:
 		
 	
 	animation_player.play("StrangerAnimLibrary/Flop Animation")
-	var p_move_speed = _move_speed
-	_move_speed = 0
+	
 	await get_tree().create_timer(flop_time).timeout
 	
 	animation_player.play("StrangerAnimLibrary/Rise Animation")

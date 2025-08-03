@@ -71,9 +71,11 @@ func load_game() -> void:
 	_in_game = true
 
 func load_win() ->void:
+	hud_controller.show_text_timer("I won")
 	get_tree().change_scene_to_packed(win_scene)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	AudioManager.start_menu_audio(AudioManager.winGameMusic)
+	
 	
 
 func _ready() -> void:
