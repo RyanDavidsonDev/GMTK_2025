@@ -43,6 +43,12 @@ material_override = ExtResource("1_no3b1")
 use_collision = true
 size = Vector3(18.0232, 0.5, 23.9769)
 
+[node name="CSGBox3D35" type="CSGBox3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, 1, -6.32181, 1.70004, 7.72713)
+material_override = ExtResource("2_6bn86")
+use_collision = true
+size = Vector3(18.0232, 0.5, 23.9769)
+
 [node name="CSGBox3D31" type="CSGBox3D" parent="LevelGeometry"]
 transform = Transform3D(1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, 1, -6.33843, 1.71324, 7.83533)
 visible = false
