@@ -110,7 +110,7 @@ func hide_text():
 
 # Returns true if it opened and false if it closed
 func toggle_pause_menu() -> bool:
-	
+	print("hi")
 	if _pause_menu.visible == false:
 		_pause_menu.visible = true
 		return true
@@ -146,10 +146,14 @@ func _process(delta: float) -> void:
 		
 		var paused : bool = GameManager.toggle_game_paused()
 		
+		
+		
 		if paused:
+			AudioManager.start_menu_audio(AudioManager.pauseGameMusic, true)
 			_pause_menu.visible = true
 		else:
 			_pause_menu.visible = false
+			AudioManager.start_killer_audio()
 	
 	if GameManager.player_character.gun.is_reloading:
 		var gun: Gun = GameManager.player_character.gun

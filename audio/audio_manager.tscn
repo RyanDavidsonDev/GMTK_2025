@@ -1,13 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvbhpeftpi7hf"]
+[gd_scene load_steps=9 format=3 uid="uid://dvbhpeftpi7hf"]
 
 [ext_resource type="Script" uid="uid://pe73kedughqm" path="res://audio/audio_manager.gd" id="1_mo2mb"]
+[ext_resource type="AudioStream" uid="uid://bocpi3gspdarv" path="res://audio/GMTK2025_Ambience_Game Over Music.wav" id="2_hlghp"]
 [ext_resource type="AudioStream" uid="uid://biagnoq08tyd4" path="res://audio/GMTK2025_Stinger_Killer Sees You.wav" id="2_vxw8f"]
+[ext_resource type="AudioStream" uid="uid://brcuv0hyiid58" path="res://audio/GMTK2025_Ambience_Victory Music.wav" id="3_6wlj3"]
 [ext_resource type="AudioStream" uid="uid://ba4edqct8padj" path="res://audio/GMTK2025_Music_Chase (Stage 1).wav" id="3_mhfhn"]
+[ext_resource type="AudioStream" uid="uid://beanm0spdl7sr" path="res://audio/GMTK2025_Ambience_Pause Menu.wav" id="4_0xv67"]
 [ext_resource type="AudioStream" uid="uid://bbhdcnvu2ly0v" path="res://audio/GMTK2025_Music_Chase (Stage 2).wav" id="4_i1k7u"]
 [ext_resource type="AudioStream" uid="uid://bmpcmgte1gior" path="res://audio/GMTK2025_Music_Main Theme.mp3" id="5_mhfhn"]
 
 [node name="AudioManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_mo2mb")
+loseGameMusic = ExtResource("2_hlghp")
+winGameMusic = ExtResource("3_6wlj3")
+pauseGameMusic = ExtResource("4_0xv67")
+MainmenuMusic = ExtResource("5_mhfhn")
 
 [node name="KillerSurprisePlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_vxw8f")

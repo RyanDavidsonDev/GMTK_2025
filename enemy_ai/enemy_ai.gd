@@ -19,6 +19,8 @@ func can_see_player() -> bool:
 	
 	var params : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 	params.from = global_position
+	if(GameManager.player_character == null):
+		return false
 	params.to = GameManager.player_character.global_position
 	
 	if get_world_3d() == null:

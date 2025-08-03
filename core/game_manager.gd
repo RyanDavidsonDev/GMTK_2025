@@ -47,7 +47,8 @@ func load_menu() -> void:
 	
 	get_tree().change_scene_to_packed(menu_scene)
 	if get_tree().paused:
-		toggle_game_paused()
+		#toggle_game_paused()
+		get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	AudioManager.play_menu_music()
 	
@@ -79,6 +80,8 @@ func toggle_game_paused() -> bool:
 	if get_tree().paused:
 		get_tree().paused = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		AudioManager.start_killer_audio()
+
 		return false
 	else:
 		get_tree().paused = true

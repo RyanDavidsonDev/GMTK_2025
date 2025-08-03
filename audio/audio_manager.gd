@@ -6,6 +6,11 @@ var _killer_surprise_audio_player : AudioStreamPlayer3D = null
 var _killer_default_audio_player : AudioStreamPlayer3D = null
 var _killer_chase_audio_player : AudioStreamPlayer3D = null
 
+@export var loseGameMusic : AudioStream
+@export var winGameMusic : AudioStream = null
+@export var pauseGameMusic : AudioStream = null
+@export var MainmenuMusic: AudioStream = null 
+
 var _required_out_of_sight_time_for_reset : float = 10.0
 var _chase_time_remaining : float = 0.0
 
@@ -26,8 +31,33 @@ func play_menu_music() -> void:
 	_killer_default_audio_player.stop()
 	_killer_chase_audio_player.stop()
 	
+	_menu_audio_player.stream = MainmenuMusic
+	
 	_menu_audio_player.seek(0)
 	_menu_audio_player.play()
+	
+
+func start_menu_audio(Audio: AudioStream, just_pause: bool = false):
+	print("starting")
+	if(just_pause):
+		_killer_default_audio_player.stop()
+		_killer_chase_audio_player.stop()
+	else:
+		_killer_default_audio_player.stop()
+		_killer_chase_audio_player.stop()
+	
+	_killer_default_audio_player.seek(0)
+	_menu_audio_player.stream = Audio
+	_menu_audio_player.play()
+	
+
+func start_killer_audio():
+	_menu_audio_player.stop()
+	
+	_killer_default_audio_player.play()
+	_killer_chase_audio_player.play()
+	
+	
 
 func _ready() -> void:
 	
