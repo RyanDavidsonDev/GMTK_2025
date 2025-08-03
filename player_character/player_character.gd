@@ -13,7 +13,7 @@ const LOOK_DISTANCE: float = 50
 #@onready var crosshair
 
 @onready var animation_player = $Camera3D/GunHandres/AnimationPlayer
-@onready var animation_player_2 = $Camera3D/GunHandres/AnimationPlayer2
+@onready var animation_player_2 = $Camera3D/GUNT/AnimationPlayer
 
 @onready var crosshair:TextureRect = ui_overlay.find_child("crosshair")
 
@@ -136,9 +136,11 @@ func _physics_process(delta: float) -> void:
 			gun.try_fire()
 			
 func play_animation(animation: String):
+	print("playing"+animation)
 	animation_player.play(animation)
 	
 func play_animation_2(animation: String):
+	print("playing"+animation)
 	animation_player_2.play(animation)
 
 			
