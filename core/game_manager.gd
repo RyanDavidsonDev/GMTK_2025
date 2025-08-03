@@ -47,6 +47,10 @@ func player_character_killed() -> void:
 func load_menu() -> void:
 	
 	get_tree().change_scene_to_packed(menu_scene)
+	if get_tree().paused:
+		toggle_game_paused()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	AudioManager.play_menu_music()
 	
 	_in_game = false
 	

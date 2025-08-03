@@ -21,6 +21,9 @@ func can_see_player() -> bool:
 	params.from = global_position
 	params.to = GameManager.player_character.global_position
 	
+	if get_world_3d() == null:
+		return false
+		
 	var hit : Dictionary = get_world_3d().direct_space_state.intersect_ray(params)
 	
 	return hit.collider is PlayerCharacter
