@@ -68,6 +68,7 @@ func _check_if_door_can_be_opened(player: PlayerCharacter) ->bool:
 			GameManager.hud_controller.show_text_timer("I need a key")
 			return false
 		else:
+			player.has_key = false
 			GameManager.hud_controller.hide_key() #opens door & hides key icon
 			return true
 			

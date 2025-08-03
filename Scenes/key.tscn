@@ -66,3 +66,9 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 transform = Transform3D(-4.58616e-08, 0.246331, -0.100391, -0.384715, 0, 7.9275e-09, 0, 0.100391, 0.246331, 0, 0, 0)
 mesh = SubResource("ArrayMesh_5owpv")
 skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0.356863, 1)
+light_energy = 0.1
+light_indirect_energy = 0.1
+omni_range = 1.0
