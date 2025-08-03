@@ -24,6 +24,7 @@ avoidance_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33434, 0.705026, 0.156)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 4
 
 [node name="hittable" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, 0)
