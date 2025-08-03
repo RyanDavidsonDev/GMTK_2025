@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpbwvtwck6xsj"
-path="res://.godot/imported/RevolverReloading_4.png-b4496dacdf7faa2255385a9e443dbd49.ctex"
+uid="uid://blfin4gu5sjs6"
+path.s3tc="res://.godot/imported/RevolverReloading(1)_3.png-5b324d556c734cad63b011adedc15f57.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "b3380e2e82aea015613b9b20fd504954"
+"md5": "e7bf8db8a7f0b2529ed34dabc7369ec5"
 }
 
 [deps]
 
-source_file="res://assets/Gun/Textures/RevolverReloading_4.png"
-dest_files=["res://.godot/imported/RevolverReloading_4.png-b4496dacdf7faa2255385a9e443dbd49.ctex"]
+source_file="res://assets/Gun/Textures/RevolverReloading(1)_3.png"
+dest_files=["res://.godot/imported/RevolverReloading(1)_3.png-5b324d556c734cad63b011adedc15f57.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -34,4 +35,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

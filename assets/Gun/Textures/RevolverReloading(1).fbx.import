@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c35ixyip3opvi"
-path="res://.godot/imported/RevolverReloading.fbx-863a91bdfe854a61a7928067b9070221.scn"
+uid="uid://c2xj07ukpuwkv"
+path="res://.godot/imported/RevolverReloading(1).fbx-da47dcf7e4a7523201a6c34136e45796.scn"
 
 [deps]
 
-source_file="res://assets/Gun/Textures/RevolverReloading.fbx"
-dest_files=["res://.godot/imported/RevolverReloading.fbx-863a91bdfe854a61a7928067b9070221.scn"]
+source_file="res://assets/Gun/Textures/RevolverReloading(1).fbx"
+dest_files=["res://.godot/imported/RevolverReloading(1).fbx-da47dcf7e4a7523201a6c34136e45796.scn"]
 
 [params]
 
@@ -1836,7 +1836,7 @@ _subresources={
 "Armature_001|Armature_001|Armature|ArmatureAction_001": {
 "save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "res://assets/Gun/Animations/Reloading Handres.res",
+"save_to_file/path": "res://assets/Gun/Animations/Reloading Handeres.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
