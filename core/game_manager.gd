@@ -3,6 +3,8 @@ extends Node
 @export var game_scene : PackedScene = null
 @export var menu_scene : PackedScene = null
 
+@export var win_scene: PackedScene = null
+
 var late_ready: Signal
 
 var player_character : PlayerCharacter = null
@@ -10,6 +12,8 @@ var enemy_ai : EnemyAI = null
 var hud_controller : HUDController = null
 
 var _in_game : bool = false
+
+
 
 func register_player_character(instance: PlayerCharacter) -> void:
 	
@@ -65,7 +69,13 @@ func load_game() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	_in_game = true
+
+func load_win() ->void:
+	get_tree().change_scene_to_packed(win_scene)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	AudioManager.start_menu_audio(AudioManager.winGameMusic)
 	
+
 func _ready() -> void:
 	
 	#_load_game.call_deferred()

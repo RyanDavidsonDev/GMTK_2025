@@ -60,8 +60,7 @@ func get_hit() ->void:
 		
 		await get_tree().create_timer(5).timeout
 		
-		winScene.visible =true
-		#end game logic
+		GameManager.load_win()
 		
 		
 		return
@@ -86,8 +85,7 @@ func _ready() -> void:
 	
 	GameManager.register_enemy_ai(self)
 	
-	winScene = winscene_ps.instantiate()
-	self.add_child(winScene)
+	
 
 func _physics_process(delta: float) -> void:
 	
