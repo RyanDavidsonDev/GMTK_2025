@@ -41,7 +41,7 @@ shader_parameter/noise_speed = 2.0
 [node name="TEMP BG" type="TextureRect" parent="CanvasLayer"]
 offset_left = -2.0
 offset_top = -95.0
-offset_right = 1156.0
+offset_right = 1294.0
 offset_bottom = 782.0
 texture = ExtResource("1_jj3p2")
 flip_h = true
