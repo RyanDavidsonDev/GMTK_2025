@@ -4,7 +4,7 @@ class_name Gun extends Node3D
 
 @onready var reload_timer: Timer = $reload_timer
 
-var bullet_count: int = 1
+var bullet_count: int = 0
 
 @export var loaded_bullet_count:float = 0
 var is_reloading: bool = false

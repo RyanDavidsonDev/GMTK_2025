@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bc3wiq8fwac0v"]
+[gd_scene load_steps=16 format=3 uid="uid://bc3wiq8fwac0v"]
 
 [ext_resource type="Environment" uid="uid://bgq4csmdrk7a5" path="res://core/default_environment.tres" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="2_qxrlw"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://du17i1kd8yvtj" path="res://Scenes/rooms/area_key_puzzle.tscn" id="7_1l0tm"]
 [ext_resource type="Material" uid="uid://b4ldik55om2be" path="res://materials/living_room_wall.tres" id="7_nnt18"]
 [ext_resource type="PackedScene" uid="uid://c3aiiw6s5keqx" path="res://Scenes/rooms/area_bookshelf_puzzle.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://b7rxcbpausx3j" path="res://Scenes/rooms/area_bullet_room.tscn" id="9_1phco"]
 [ext_resource type="PackedScene" uid="uid://bx3db7hws5gpd" path="res://Scenes/rooms/area_key_bullet.tscn" id="9_h4fw4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wrm1d"]
@@ -79,19 +80,28 @@ material = ExtResource("6_nb51f")
 [node name="CSGBox3D" parent="NavigationRegion3D/StartingRoom/DoorWall/CSGBox3D" index="0"]
 material = ExtResource("6_nb51f")
 
-[node name="AreaBathroom" parent="NavigationRegion3D" instance=ExtResource("5_wowpa")]
+[node name="AreaBulletRoom" parent="NavigationRegion3D" instance=ExtResource("9_1phco")]
 
-[node name="AreaBedroom" parent="NavigationRegion3D" instance=ExtResource("6_i6g32")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.5, 0, 0)
+[node name="AreaBulletRoom2" parent="NavigationRegion3D" instance=ExtResource("9_1phco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 0)
+
+[node name="AreaBulletRoom3" parent="NavigationRegion3D" instance=ExtResource("9_1phco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107, 0, 0)
+
+[node name="AreaBathroom" parent="NavigationRegion3D" instance=ExtResource("5_wowpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
 [node name="AreaKeyPuzzle" parent="NavigationRegion3D" instance=ExtResource("7_1l0tm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)
-
-[node name="AreaBookshelfPuzzle" parent="NavigationRegion3D" instance=ExtResource("8_v158k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 0)
 
 [node name="AreaKeyPuzzle2" parent="NavigationRegion3D" instance=ExtResource("9_h4fw4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5, 0, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.5, 0, 0.5)
+
+[node name="AreaBedroom" parent="NavigationRegion3D" instance=ExtResource("6_i6g32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.5, 0, 0)
+
+[node name="AreaBookshelfPuzzle" parent="NavigationRegion3D" instance=ExtResource("8_v158k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.5, 0, 0)
 
 [editable path="EnemyAi"]
 [editable path="NavigationRegion3D/StartingRoom/DoorWall"]

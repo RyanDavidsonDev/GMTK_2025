@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://tldf27kmnmvp"]
+
+[ext_resource type="Texture2D" uid="uid://c808mt1t2tyeb" path="res://assets/Modeling/MapSwatches4Realz_8.png" id="1_njn2e"]
+
+[resource]
+albedo_texture = ExtResource("1_njn2e")
+uv1_triplanar = true
+uv1_world_triplanar = true

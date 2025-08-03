@@ -18,7 +18,6 @@ func register_player_character(instance: PlayerCharacter) -> void:
 		return
 	
 	player_character = instance
-	hud_controller.show_next_bullet()
 	
 func register_enemy_ai(instance: EnemyAI) -> void:
 	
