@@ -172,9 +172,7 @@ func _on_quit_pressed() -> void:
 	GameManager.load_menu()
 
 func _on_wake_up_button_down() -> void:
-	GameManager._cleanup_game()
-	GameManager._load_game()
-	#unpause?
+	GameManager.load_game()
 
 func load_gameover_menu() -> void:
 	game_over_panel.visible = true;

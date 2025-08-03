@@ -36,10 +36,9 @@ func register_hud(instance: HUDController):
 	hud_controller = instance
 
 func player_character_killed() -> void:
-	load_game()
-	
-	toggle_game_paused()
+
 	hud_controller.load_gameover_menu()
+	toggle_game_paused()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	#_load_game()
@@ -59,9 +58,10 @@ func load_game() -> void:
 	player_character = null
 	enemy_ai = null
 	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
 	get_tree().change_scene_to_packed(game_scene)
+	if get_tree().paused:
+		toggle_game_paused()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	_in_game = true
 	
