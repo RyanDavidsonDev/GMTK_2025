@@ -26,13 +26,13 @@ books = [NodePath("../book"), NodePath("../book2"), NodePath("../book3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 3, 10.5)
 
 [node name="book" parent="Books_seq" instance=ExtResource("5_4gaix")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 2.3, 10.6)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.75, 2.25, 10.6)
 
 [node name="book3" parent="Books_seq" instance=ExtResource("6_1bnwu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.15, 2.35, 10.55)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.15, 2.25, 10.6)
 
 [node name="book2" parent="Books_seq" instance=ExtResource("8_loweg")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.95, 1.6, 10.55)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.95, 1.55, 10.65)
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -4.26127, 1.97336, 8.40325)
@@ -152,10 +152,10 @@ OutwardRotationDeg = -90.0
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -9.27991, 2.72664, -0.994015)
 
 [node name="book_k" parent="." instance=ExtResource("3_loweg")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10.0299, 1.32664, -0.344016)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10.0799, 1.27664, -0.394016)
 
 [node name="book_E" parent="." instance=ExtResource("4_eopk5")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -9.2299, 2.02664, -1.14402)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -9.2799, 1.97664, -1.19402)
 
 [node name="book_Y" parent="." instance=ExtResource("5_d1dhy")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10.2799, 2.02664, -0.0940161)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10.3299, 1.97664, -0.144016)

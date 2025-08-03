@@ -16,7 +16,7 @@ script = ExtResource("1_kk2p8")
 shape = SubResource("BoxShape3D_47267")
 
 [node name="Book1" parent="CollisionShape3D" instance=ExtResource("2_8bvqd")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/Book1/Cube_037" index="0"]
 
