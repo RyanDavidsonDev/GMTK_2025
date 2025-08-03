@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bceqeavnebykw"
-path.s3tc="res://.godot/imported/Jackett.png-6f2e08f07fcca9e2df2f1b721be426b9.s3tc.ctex"
+path.s3tc="res://.godot/imported/Jackett.png-793813022f79d123ae5e90984d032116.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Enemy/Jackett.png"
-dest_files=["res://.godot/imported/Jackett.png-6f2e08f07fcca9e2df2f1b721be426b9.s3tc.ctex"]
+source_file="res://assets/Enemy/Textures/Jackett.png"
+dest_files=["res://.godot/imported/Jackett.png-793813022f79d123ae5e90984d032116.s3tc.ctex"]
 
 [params]
 

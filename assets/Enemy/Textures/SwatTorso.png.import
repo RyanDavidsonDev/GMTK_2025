@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddxyekyhu6t32"
-path.s3tc="res://.godot/imported/SwatTorso.png-3691923569ebef6299dfe12ec6c55a34.s3tc.ctex"
+path.s3tc="res://.godot/imported/SwatTorso.png-45159608ac46dabc2427a95f73b14f32.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Enemy/SwatTorso.png"
-dest_files=["res://.godot/imported/SwatTorso.png-3691923569ebef6299dfe12ec6c55a34.s3tc.ctex"]
+source_file="res://assets/Enemy/Textures/SwatTorso.png"
+dest_files=["res://.godot/imported/SwatTorso.png-45159608ac46dabc2427a95f73b14f32.s3tc.ctex"]
 
 [params]
 

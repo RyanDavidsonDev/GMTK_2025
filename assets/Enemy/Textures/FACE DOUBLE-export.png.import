@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdkskmjt2kuk0"
-path.s3tc="res://.godot/imported/FACE DOUBLE.png-0765870da602c9e2c793dc913ce7d3ea.s3tc.ctex"
+uid="uid://b050v84dwyy27"
+path.s3tc="res://.godot/imported/FACE DOUBLE-export.png-2910de7b35f28e76cb820b076751a9a9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Enemy/FACE DOUBLE.png"
-dest_files=["res://.godot/imported/FACE DOUBLE.png-0765870da602c9e2c793dc913ce7d3ea.s3tc.ctex"]
+source_file="res://assets/Enemy/Textures/FACE DOUBLE-export.png"
+dest_files=["res://.godot/imported/FACE DOUBLE-export.png-2910de7b35f28e76cb820b076751a9a9.s3tc.ctex"]
 
 [params]
 
