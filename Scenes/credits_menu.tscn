@@ -97,7 +97,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][i]FIONA BOLEN
+text = "[center][i]Ryan Davidson
 "
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME"]
@@ -114,11 +114,11 @@ size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("3_b7tim")
 theme_override_fonts/italics_font = ExtResource("4_emf1i")
 theme_override_fonts/bold_italics_font = ExtResource("4_emf1i")
-theme_override_font_sizes/bold_italics_font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 27
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][b][i]super cool and awesome[/i][/b]"
+text = "[center][b][i]Producer, Programmer, Designer [/i][/b]"
 
 [node name="NAME3" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
@@ -137,7 +137,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][i]FIONA BOLEN
+text = "[center][i]Ethan Baedke
 "
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME3"]
@@ -158,7 +158,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][b][i]super cool and awesome[/i][/b]"
+text = "[center][b][i]Programmer[/i][/b]"
 
 [node name="NAME2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 120)
@@ -177,8 +177,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][i]FIONA BOLEN
-"
+text = "[center][i]Curtis Wheelock"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer/NAME2"]
 custom_minimum_size = Vector2(0, 10)
@@ -198,7 +197,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][b][i]super cool and awesome[/i][/b]"
+text = "[center][b][i]3D Designer[/i][/b]"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
@@ -221,7 +220,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][i]FIONA BOLEN
+text = "[center][i]Fiona Bolen
 "
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME"]
@@ -242,7 +241,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][b][i]super cool and awesome[/i][/b]"
+text = "[center][b][i]UI/UX, Art Direction, Vibes[/i][/b]"
 
 [node name="NAME3" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 120)
@@ -261,7 +260,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][i]FIONA BOLEN
+text = "[center][i]Caleb Koo
 "
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME3"]
@@ -282,14 +281,19 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][b][i]super cool and awesome[/i][/b]"
+text = "[center][b][i]Composer, Audio Designer[/i][/b]"
 
 [node name="NAME2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Someones Name4" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME2"]
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = -15
+
+[node name="Someones Name4" type="RichTextLabel" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME2/MarginContainer2"]
 material = SubResource("ShaderMaterial_jj3p2")
 layout_mode = 2
 size_flags_horizontal = 3
@@ -301,7 +305,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][i]FIONA BOLEN
+text = "[center][i]Ian & Bobby
 "
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer2/NAME2"]
@@ -322,7 +326,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][b][i]super cool and awesome[/i][/b]"
+text = "[center][b][i]Idea Guys tm[/i][/b]"
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
