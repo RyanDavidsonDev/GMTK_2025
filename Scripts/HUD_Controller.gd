@@ -8,8 +8,15 @@ class_name HUDController extends Node
 @onready var hud_layer: CanvasLayer = $HUD
 @onready var key_icon: TextureRect = $"HUD/Key Icon"
 
-@export var _pause_menu : Panel = null
+@onready var h_box_container: HBoxContainer = $HUD/HBoxContainer
 
+var bullet_icon_active_queue: Array[TextureRect] = []
+var ready_text_active_queue: Array[RichTextLabel] = []
+
+var bullet_icon_inactive_queue: Array[TextureRect] = []
+var ready_text_inactive_queue: Array[RichTextLabel] = []
+
+@export var _pause_menu : Panel = null
 signal sig_hide_continual_text()
 
 const DEFAULT_MESSAGE_DURATION = 2
@@ -23,7 +30,47 @@ func _ready():
 	key_icon.visible = false
 	GameManager.register_hud(self)
 	
+	for item :VBoxContainer in h_box_container.get_children():
+		var bullet_icon:TextureRect = item.find_child("BulletIcon")
+		bullet_icon_inactive_queue.push_back(bullet_icon)
+		bullet_icon.visible = false
+		
+		var ready_text:RichTextLabel = item.find_child("RichTextLabel")
+		ready_text_inactive_queue.push_back(ready_text)
+		ready_text.text = ""
+
+
+func show_next_bullet():	
+	print("count", GameManager.player_character.gun.bullet_count)
+
+	var bullet_icon:TextureRect = bullet_icon_inactive_queue.pop_front()
+	bullet_icon_active_queue.push_back(bullet_icon)
 	
+	bullet_icon.visible = true
+
+func hide_bullet():
+	print("count", GameManager.player_character.gun.bullet_count)
+	var bullet_icon:TextureRect = bullet_icon_active_queue.pop_back()
+	bullet_icon_inactive_queue.push_front(bullet_icon)
+	
+	bullet_icon.visible = false
+
+
+
+func show_next_ready_text():
+	print("count", GameManager.player_character.gun.bullet_count)
+	var ready_text:RichTextLabel = ready_text_inactive_queue.pop_front()
+	ready_text_active_queue.push_back(ready_text)
+	
+	ready_text.text = "loaded";
+
+func hide_ready_text():
+	print("count", GameManager.player_character.gun.bullet_count)
+	var ready_text:RichTextLabel = ready_text_active_queue.pop_back()
+	ready_text_inactive_queue.push_front(ready_text)
+	
+	ready_text.text = "";
+
 
 func clear_pending_hides():
 	if(sig_hide_continual_text != null):

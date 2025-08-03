@@ -263,69 +263,73 @@ script = ExtResource("8_06sim")
 metadata/_custom_type_script = "uid://ccamawjk2n20c"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
-visible = false
-offset_left = 932.0
-offset_top = 564.0
-offset_right = 1137.0
-offset_bottom = 628.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HBoxContainer"]
-layout_mode = 2
-
-[node name="Bullet Icon" type="TextureRect" parent="HUD/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("9_b3xdp")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(50, 25)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("5_c4rab")
-text = "Ready"
-horizontal_alignment = 1
-vertical_alignment = 1
+layout_direction = 2
+offset_left = 905.0
+offset_top = 553.0
+offset_right = 1138.0
+offset_bottom = 632.0
+alignment = 2
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HUD/HBoxContainer"]
 layout_mode = 2
 
-[node name="Bullet Icon" type="TextureRect" parent="HUD/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(50, 50)
+[node name="BulletIcon" type="TextureRect" parent="HUD/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 texture = ExtResource("9_b3xdp")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HUD/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(50, 25)
+custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("5_c4rab")
-text = "Ready"
+text = "Loaded"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HBoxContainer"]
+layout_mode = 2
+
+[node name="BulletIcon" type="TextureRect" parent="HUD/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(75, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("9_b3xdp")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(75, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("5_c4rab")
+text = "Loaded"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HUD/HBoxContainer"]
 layout_mode = 2
 
-[node name="Bullet Icon" type="TextureRect" parent="HUD/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(50, 50)
+[node name="BulletIcon" type="TextureRect" parent="HUD/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(75, 50)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 texture = ExtResource("9_b3xdp")
 expand_mode = 3
 stretch_mode = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HUD/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(50, 25)
+custom_minimum_size = Vector2(75, 25)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("5_c4rab")
-text = "Ready"
+text = "Loaded"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -437,6 +441,6 @@ script = ExtResource("9_qili6")
 
 [connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2/Quit" to="." method="_on_quit_pressed"]
-[connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer/quit" to="." method="_on_quit_button_down"]
 [connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer/quit" to="." method="_on_quit_button_down"]
 [connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer2/WakeUp" to="." method="_on_wake_up_button_down"]

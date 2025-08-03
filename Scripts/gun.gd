@@ -22,8 +22,10 @@ func fire():
 	print("\"bang\"")
 	GameManager.hud_controller.show_text_timer("\"bang\"")
 	
+	GameManager.hud_controller.hide_bullet()
+	GameManager.hud_controller.hide_ready_text()
+	
 	is_loaded = false
-	bullet_count -=1 
 
 func interrupt_reload():
 	is_reloading = false
@@ -50,5 +52,6 @@ func reload():
 func finish_reload()->void:
 	is_reloading = false
 	GameManager.hud_controller.show_text_timer("It's ready to fire")
+	GameManager.hud_controller.show_next_ready_text()
 	is_loaded = true
 	bullet_count-=1
