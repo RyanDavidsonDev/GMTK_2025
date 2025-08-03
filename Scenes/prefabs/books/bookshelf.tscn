@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://5i12atpu8aon"]
 
-[ext_resource type="PackedScene" uid="uid://bs4fsoi54dwx0" path="res://assets/Modeling/BookShelves.fbx" id="1_aq73i"]
+[ext_resource type="PackedScene" uid="uid://bs4fsoi54dwx0" path="res://assets/UI/Modeling/BookShelves.fbx" id="1_aq73i"]
 
 [node name="BookShelves" instance=ExtResource("1_aq73i")]
 

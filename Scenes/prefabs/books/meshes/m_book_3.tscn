@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://chpy1tcihxie6"]
 
-[ext_resource type="Texture2D" uid="uid://m3b1w61qgdxj" path="res://assets/Modeling/BookShelves_0.png" id="1_547xr"]
-[ext_resource type="Texture2D" uid="uid://dgt3cfydgxm5t" path="res://assets/Modeling/BookShelves_1.png" id="2_887ra"]
+[ext_resource type="Texture2D" uid="uid://m3b1w61qgdxj" path="res://assets/UI/Modeling/BookShelves_0.png" id="1_547xr"]
+[ext_resource type="Texture2D" uid="uid://dgt3cfydgxm5t" path="res://assets/UI/Modeling/BookShelves_1.png" id="2_887ra"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md7gw"]
 resource_name = "book.020"
