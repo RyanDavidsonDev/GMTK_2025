@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://dkrk44mu4e7x"]
 
-[ext_resource type="Texture2D" uid="uid://cmvasora8higg" path="res://assets/Modeling/BookShelves_14.png" id="1_epam8"]
-[ext_resource type="Texture2D" uid="uid://buql0h7phcvmj" path="res://assets/Modeling/BookShelves_15.png" id="2_db4q3"]
+[ext_resource type="Texture2D" uid="uid://cmvasora8higg" path="res://assets/UI/Modeling/BookShelves_14.png" id="1_epam8"]
+[ext_resource type="Texture2D" uid="uid://buql0h7phcvmj" path="res://assets/UI/Modeling/BookShelves_15.png" id="2_db4q3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxnjf"]
 resource_name = "bookGreg.002"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://du17i1kd8yvtj"]
+[gd_scene load_steps=29 format=3 uid="uid://du17i1kd8yvtj"]
 
 [ext_resource type="PackedScene" uid="uid://dk8577djp7t2l" path="res://Scenes/objects/living_room_door.tscn" id="1_eu0bu"]
 [ext_resource type="Material" uid="uid://wuqdk67ndu8r" path="res://materials/living_room_floor.tres" id="1_g3b8s"]
@@ -7,9 +7,49 @@
 [ext_resource type="PackedScene" uid="uid://dowsyqoillp2u" path="res://Scenes/objects/living_room_painting_1.tscn" id="3_wooax"]
 [ext_resource type="PackedScene" uid="uid://cv3ty2024xe8w" path="res://Scenes/objects/living_room_painting_2.tscn" id="4_0kivo"]
 [ext_resource type="PackedScene" uid="uid://tbe2sjxiv5ln" path="res://Scenes/objects/living_room_side_table.tscn" id="5_tvtl5"]
+[ext_resource type="Texture2D" uid="uid://dq4ihed6paylf" path="res://assets/Home Invasion(2).png" id="6_0kv6s"]
 [ext_resource type="PackedScene" uid="uid://dlndgfmb05rnk" path="res://Scenes/objects/living_room_tv_stand.tscn" id="6_wooax"]
 [ext_resource type="PackedScene" uid="uid://5s1fw88fmxl" path="res://Scenes/objects/living_room_tv.tscn" id="7_0kivo"]
 [ext_resource type="PackedScene" uid="uid://mqvu01asw6f6" path="res://Scenes/key.tscn" id="8_0kivo"]
+[ext_resource type="Texture2D" uid="uid://bcytkiodyvmvr" path="res://assets/Home Invasion(1).png" id="8_pb6d7"]
+[ext_resource type="Texture2D" uid="uid://bnwlui2v5kk5g" path="res://assets/Home Invasion(4).png" id="9_03n0l"]
+[ext_resource type="Texture2D" uid="uid://4ylypvio5b7x" path="res://assets/Home Invasion.png" id="14_47jkw"]
+[ext_resource type="Texture2D" uid="uid://d24bsa3o73pq1" path="res://assets/Sprite-0004.png" id="14_pb6d7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3aer"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_f3aer"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stv4e"]
+albedo_texture = ExtResource("6_0kv6s")
+
+[sub_resource type="QuadMesh" id="QuadMesh_liafm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sb16r"]
+albedo_texture = ExtResource("8_pb6d7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xj2pg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8kj8"]
+albedo_texture = ExtResource("14_47jkw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_udqcg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47jkw"]
+transparency = 1
+albedo_texture = ExtResource("14_pb6d7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb6d7"]
+albedo_texture = ExtResource("8_pb6d7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yyhn"]
+albedo_texture = ExtResource("14_47jkw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03n0l"]
+albedo_texture = ExtResource("6_0kv6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aob04"]
+albedo_texture = ExtResource("9_03n0l")
 
 [node name="AreaKeyPuzzle" type="Node3D"]
 
@@ -21,9 +61,9 @@ size = Vector3(18.0232, 0.5, 23.9769)
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.9884, 3.52222, 2.08144)
-material_override = ExtResource("2_q7ldk")
 use_collision = true
 size = Vector3(18.0232, 0.5, 23.9769)
+material = SubResource("StandardMaterial3D_f3aer")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, -0.25, 1.831, 1.96466)
@@ -191,11 +231,26 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.229
 [node name="LivingRoomPainting1" parent="." instance=ExtResource("3_wooax")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.30112, 2.45498, 3.93988)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomPainting1"]
+transform = Transform3D(0.0260657, 0, -0.987466, 0, 1, 0, 0.687583, 0, 0.0374341, 0, 0, 0)
+mesh = SubResource("QuadMesh_f3aer")
+surface_material_override/0 = SubResource("StandardMaterial3D_stv4e")
+
 [node name="LivingRoomPainting2" parent="." instance=ExtResource("4_0kivo")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.64309, 2.64195, 3.93902)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomPainting2"]
+transform = Transform3D(-0.053332, 0, 1.0211, 0, 1, 0, -1.68024, 0, -0.0324107, 0, 0, 0)
+mesh = SubResource("QuadMesh_liafm")
+surface_material_override/0 = SubResource("StandardMaterial3D_sb16r")
+
 [node name="LivingRoomPainting3" parent="." instance=ExtResource("4_0kivo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93591, 2.28457, 0.467806)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomPainting3"]
+transform = Transform3D(0.0024345, 0.0772411, 0.996004, -0.000188607, 0.997012, -0.0771629, -1.70616, 0, 0.00142972, 0, 0, 0)
+mesh = SubResource("QuadMesh_xj2pg")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8kj8")
 
 [node name="LivingRoomSideTable" parent="." instance=ExtResource("5_tvtl5")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -1.42816, 0.904611, 3.20735)
@@ -227,17 +282,46 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.136
 [node name="LivingRoomSideTable2" parent="." instance=ExtResource("5_tvtl5")]
 transform = Transform3D(0.5, -7.74287e-08, -0.866025, 0, -1, 8.9407e-08, -0.866025, -4.47035e-08, -0.5, -3.4145, 1.23245, -3.72429)
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.286971, -0.0124111, -0.00974975, 0.00926357, 0.388759, 0.00234128, -0.0103381, 0.00383999, -0.268544, -10.5604, 0.678694, 10.6535)
+mesh = SubResource("QuadMesh_udqcg")
+skeleton = NodePath("../LivingRoomPainting7")
+surface_material_override/0 = SubResource("StandardMaterial3D_47jkw")
+
 [node name="LivingRoomPainting5" parent="." instance=ExtResource("4_0kivo")]
 transform = Transform3D(0, -0.258819, -0.965926, 0, 0.965926, -0.258819, 1, 0, 0, -9.31405, 2.39292, 7.37208)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LivingRoomPainting5"]
+transform = Transform3D(0.0079957, 0.00834998, -0.808711, -0.00175211, 0.941299, 0.00717037, -1.67169, -0.000946239, -0.00387632, 0.0166163, 0.00730801, -0.00203705)
+mesh = SubResource("QuadMesh_udqcg")
+skeleton = NodePath("../../LivingRoomPainting6")
+surface_material_override/0 = SubResource("StandardMaterial3D_pb6d7")
 
 [node name="LivingRoomPainting6" parent="." instance=ExtResource("4_0kivo")]
 transform = Transform3D(0.258819, 0.482963, -0.836516, -1.49012e-08, 0.866025, 0.5, 0.965926, -0.12941, 0.224144, -6.93615, 1.67141, 7.07468)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomPainting6"]
+transform = Transform3D(0.0016278, 0.0774131, -0.806012, -0.0319081, 0.93798, 0.0664826, -1.6714, -0.0178308, -0.0020545, -0.0185137, 0.00247884, -0.00429344)
+mesh = SubResource("QuadMesh_udqcg")
+surface_material_override/0 = SubResource("StandardMaterial3D_5yyhn")
+
 [node name="LivingRoomPainting7" parent="." instance=ExtResource("3_wooax")]
 transform = Transform3D(0.258819, -0.25, -0.933013, 0, 0.965926, -0.258819, 0.965926, 0.0669873, 0.25, -4.91405, 2.16166, 6.53567)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomPainting7"]
+transform = Transform3D(-0.011968, 0.00542344, -0.264636, -0.0285012, 0.96067, 0.0016771, -0.697607, -0.0393415, 0.00447143, -0.0185146, 0.00247884, -0.00429296)
+mesh = SubResource("QuadMesh_udqcg")
+surface_material_override/0 = SubResource("StandardMaterial3D_03n0l")
+
 [node name="LivingRoomPainting8" parent="." instance=ExtResource("3_wooax")]
 transform = Transform3D(-4.37114e-08, -0.965926, -0.258819, 0, 0.258819, -0.965926, 1, -4.2222e-08, -1.13133e-08, -10.9866, 1.35831, 7.37355)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LivingRoomPainting8"]
+transform = Transform3D(0.000725483, -0.01072, -0.709615, -0.905934, 0.0147071, -0.00078309, -0.0184527, -0.722458, 0.0105131, -0.00798321, -0.0137205, 0.0130552)
+material_override = SubResource("StandardMaterial3D_aob04")
+mesh = SubResource("QuadMesh_udqcg")
+skeleton = NodePath("../../LivingRoomPainting6")
+surface_material_override/0 = SubResource("StandardMaterial3D_5yyhn")
 
 [node name="LivingRoomSideTable3" parent="." instance=ExtResource("5_tvtl5")]
 transform = Transform3D(-4.84967e-08, 0.258819, -0.965926, 1, -1.49012e-08, -4.2222e-08, 1.7859e-08, -0.965926, -0.258819, -13.9351, 0.898907, 9.51344)

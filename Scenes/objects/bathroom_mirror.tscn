@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://bmpg7bw0t1b35"]
 
-[ext_resource type="Texture2D" uid="uid://7aygp6pwyt2l" path="res://assets/Modeling/MapSwatches4Realz_11.png" id="1_ouf8b"]
+[ext_resource type="Texture2D" uid="uid://7aygp6pwyt2l" path="res://assets/UI/Modeling/MapSwatches4Realz_11.png" id="1_ouf8b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u45kc"]
 resource_name = "Tiling"

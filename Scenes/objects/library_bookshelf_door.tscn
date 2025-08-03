@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlwa8np6ox305" path="res://Scripts/bookshelf_door.gd" id="1_mu0r0"]
 [ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_e6l0i"]
-[ext_resource type="Texture2D" uid="uid://dloo3pvfadlvf" path="res://assets/Modeling/MapSwatches4Realz_9.png" id="3_0n8i7"]
+[ext_resource type="Texture2D" uid="uid://dloo3pvfadlvf" path="res://assets/UI/Modeling/MapSwatches4Realz_9.png" id="3_0n8i7"]
 [ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="4_hmbxe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7caxp"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://demqn0lui25if"]
 
-[ext_resource type="Texture2D" uid="uid://v2hbopw6atml" path="res://assets/Modeling/MapSwatches4Realz_18.png" id="1_m6owv"]
-[ext_resource type="Texture2D" uid="uid://dtykilpnu1e4t" path="res://assets/Modeling/MapSwatches4Realz_1.png" id="2_kikbv"]
+[ext_resource type="Texture2D" uid="uid://v2hbopw6atml" path="res://assets/UI/Modeling/MapSwatches4Realz_18.png" id="1_m6owv"]
+[ext_resource type="Texture2D" uid="uid://dtykilpnu1e4t" path="res://assets/UI/Modeling/MapSwatches4Realz_1.png" id="2_kikbv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7snab"]
 resource_name = "cloth"

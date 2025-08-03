@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=4 uid="uid://pfcfwwfeocue"]
 
 [ext_resource type="Script" uid="uid://cxqhi5wqp70r2" path="res://Scripts/door.gd" id="1_bnoge"]
-[ext_resource type="Texture2D" uid="uid://c26k6brfhbh1k" path="res://assets/Modeling/MapSwatches4Realz_0.png" id="1_gdt6y"]
-[ext_resource type="Texture2D" uid="uid://dtykilpnu1e4t" path="res://assets/Modeling/MapSwatches4Realz_1.png" id="2_6f1fu"]
-[ext_resource type="Script" uid="uid://e68h0nc7epf7" path="res://Scripts/InteractableCollider.gd" id="2_6wfgk"]
+[ext_resource type="Texture2D" uid="uid://c26k6brfhbh1k" path="res://assets/UI/Modeling/MapSwatches4Realz_0.png" id="1_gdt6y"]
+[ext_resource type="Texture2D" uid="uid://dtykilpnu1e4t" path="res://assets/UI/Modeling/MapSwatches4Realz_1.png" id="2_6f1fu"]
+[ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_6wfgk"]
 [ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="5_y5d4g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri6yp"]

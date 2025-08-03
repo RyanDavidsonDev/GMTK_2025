@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://dlndgfmb05rnk"]
 
-[ext_resource type="Texture2D" uid="uid://dtykilpnu1e4t" path="res://assets/Modeling/MapSwatches4Realz_1.png" id="1_ud2lo"]
+[ext_resource type="Texture2D" uid="uid://dtykilpnu1e4t" path="res://assets/UI/Modeling/MapSwatches4Realz_1.png" id="1_ud2lo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjrnv"]
 resource_name = "PolishedWood"

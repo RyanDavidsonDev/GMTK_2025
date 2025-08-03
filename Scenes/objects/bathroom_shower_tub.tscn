@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://cbb22qbhq8ngj"]
 
-[ext_resource type="Texture2D" uid="uid://ccsb5e5m7uxo" path="res://assets/Modeling/MapSwatches4Realz_10.png" id="1_81cxp"]
-[ext_resource type="Texture2D" uid="uid://7aygp6pwyt2l" path="res://assets/Modeling/MapSwatches4Realz_11.png" id="2_ihnat"]
+[ext_resource type="Texture2D" uid="uid://ccsb5e5m7uxo" path="res://assets/UI/Modeling/MapSwatches4Realz_10.png" id="1_81cxp"]
+[ext_resource type="Texture2D" uid="uid://7aygp6pwyt2l" path="res://assets/UI/Modeling/MapSwatches4Realz_11.png" id="2_ihnat"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lydax"]
 resource_name = "door"
