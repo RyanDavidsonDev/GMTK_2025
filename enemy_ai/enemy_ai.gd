@@ -54,6 +54,11 @@ func get_hit() ->void:
 	
 	if health == 0:
 		animation_player.play("StrangerAnimLibrary/Dies")
+		
+		await get_tree().create_timer(5).timeout
+		
+		
+		
 		return
 		#end game logic
 	
