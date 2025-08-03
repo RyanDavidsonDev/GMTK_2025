@@ -24,6 +24,12 @@ AudioManager="*res://audio/audio_manager.tscn"
 
 BlockDoorTurn=""
 
+[importer_defaults]
+
+animation_library={
+&"fbx/importer": 1
+}
+
 [input]
 
 move_forward={
