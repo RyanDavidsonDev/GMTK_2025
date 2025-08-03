@@ -23,6 +23,8 @@ var has_key: bool = false
 var was_looking_at_interactable: bool = false
 var was_looking_at_enemy: bool = false
 
+var num_times_tried_reload : int = 0
+
 func _ready() -> void:
 	
 	_camera_3d = $Camera3D
@@ -51,6 +53,7 @@ func _process(delta: float) -> void:
 		gun.reload()
 		
 	if _input_move_direction != Vector2.ZERO && gun.is_reloading:
+		
 		GameManager.hud_controller.show_text_timer("\"I'm not familiar enough with this gun to reload it and keep walking\"")
 		gun.interrupt_reload()
 		

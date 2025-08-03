@@ -28,6 +28,13 @@ func fire():
 	is_loaded = false
 
 func interrupt_reload():
+	if(is_reloading):
+		GameManager.player_character.num_times_tried_reload+=1
+		var times : int  = GameManager.player_character.num_times_tried_reload
+		if times > 4 && times <15:
+			print("hi")
+			GameManager.hud_controller.show_text_timer("\"I'm not familiar enough with this gun to reload it and keep walking \n I should put some distance between The Stranger and Myself \"", 4)
+			
 	is_reloading = false
 	reload_timer.stop()
 	#send out any signals we need to
