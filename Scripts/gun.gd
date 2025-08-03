@@ -4,7 +4,7 @@ class_name Gun extends Node3D
 
 @onready var reload_timer: Timer = $reload_timer
 
-var bullet_count: int = 0
+var bullet_count: int = 1
 
 var is_loaded: bool = false
 var is_reloading: bool = false
@@ -22,10 +22,19 @@ func fire():
 	print("\"bang\"")
 	GameManager.hud_controller.show_text_timer("\"bang\"")
 	
+	GameManager.hud_controller.hide_bullet()
+	GameManager.hud_controller.hide_ready_text()
+	
 	is_loaded = false
-	bullet_count -=1 
 
 func interrupt_reload():
+	if(is_reloading):
+		GameManager.player_character.num_times_tried_reload+=1
+		var times : int  = GameManager.player_character.num_times_tried_reload
+		if times > 4 && times <15:
+			print("hi")
+			GameManager.hud_controller.show_text_timer("\"I'm not familiar enough with this gun to reload it and keep walking \n I should put some distance between The Stranger and Myself \"", 4)
+			
 	is_reloading = false
 	reload_timer.stop()
 	#send out any signals we need to
@@ -50,5 +59,6 @@ func reload():
 func finish_reload()->void:
 	is_reloading = false
 	GameManager.hud_controller.show_text_timer("It's ready to fire")
+	GameManager.hud_controller.show_next_ready_text()
 	is_loaded = true
 	bullet_count-=1

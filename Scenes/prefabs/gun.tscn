@@ -4,7 +4,7 @@
 
 [node name="gun" type="Node3D"]
 script = ExtResource("1_6rrud")
-reload_time = 8.0
+reload_time = 6.0
 metadata/_custom_type_script = "uid://bgpigyjeebkfy"
 
 [node name="reload_timer" type="Timer" parent="."]

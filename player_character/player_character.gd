@@ -21,6 +21,9 @@ var _camera_3d : Camera3D = null
 var has_key: bool = false
 
 var was_looking_at_interactable: bool = false
+var was_looking_at_enemy: bool = false
+
+var num_times_tried_reload : int = 0
 
 func _ready() -> void:
 	
@@ -50,6 +53,7 @@ func _process(delta: float) -> void:
 		gun.reload()
 		
 	if _input_move_direction != Vector2.ZERO && gun.is_reloading:
+		
 		GameManager.hud_controller.show_text_timer("\"I'm not familiar enough with this gun to reload it and keep walking\"")
 		gun.interrupt_reload()
 		
@@ -97,13 +101,14 @@ func _physics_process(delta: float) -> void:
 		if collider is EnemyAI:
 			GameManager.hud_controller.target_crosshair()
 			if(GameManager.player_character.gun.is_loaded):
-				if !was_looking_at_interactable:
+				if !was_looking_at_enemy:
 					#gameman.hudcont.switchcrosshair(fire)
 					GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to fire")
 			else :
-				if !was_looking_at_interactable:
+				if !was_looking_at_enemy:
 					GameManager.hud_controller.show_text_timer("Press 'R' to reload")
 			EnemyIsInSight = true
+			was_looking_at_enemy = true
 		else: if (position.distance_to(origin) < INTERACTION_DISTANCE):
 			if !was_looking_at_interactable:
 				GameManager.hud_controller.interact_crosshair()
@@ -113,9 +118,10 @@ func _physics_process(delta: float) -> void:
 				GameManager.hud_controller.interact_crosshair()
 			#gameman.hudcont.switchcrosshair(fire) also maybe
 				collider.interact(self)
-		was_looking_at_interactable = true
-	else: if was_looking_at_interactable:
+			was_looking_at_interactable = true
+	else: if was_looking_at_interactable or was_looking_at_enemy:
 		was_looking_at_interactable = false
+		was_looking_at_enemy = false
 		#might still wipe unrelated - consider splitting into separate signals or wipe correspective signals
 		GameManager.hud_controller.sig_hide_continual_text.emit()
 		GameManager.hud_controller.normal_crosshair()

@@ -3,6 +3,8 @@ extends Node
 @export var game_scene : PackedScene = null
 @export var menu_scene : PackedScene = null
 
+var late_ready: Signal
+
 var player_character : PlayerCharacter = null
 var enemy_ai : EnemyAI = null
 var hud_controller : HUDController = null
@@ -16,6 +18,7 @@ func register_player_character(instance: PlayerCharacter) -> void:
 		return
 	
 	player_character = instance
+	hud_controller.show_next_bullet()
 	
 func register_enemy_ai(instance: EnemyAI) -> void:
 	
@@ -36,6 +39,12 @@ func register_hud(instance: HUDController):
 func player_character_killed() -> void:
 	load_game()
 	
+	toggle_game_paused()
+	hud_controller.load_gameover_menu()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	#_load_game()
+	
 func load_menu() -> void:
 	
 	get_tree().change_scene_to_packed(menu_scene)
@@ -52,6 +61,11 @@ func load_game() -> void:
 	get_tree().change_scene_to_packed(game_scene)
 	
 	_in_game = true
+func _ready() -> void:
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#_load_game.call_deferred()
+	late_ready.emit()
 
 # Returns true if game becomes paused and false if it becomes unpaused
 func toggle_game_paused() -> bool:

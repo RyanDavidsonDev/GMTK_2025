@@ -33,7 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
 [node name="BookshelfDoor" parent="." node_paths=PackedStringArray("books") instance=ExtResource("4_tumfj")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, 6)
 books = [NodePath("../b1"), NodePath("../b2"), NodePath("../b3")]
-open_door_automatically = true
 NeedsKey = true
 
 [node name="b1" parent="." instance=ExtResource("5_xam7q")]
@@ -49,6 +48,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 1.
 index = 3
 
 [node name="RigidBody3D" parent="." instance=ExtResource("6_xam7q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05429, 0, 2.03503)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05429, 1, 2.03503)
+
+[node name="RigidBody3D2" parent="." instance=ExtResource("6_xam7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10858, 1, 4.07006)
+
+[node name="RigidBody3D3" parent="." instance=ExtResource("6_xam7q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10858, 1, 5.57006)
 
 [connection signal="pressed" from="Button" to="Door" method="_on_button_pressed"]

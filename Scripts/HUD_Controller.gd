@@ -4,9 +4,19 @@ class_name HUDController extends Node
 @onready var crosshair: TextureRect = $HUD/Control/crosshair
 @onready var message_text: RichTextLabel = $"HUD/Message Text"
 @onready var hide_text_timer: Timer = $Timer
+@onready var game_over_panel: Panel = $"CanvasLayer/Game Over"
+@onready var hud_layer: CanvasLayer = $HUD
+@onready var key_icon: TextureRect = $"HUD/Key Icon"
+
+@onready var h_box_container: HBoxContainer = $HUD/HBoxContainer
+
+var bullet_icon_active_queue: Array[TextureRect] = []
+var ready_text_active_queue: Array[RichTextLabel] = []
+
+var bullet_icon_inactive_queue: Array[TextureRect] = []
+var ready_text_inactive_queue: Array[RichTextLabel] = []
 
 @export var _pause_menu : Panel = null
-
 signal sig_hide_continual_text()
 
 const DEFAULT_MESSAGE_DURATION = 2
@@ -17,9 +27,50 @@ var interact_image = load("res://assets/UI/crosshair_hand.png")
 	
 func _ready():
 	message_text.visible = false
+	key_icon.visible = false
 	GameManager.register_hud(self)
 	
+	for item :VBoxContainer in h_box_container.get_children():
+		var bullet_icon:TextureRect = item.find_child("BulletIcon")
+		bullet_icon_inactive_queue.push_back(bullet_icon)
+		bullet_icon.visible = false
+		
+		var ready_text:RichTextLabel = item.find_child("RichTextLabel")
+		ready_text_inactive_queue.push_back(ready_text)
+		ready_text.text = ""
+
+
+func show_next_bullet():	
+	print("count", GameManager.player_character.gun.bullet_count)
+
+	var bullet_icon:TextureRect = bullet_icon_inactive_queue.pop_front()
+	bullet_icon_active_queue.push_back(bullet_icon)
 	
+	bullet_icon.visible = true
+
+func hide_bullet():
+	print("count", GameManager.player_character.gun.bullet_count)
+	var bullet_icon:TextureRect = bullet_icon_active_queue.pop_back()
+	bullet_icon_inactive_queue.push_front(bullet_icon)
+	
+	bullet_icon.visible = false
+
+
+
+func show_next_ready_text():
+	print("count", GameManager.player_character.gun.bullet_count)
+	var ready_text:RichTextLabel = ready_text_inactive_queue.pop_front()
+	ready_text_active_queue.push_back(ready_text)
+	
+	ready_text.text = "loaded";
+
+func hide_ready_text():
+	print("count", GameManager.player_character.gun.bullet_count)
+	var ready_text:RichTextLabel = ready_text_active_queue.pop_back()
+	ready_text_inactive_queue.push_front(ready_text)
+	
+	ready_text.text = "";
+
 
 func clear_pending_hides():
 	if(sig_hide_continual_text != null):
@@ -70,6 +121,14 @@ func toggle_pause_menu() -> bool:
 func hide_reload_bar():
 	reload_bar.visible = false
 	
+func show_key():
+	print("Key should show up now")
+	key_icon.visible = true
+	
+func hide_key():
+	print("Key Key Go Away!!!")
+	key_icon.visible = false
+	
 func target_crosshair():
 	crosshair.texture = target_image
 
@@ -103,7 +162,15 @@ func _on_resume_pressed() -> void:
 	GameManager.toggle_game_paused()
 	_pause_menu.visible = false
 
-
 func _on_quit_pressed() -> void:
-	
 	GameManager.load_menu()
+
+func _on_wake_up_button_down() -> void:
+	GameManager._cleanup_game()
+	GameManager._load_game()
+	#unpause?
+
+func load_gameover_menu() -> void:
+	game_over_panel.visible = true;
+	hud_layer.visible = false;
+	

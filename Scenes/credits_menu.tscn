@@ -348,16 +348,15 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -132.0
+offset_left = -361.0
 offset_top = -98.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("5_gaibv")
-alignment = 1
+alignment = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_right = 55
 
 [node name="Exit" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2"]
 layout_mode = 2
