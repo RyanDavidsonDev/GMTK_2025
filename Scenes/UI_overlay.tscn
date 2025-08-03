@@ -35,7 +35,7 @@ shader_parameter/noise_scale = 7.0
 shader_parameter/noise_speed = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06sim"]
-bg_color = Color(0.109804, 0.109804, 0.109804, 0.686275)
+bg_color = Color(0.0605303, 0.0605303, 0.0605303, 0.733333)
 border_width_left = 75
 border_width_right = 75
 border_color = Color(0.109804, 0.109804, 0.109804, 0)
@@ -224,9 +224,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -260.0
-offset_top = -325.5
+offset_top = -461.0
 offset_right = 260.0
-offset_bottom = 325.5
+offset_bottom = 432.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_06sim")
@@ -236,6 +236,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 174.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -271,7 +272,7 @@ theme_override_fonts/italics_font = ExtResource("5_c4rab")
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
-text = "[center][i]00:00 elapsed"
+text = "[center][i]"
 
 [node name="Button Stack" type="VBoxContainer" parent="HUD/Pause Menu/VBoxContainer"]
 layout_mode = 2
@@ -406,13 +407,14 @@ flip_h = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Game Over" type="Panel" parent="CanvasLayer"]
-visible = false
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -338.0
+offset_top = -164.0
 offset_right = 341.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -424,9 +426,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -308.0
-offset_top = 41.0
-offset_right = 305.0
+offset_left = -307.5
+offset_top = 308.0
+offset_right = 305.5
 offset_bottom = 679.0
 grow_horizontal = 2
 theme_override_fonts/normal_font = ExtResource("11_evxos")
@@ -452,7 +454,7 @@ theme_override_fonts/italics_font = ExtResource("5_c4rab")
 theme_override_font_sizes/italics_font_size = 45
 theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
-text = "[center][i]00:00[/i]
+text = "[center][i]...[/i]
 "
 
 [node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/Game Over"]
@@ -462,10 +464,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -266.5
-offset_top = 84.0
-offset_right = 276.5
-offset_bottom = 284.0
+offset_left = -274.5
+offset_top = 70.0
+offset_right = 285.5
+offset_bottom = 236.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_omg4o")
@@ -496,6 +498,6 @@ script = ExtResource("9_qili6")
 
 [connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2/Quit" to="." method="_on_quit_pressed"]
-[connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer/quit" to="." method="_on_quit_pressed"]
 [connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer/quit" to="." method="_on_quit_button_down"]
+[connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer/quit" to="." method="_on_quit_pressed"]
 [connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer2/WakeUp" to="." method="_on_wake_up_button_down"]
