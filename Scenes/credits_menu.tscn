@@ -14,6 +14,12 @@ shader_parameter/amplitude = 2.0
 shader_parameter/noise_scale = 50.0
 shader_parameter/noise_speed = 5.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj3p2"]
+bg_color = Color(0, 0, 0, 0.545098)
+border_width_top = 75
+border_color = Color(0, 0, 0, 0)
+border_blend = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jj3p2"]
 shader = ExtResource("2_xuvmf")
 shader_parameter/shaking = true
@@ -27,12 +33,6 @@ shader_parameter/shaking = false
 shader_parameter/amplitude = 2.0
 shader_parameter/noise_scale = 5.0
 shader_parameter/noise_speed = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj3p2"]
-bg_color = Color(0, 0, 0, 0.545098)
-border_width_top = 75
-border_color = Color(0, 0, 0, 0)
-border_blend = true
 
 [node name="MainMenu" type="Node"]
 
@@ -52,8 +52,8 @@ material = SubResource("ShaderMaterial_vr1f0")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 9.0
-offset_bottom = -466.0
+offset_top = 24.0
+offset_bottom = -451.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("3_b7tim")
@@ -63,12 +63,51 @@ theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
 text = "[center]meet the team[/center]"
 
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1160.0
+offset_top = 498.0
+offset_right = 12.0
+offset_bottom = 14.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jj3p2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -361.0
+offset_top = -98.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("5_gaibv")
+alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Go Back
+"
+
+[node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/Exit"]
+script = ExtResource("6_1mrn1")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 192.0
-offset_bottom = -60.0
+offset_top = 203.0
+offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -331,42 +370,3 @@ text = "[center][b][i]Idea Guys tm[/i][/b]"
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 100
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1160.0
-offset_top = 498.0
-offset_right = 12.0
-offset_bottom = 14.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jj3p2")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -361.0
-offset_top = -98.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("5_gaibv")
-alignment = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer"]
-layout_mode = 2
-
-[node name="Exit" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2"]
-layout_mode = 2
-text = "Go Back
-"
-
-[node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/Exit"]
-script = ExtResource("6_1mrn1")
-metadata/_custom_type_script = "uid://ccamawjk2n20c"
