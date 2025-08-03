@@ -20,6 +20,8 @@ func try_fire():
 
 func fire():
 	print("\"bang\"")
+	GameManager.player_character.play_animation("GunAnimLibrary/Firing Hand")
+	#GameManager.player_character.play_animation_2("GunAnimLibrary/Firing Gun")
 	GameManager.hud_controller.show_text_timer("\"bang\"")
 	
 	is_loaded = false
@@ -35,6 +37,9 @@ func reload():
 		GameManager.hud_controller.show_text_timer("\"I don't have any bullets\"")
 		return
 	if(!is_reloading):
+		GameManager.player_character.play_animation("GunAnimLibrary/Reloading Handres")
+		#GameManager.player_character.play_animation_2("GunAnimLibrary/Reloading Gun")
+		
 		if GameManager.player_character._input_move_direction != Vector2.ZERO:
 			GameManager.player_character._input_move_direction != Vector2.ZERO
 			GameManager.hud_controller.show_text_timer("\"I'm not familiar enough with this gun to reload it and keep walking\"")

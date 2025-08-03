@@ -6,11 +6,15 @@ const LOOK_DISTANCE: float = 50
 @export var _move_speed : float = 2.0
 @export var _look_sensitivity: float = 1.0
 @export_flags_3d_physics var raycast_collison_mask = 0
+@onready var gun = %gun
 
-@onready var gun: Gun = $gun
 @onready var camera: Camera3D = $Camera3D
 @onready var ui_overlay: Node = $UiOverlay
 #@onready var crosshair
+
+@onready var animation_player = $Camera3D/GunHandres/AnimationPlayer
+@onready var animation_player_2 = $Camera3D/GunHandres/AnimationPlayer2
+
 @onready var crosshair:TextureRect = ui_overlay.find_child("crosshair")
 
 var _input_move_direction : Vector2 = Vector2.ZERO
@@ -125,6 +129,10 @@ func _physics_process(delta: float) -> void:
 			print("bang")
 			gun.try_fire()
 			
-			
+func play_animation(animation: String):
+	animation_player.play(animation)
+	
+func play_animation_2(animation: String):
+	animation_player_2.play(animation)
 
 			
