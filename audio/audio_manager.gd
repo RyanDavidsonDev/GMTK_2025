@@ -1,5 +1,7 @@
 extends Node
 
+var _menu_audio_player : AudioStreamPlayer2D = null
+
 var _killer_surprise_audio_player : AudioStreamPlayer3D = null
 var _killer_default_audio_player : AudioStreamPlayer3D = null
 var _killer_chase_audio_player : AudioStreamPlayer3D = null
@@ -9,13 +11,33 @@ var _chase_time_remaining : float = 0.0
 
 func initialize_killer_audio(killer: EnemyAI) -> void:
 	
+	_menu_audio_player.stop()
+	
+	_chase_time_remaining = 0.0
+	_killer_default_audio_player.seek(0)
+	_killer_default_audio_player.play()
+	_killer_chase_audio_player.volume_linear = 0.0
+	_killer_chase_audio_player.seek(0)
+	_killer_chase_audio_player.play()
+
+func play_menu_music() -> void:
+	
+	_killer_surprise_audio_player.stop()
+	_killer_default_audio_player.stop()
+	_killer_chase_audio_player.stop()
+	
+	_menu_audio_player.seek(0)
+	_menu_audio_player.play()
+
+func _ready() -> void:
+	
+	_menu_audio_player = $MenuPlayer
+	
 	_killer_surprise_audio_player = $KillerSurprisePlayer
 	_killer_default_audio_player = $KillerDefaultPlayer
 	_killer_chase_audio_player = $KillerChasePlayer
 	
-	_killer_default_audio_player.play()
-	_killer_chase_audio_player.volume_linear = 0.0
-	_killer_chase_audio_player.play()
+	play_menu_music()
 
 func _physics_process(delta: float) -> void:
 	
@@ -33,6 +55,7 @@ func _physics_process(delta: float) -> void:
 		
 		# Currently outside of a chase, begin a chase
 		if _chase_time_remaining <= 0.0:
+			_killer_surprise_audio_player.seek(0)
 			_killer_surprise_audio_player.play()
 		
 		_chase_time_remaining = _required_out_of_sight_time_for_reset

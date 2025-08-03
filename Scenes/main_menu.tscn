@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3437dd1rbc42"]
+[gd_scene load_steps=12 format=3 uid="uid://c3437dd1rbc42"]
 
+[ext_resource type="Script" uid="uid://d1q1bfla1rq6d" path="res://core/main_menu.gd" id="1_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://csl1nb5dk65g6" path="res://assets/UI/temporary image.jpg" id="1_n45e2"]
 [ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders & Themes/shakeyLinesUIShader.gdshader" id="2_opfnp"]
 [ext_resource type="FontFile" uid="uid://cepcdefmsk5u2" path="res://assets/UI/Lumenharmaa.ttf" id="3_cp0ys"]
 [ext_resource type="FontFile" uid="uid://dbjf8cichqm70" path="res://assets/UI/Leander.ttf" id="4_yhxw7"]
 [ext_resource type="Theme" uid="uid://b1frqnmpmcxlw" path="res://Scripts/Shaders & Themes/Menu_Button_Theme.tres" id="5_trj04"]
 [ext_resource type="Script" uid="uid://ccamawjk2n20c" path="res://Scripts/buttonHover_animationComponent.gd" id="6_opfnp"]
+[ext_resource type="PackedScene" uid="uid://dsmnrejkh565x" path="res://Scenes/credits_menu.tscn" id="8_yhxw7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_16hvj"]
 shader = ExtResource("2_opfnp")
@@ -28,7 +30,9 @@ border_width_right = 50
 border_color = Color(0, 0, 0, 0)
 border_blend = true
 
-[node name="MainMenu" type="Node"]
+[node name="MainMenu" type="Node" node_paths=PackedStringArray("_credits")]
+script = ExtResource("1_cp0ys")
+_credits = NodePath("CreditsMenu/CanvasLayer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -114,3 +118,14 @@ text = "Credits"
 [node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/Credits"]
 script = ExtResource("6_opfnp")
 metadata/_custom_type_script = "uid://ccamawjk2n20c"
+
+[node name="CreditsMenu" parent="." instance=ExtResource("8_yhxw7")]
+
+[node name="CanvasLayer" parent="CreditsMenu" index="0"]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MarginContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MarginContainer2/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CreditsMenu/CanvasLayer/Panel/VBoxContainer/MarginContainer2/Exit" to="." method="_on_exit_pressed"]
+
+[editable path="CreditsMenu"]

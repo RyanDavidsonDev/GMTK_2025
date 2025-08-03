@@ -7,6 +7,8 @@ var player_character : PlayerCharacter = null
 var enemy_ai : EnemyAI = null
 var hud_controller : HUDController = null
 
+var _in_game : bool = false
+
 func register_player_character(instance: PlayerCharacter) -> void:
 	
 	if player_character != null:
@@ -32,46 +34,30 @@ func register_hud(instance: HUDController):
 	hud_controller = instance
 
 func player_character_killed() -> void:
-	
-	_cleanup_game()
-	_load_game()
+	load_game()
 	
 func load_menu() -> void:
 	
-	_cleanup_game()
 	get_tree().change_scene_to_packed(menu_scene)
 	
-func _cleanup_game() -> void:
+	_in_game = false
 	
-	print(get_tree().current_scene)
+func load_game() -> void:
 	
-	if get_tree().current_scene.scene_file_path != game_scene.resource_path:
-		printerr("Attempting to clean up game but game is not loaded.")
-		return
-		
-	get_tree().unload_current_scene()
 	player_character = null
 	enemy_ai = null
-	
-func _load_game() -> void:
-	
-	if get_tree().current_scene != null && get_tree().current_scene.scene_file_path == game_scene.resource_path:
-		printerr("Attempting to load game but game is already loaded.")
-		return
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	get_tree().change_scene_to_packed(game_scene)
 	
-func _ready() -> void:
-	
-	
-	
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	#_load_game.call_deferred()
+	_in_game = true
 
 # Returns true if game becomes paused and false if it becomes unpaused
 func toggle_game_paused() -> bool:
+	
+	if _in_game == false:
+		return false
 	
 	if get_tree().paused:
 		get_tree().paused = false

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvbhpeftpi7hf"]
+[gd_scene load_steps=6 format=3 uid="uid://dvbhpeftpi7hf"]
 
 [ext_resource type="Script" uid="uid://pe73kedughqm" path="res://audio/audio_manager.gd" id="1_mo2mb"]
 [ext_resource type="AudioStream" uid="uid://biagnoq08tyd4" path="res://audio/GMTK2025_Stinger_Killer Sees You.wav" id="2_vxw8f"]
 [ext_resource type="AudioStream" uid="uid://ba4edqct8padj" path="res://audio/GMTK2025_Music_Chase (Stage 1).wav" id="3_mhfhn"]
 [ext_resource type="AudioStream" uid="uid://bbhdcnvu2ly0v" path="res://audio/GMTK2025_Music_Chase (Stage 2).wav" id="4_i1k7u"]
+[ext_resource type="AudioStream" uid="uid://bmpcmgte1gior" path="res://audio/GMTK2025_Music_Main Theme.mp3" id="5_mhfhn"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_mo2mb")
@@ -21,4 +22,8 @@ panning_strength = 0.0
 [node name="KillerChasePlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_i1k7u")
 attenuation_model = 3
+panning_strength = 0.0
+
+[node name="MenuPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mhfhn")
 panning_strength = 0.0
