@@ -12,6 +12,7 @@ radius = 0.25
 collision_mask = 3
 script = ExtResource("1_qlps6")
 _move_speed = 3.0
+_look_sensitivity = 0.5
 raycast_collison_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
