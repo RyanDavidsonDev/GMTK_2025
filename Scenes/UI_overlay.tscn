@@ -330,7 +330,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Key Icon" type="TextureRect" parent="HUD"]
-visible = false
 material = SubResource("ShaderMaterial_eoino")
 custom_minimum_size = Vector2(75, 75)
 anchors_preset = 2
@@ -346,9 +345,9 @@ expand_mode = 3
 stretch_mode = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Game Over" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -418,7 +417,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 50
 
-[node name="Play" type="Button" parent="CanvasLayer/Game Over/VBoxContainer/MarginContainer"]
+[node name="quit" type="Button" parent="CanvasLayer/Game Over/VBoxContainer/MarginContainer"]
 layout_mode = 2
 text = "Quit"
 
@@ -438,3 +437,6 @@ script = ExtResource("9_qili6")
 
 [connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="HUD/Pause Menu/VBoxContainer/Button Stack/MarginContainer2/Quit" to="." method="_on_quit_pressed"]
+[connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer/quit" to="." method="_on_quit_button_down"]
+[connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="button_down" from="CanvasLayer/Game Over/VBoxContainer/MarginContainer2/WakeUp" to="." method="_on_wake_up_button_down"]

@@ -4,6 +4,9 @@ class_name HUDController extends Node
 @onready var crosshair: TextureRect = $HUD/Control/crosshair
 @onready var message_text: RichTextLabel = $"HUD/Message Text"
 @onready var hide_text_timer: Timer = $Timer
+@onready var game_over_panel: Panel = $"CanvasLayer/Game Over"
+@onready var hud_layer: CanvasLayer = $HUD
+@onready var key_icon: TextureRect = $"HUD/Key Icon"
 
 @export var _pause_menu : Panel = null
 
@@ -17,6 +20,7 @@ var interact_image = load("res://assets/UI/crosshair_hand.png")
 	
 func _ready():
 	message_text.visible = false
+	key_icon.visible = false
 	GameManager.register_hud(self)
 	
 	
@@ -70,6 +74,14 @@ func toggle_pause_menu() -> bool:
 func hide_reload_bar():
 	reload_bar.visible = false
 	
+func show_key():
+	print("Key should show up now")
+	key_icon.visible = true
+	
+func hide_key():
+	print("Key Key Go Away!!!")
+	key_icon.visible = false
+	
 func target_crosshair():
 	crosshair.texture = target_image
 
@@ -103,7 +115,15 @@ func _on_resume_pressed() -> void:
 	GameManager.toggle_game_paused()
 	_pause_menu.visible = false
 
-
 func _on_quit_pressed() -> void:
-	
 	GameManager.load_menu()
+
+func _on_wake_up_button_down() -> void:
+	GameManager._cleanup_game()
+	GameManager._load_game()
+	#unpause?
+
+func load_gameover_menu() -> void:
+	game_over_panel.visible = true;
+	hud_layer.visible = false;
+	
