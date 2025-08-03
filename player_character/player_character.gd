@@ -12,8 +12,8 @@ const LOOK_DISTANCE: float = 50
 @onready var ui_overlay: Node = $UiOverlay
 #@onready var crosshair
 
-@onready var animation_player = $Camera3D/GunHandres/AnimationPlayer
-@onready var animation_player_2 = $Camera3D/GunHandres/AnimationPlayer2
+@onready var animation_player :AnimationPlayer = $Camera3D/GunHandres/AnimationPlayer
+@onready var animation_player_2:AnimationPlayer = $Camera3D/GunHandres/AnimationPlayer2
 
 @onready var crosshair:TextureRect = ui_overlay.find_child("crosshair")
 
@@ -141,4 +141,8 @@ func play_animation(animation: String):
 func play_animation_2(animation: String):
 	animation_player_2.play(animation)
 
+func stop_animations():
+	animation_player.stop()
+	animation_player_2.stop()
+	
 			

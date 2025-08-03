@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx3db7hws5gpd"]
+[gd_scene load_steps=5 format=3 uid="uid://bx3db7hws5gpd"]
 
 [ext_resource type="Material" uid="uid://wuqdk67ndu8r" path="res://materials/living_room_floor.tres" id="1_frwoo"]
 [ext_resource type="Material" uid="uid://b4ldik55om2be" path="res://materials/living_room_wall.tres" id="2_bsf4o"]
 [ext_resource type="PackedScene" uid="uid://w1f50baq2qas" path="res://Scenes/prefabs/bullet.tscn" id="4_k30mb"]
-[ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="5_mvmql"]
 [ext_resource type="PackedScene" uid="uid://5s1fw88fmxl" path="res://Scenes/objects/living_room_tv.tscn" id="9_n4udn"]
 
 [node name="AreaKeyPuzzle" type="Node3D"]
@@ -166,6 +165,3 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.249
 material_override = ExtResource("2_bsf4o")
 use_collision = true
 size = Vector3(18.0232, 0.5, 12)
-
-[node name="PlayerCharacter" parent="." instance=ExtResource("5_mvmql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 2.5, 0)

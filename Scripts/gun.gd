@@ -43,6 +43,7 @@ func interrupt_reload():
 			
 	is_reloading = false
 	reload_timer.stop()
+	GameManager.player_character.stop_animations()
 	#send out any signals we need to
 
 func reload():
