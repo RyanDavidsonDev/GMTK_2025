@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceyfgeftapq78"]
+
+[ext_resource type="PackedScene" uid="uid://6hossul7kxad" path="res://assets/Enemy/stranger.tscn" id="1_uk40s"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_uk40s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uk40s"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="MainMenuGuyMove" type="Node3D"]
+
+[node name="Stranger" parent="." instance=ExtResource("1_uk40s")]
+transform = Transform3D(-0.988476, 0.0588271, 0.139482, 0.072367, 0.992931, 0.094075, -0.132962, 0.103085, -0.985746, 0, -0.05005, -1.70085)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.94937)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 9.342, 0, 0, 0, 1.528, 0.00439954, 1.64186, -2.22415)
+mesh = SubResource("QuadMesh_uk40s")
+surface_material_override/0 = SubResource("StandardMaterial3D_uk40s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(9.05047, 0, 0, 0, -1.84761e-07, 0.6907, 0, -4.22685, -3.01915e-08, -0.00684296, -0.343051, 1.91136)
+mesh = SubResource("QuadMesh_uk40s")
+surface_material_override/0 = SubResource("StandardMaterial3D_uk40s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21573, 0, 0)
+light_color = Color(0.815076, 0.295934, 0.234419, 1)

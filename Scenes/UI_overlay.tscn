@@ -266,6 +266,7 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="PM_Flavor_Text" type="RichTextLabel" parent="HUD/Pause Menu/VBoxContainer/MarginContainer2"]
+visible = false
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("5_c4rab")
 theme_override_fonts/italics_font = ExtResource("5_c4rab")
@@ -439,6 +440,7 @@ bbcode_enabled = true
 text = "[center]you died"
 
 [node name="time?" type="RichTextLabel" parent="CanvasLayer/Game Over/You Died"]
+visible = false
 material = SubResource("ShaderMaterial_x4gfa")
 layout_mode = 1
 anchors_preset = 5
