@@ -1,10 +1,7 @@
 class_name PlayerCharacter extends CharacterBody3D
 
-const INTERACTION_DISTANCE: float = 2
-const LOOK_DISTANCE: float = 500
-
 @export var _move_speed : float = 2.0
-@export var _look_sensitivity: float = 1.0
+@export var _look_sensitivity: float = 10.0
 
 @export var _interaction_shape_cast : ShapeCast3D = null
 @export var _interaction_shape_cast_pivot_point : Node3D = null
@@ -46,7 +43,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		_input_mouse_direction = event.relative * _look_sensitivity
+		_input_mouse_direction += event.relative * _look_sensitivity * 0.01
 
 func _process(delta: float) -> void:
 
