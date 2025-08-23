@@ -13,9 +13,6 @@
 
 [node name="AreaBookshelfPuzzle" type="Node3D"]
 
-[node name="BookshelfDoor3" parent="." instance=ExtResource("2_x15rk")]
-transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -19.7313, 1.97336, 5.40325)
-
 [node name="Books_seq" type="Node3D" parent="."]
 
 [node name="BookshelfDoor" parent="Books_seq" node_paths=PackedStringArray("books") instance=ExtResource("2_x15rk")]

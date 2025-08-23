@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://drdaxc8fl5tfp" path="res://core/interactable.tscn" id="3_x3wti"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02pas"]
-radius = 0.25
+radius = 0.125
+height = 1.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8g0ho"]
 radius = 0.3
@@ -17,16 +18,17 @@ _move_speed = 2.0
 _interactable = NodePath("Interactable")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.748772, 0)
 shape = SubResource("CapsuleShape3D_02pas")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 
 [node name="Stranger" parent="." instance=ExtResource("2_02pas")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0689312, 0.705026, 0.156)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0689312, 1.40301, 0.156)
 
 [node name="Interactable" parent="." instance=ExtResource("3_x3wti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697979, 0)
 selectable_distance = 1000.0
 
 [node name="CollisionShape3D" parent="Interactable" index="0"]
