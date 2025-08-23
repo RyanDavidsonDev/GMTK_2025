@@ -149,11 +149,11 @@ func _process(delta: float) -> void:
 		
 		
 		if paused:
-			AudioManager.start_menu_audio(AudioManager.pauseGameMusic, true)
+			AudioManager.play_pause_audio()
 			_pause_menu.visible = true
 		else:
 			_pause_menu.visible = false
-			AudioManager.start_killer_audio()
+			AudioManager.play_killer_audio()
 	
 	if GameManager.player_character.gun.is_reloading:
 		var gun: Gun = GameManager.player_character.gun

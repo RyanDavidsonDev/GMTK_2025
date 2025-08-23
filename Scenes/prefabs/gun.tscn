@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://6343ayqlyhx2"]
+[gd_scene load_steps=3 format=3 uid="uid://6343ayqlyhx2"]
 
 [ext_resource type="Script" uid="uid://bgpigyjeebkfy" path="res://Scripts/gun.gd" id="1_6rrud"]
+[ext_resource type="AudioStream" uid="uid://dftqmai7l4jn1" path="res://audio/gunshot-372470.mp3" id="2_qu3ev"]
 
-[node name="gun" type="Node3D"]
+[node name="gun" type="Node3D" node_paths=PackedStringArray("_gunshot_audio_player")]
 script = ExtResource("1_6rrud")
 reload_time = 6.0
+_gunshot_audio_player = NodePath("AudioStreamPlayer3D")
 metadata/_custom_type_script = "uid://bgpigyjeebkfy"
 
 [node name="reload_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_qu3ev")
+attenuation_model = 3

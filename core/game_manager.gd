@@ -38,6 +38,7 @@ func register_hud(instance: HUDController):
 
 func player_character_killed() -> void:
 
+	AudioManager.play_lose_audio()
 	hud_controller.load_gameover_menu()
 	toggle_game_paused()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -68,7 +69,9 @@ func load_game() -> void:
 	_in_game = true
 	
 func enemy_killed() -> void:
+	AudioManager.cut_audio()
 	await get_tree().create_timer(5).timeout
+	AudioManager.play_win_audio()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_packed(win_scene)
 	
@@ -86,7 +89,7 @@ func toggle_game_paused() -> bool:
 	if get_tree().paused:
 		get_tree().paused = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		AudioManager.start_killer_audio()
+		AudioManager.play_killer_audio()
 
 		return false
 	else:

@@ -9,11 +9,16 @@ var bullet_count: int = 0
 @export var loaded_bullet_count:float = 0
 var is_reloading: bool = false
 
+@export var _gunshot_audio_player : AudioStreamPlayer3D = null
+
 func _ready() ->void:
 	reload_timer.timeout.connect(finish_reload)
 
 func fire():
 
+	_gunshot_audio_player.seek(0)
+	_gunshot_audio_player.play()
+	
 	GameManager.player_character.play_animation("GunAnimLibrary/Firing Hand")
 	#GameManager.player_character.play_animation_2("GunAnimLibrary/Firing Gun")
 	GameManager.hud_controller.show_text_timer("\"bang\"")
