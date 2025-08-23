@@ -61,6 +61,7 @@ size = Vector3(18.0232, 0.5, 23.9769)
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.9884, 3.52222, 2.08144)
+material_override = ExtResource("2_q7ldk")
 use_collision = true
 size = Vector3(18.0232, 0.5, 23.9769)
 material = SubResource("StandardMaterial3D_f3aer")

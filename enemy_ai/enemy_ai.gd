@@ -56,13 +56,8 @@ func get_hit() ->void:
 	
 	if health == 0:
 		animation_player.play("StrangerAnimLibrary/Dies")
-		
-		await get_tree().create_timer(5).timeout
-		
-		
-		
+		GameManager.enemy_killed()
 		return
-		#end game logic
 	
 	animation_player.play("StrangerAnimLibrary/Flop Animation")
 	var p_move_speed = _move_speed
@@ -90,6 +85,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 	if _killing_player:
+		return
+		
+	if health == 0:
 		return
 	
 	if GameManager.player_character == null:

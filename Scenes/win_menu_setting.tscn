@@ -1,6 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmim4hocbjsfi"]
+[gd_scene load_steps=17 format=3 uid="uid://bmim4hocbjsfi"]
 
-[ext_resource type="PackedScene" uid="uid://du17i1kd8yvtj" path="res://Scenes/rooms/area_key_puzzle.tscn" id="1_q2imx"]
+[ext_resource type="Material" uid="uid://b4ldik55om2be" path="res://materials/living_room_wall.tres" id="1_gxwmg"]
+[ext_resource type="PackedScene" uid="uid://buh1x40r503h" path="res://Scenes/objects/living_room_couch.tscn" id="3_7inrl"]
+[ext_resource type="PackedScene" uid="uid://dowsyqoillp2u" path="res://Scenes/objects/living_room_painting_1.tscn" id="4_hp4p3"]
+[ext_resource type="Texture2D" uid="uid://dq4ihed6paylf" path="res://assets/Home Invasion(2).png" id="5_a22th"]
+[ext_resource type="PackedScene" uid="uid://cv3ty2024xe8w" path="res://Scenes/objects/living_room_painting_2.tscn" id="6_av00s"]
+[ext_resource type="Texture2D" uid="uid://bcytkiodyvmvr" path="res://assets/Home Invasion(1).png" id="7_tl854"]
+[ext_resource type="PackedScene" uid="uid://tbe2sjxiv5ln" path="res://Scenes/objects/living_room_side_table.tscn" id="9_gstgc"]
+[ext_resource type="Material" uid="uid://wuqdk67ndu8r" path="res://materials/living_room_floor.tres" id="13_6dka8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_w5byd"]
 
@@ -8,6 +15,18 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uk40s"]
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_jhsmx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oie0a"]
+albedo_texture = ExtResource("5_a22th")
+
+[sub_resource type="QuadMesh" id="QuadMesh_m1pqr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8got7"]
+albedo_texture = ExtResource("7_tl854")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxwmg"]
 
 [node name="MainMenuGuyMove" type="Node3D"]
 
@@ -19,8 +38,6 @@ fov = 71.6
 transform = Transform3D(1, 3.71074e-10, -9.31323e-10, -9.45874e-11, 1, 0, -9.31323e-10, -4.65661e-10, 1, -0.00306988, -0.00147796, -0.267848)
 visible = false
 mesh = SubResource("QuadMesh_w5byd")
-
-[node name="AreaKeyPuzzle" parent="." instance=ExtResource("1_q2imx")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 9.342, 0, 0, 0, 1.528, 0.00439954, 1.64186, -2.22415)
@@ -37,3 +54,85 @@ surface_material_override/0 = SubResource("StandardMaterial3D_uk40s")
 transform = Transform3D(-0.708525, 0, 0.705686, 0, 1, 0, -0.705686, 0, -0.708525, -2.21573, 0, 0)
 light_color = Color(0.815076, 0.295934, 0.234419, 1)
 shadow_enabled = true
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, -1.64203e-15, 0, -1.64203e-15, 1, 0, 0, 0, 1, 0.0592505, 0.0461419, -3.26815)
+operation = 2
+use_collision = true
+size = Vector3(3.66875, 0.736816, 2.53667)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 3.55271e-15, -4.34742, 1.831, -2.85481)
+material_override = ExtResource("1_gxwmg")
+use_collision = true
+size = Vector3(3.55025, 0.5, 8.30661)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D/CSGBox3D5"]
+transform = Transform3D(1, 0, -1.55294e-22, 0, 1, 0, -8.35187e-23, 0, 1, 0.0592519, 0.0461423, -2.44927)
+operation = 2
+use_collision = true
+size = Vector3(3.66875, 0.736816, 1.46717)
+
+[node name="LivingRoomCouch" parent="Node3D" instance=ExtResource("3_7inrl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.22911, 1.07656, 3.37159)
+
+[node name="LivingRoomPainting1" parent="Node3D" instance=ExtResource("4_hp4p3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.30112, 2.45498, 3.93988)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/LivingRoomPainting1"]
+transform = Transform3D(0.0260657, 0, -0.987466, 0, 1, 0, 0.687583, 0, 0.0374341, 0, 0, 0)
+mesh = SubResource("QuadMesh_jhsmx")
+surface_material_override/0 = SubResource("StandardMaterial3D_oie0a")
+
+[node name="LivingRoomPainting2" parent="Node3D" instance=ExtResource("6_av00s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.64309, 2.64195, 3.93902)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/LivingRoomPainting2"]
+transform = Transform3D(-0.053332, 0, 1.0211, 0, 1, 0, -1.68024, 0, -0.0324107, 0, 0, 0)
+mesh = SubResource("QuadMesh_m1pqr")
+surface_material_override/0 = SubResource("StandardMaterial3D_8got7")
+
+[node name="LivingRoomPainting3" parent="Node3D" instance=ExtResource("6_av00s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93591, 2.28457, 0.467806)
+
+[node name="LivingRoomSideTable" parent="Node3D" instance=ExtResource("9_gstgc")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -1.42816, 0.904611, 3.20735)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.9884, 0.25, 2.08144)
+material_override = ExtResource("13_6dka8")
+use_collision = true
+size = Vector3(18.0232, 0.5, 23.9769)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, -0.25, 1.831, 1.96466)
+material_override = ExtResource("1_gxwmg")
+use_collision = true
+size = Vector3(3.55025, 0.5, 18.4046)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D/CSGBox3D3"]
+transform = Transform3D(1, -1.64203e-15, 0, -1.64203e-15, 1, 0, 0, 0, 1, 0.0592505, 0.0461419, -3.26815)
+operation = 2
+use_collision = true
+size = Vector3(3.66875, 0.736816, 2.53667)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 3.55271e-15, -4.16015, 1.831, 4.22879)
+material_override = ExtResource("1_gxwmg")
+use_collision = true
+size = Vector3(3.55025, 0.5, 7.94842)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, -8.25, 1.831, 0.660569)
+material_override = ExtResource("1_gxwmg")
+use_collision = true
+size = Vector3(3.55025, 0.5, 7.30001)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.9884, 3.52222, 2.08144)
+material_override = ExtResource("1_gxwmg")
+use_collision = true
+size = Vector3(18.0232, 0.5, 23.9769)
+material = SubResource("StandardMaterial3D_gxwmg")

@@ -2,6 +2,7 @@ extends Node
 
 @export var game_scene : PackedScene = null
 @export var menu_scene : PackedScene = null
+@export var win_scene : PackedScene = null
 
 var late_ready: Signal
 
@@ -65,6 +66,11 @@ func load_game() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	_in_game = true
+	
+func enemy_killed() -> void:
+	await get_tree().create_timer(5).timeout
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene_to_packed(win_scene)
 	
 func _ready() -> void:
 	
