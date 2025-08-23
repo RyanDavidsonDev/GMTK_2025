@@ -52,7 +52,7 @@ func load_menu() -> void:
 		#toggle_game_paused()
 		get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	AudioManager.play_menu_music()
+	AudioManager.play_main_menu_audio()
 	
 	_in_game = false
 	
