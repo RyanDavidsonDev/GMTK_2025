@@ -1,8 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://bmrfi17x0node"]
 
 [ext_resource type="Script" uid="uid://dlwa8np6ox305" path="res://Scripts/bookshelf_door.gd" id="1_itdt4"]
-[ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_y4pih"]
 [ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="3_y4pih"]
+
+[sub_resource type="GDScript" id="GDScript_itdt4"]
+script/source = "extends RigidBody3D
+
+
+@export var parent:Node3D 
+
+func interact(player:PlayerCharacter):
+	
+	if(parent.has_method(\"interact\")):
+		parent.interact(player)
+	else:
+		printerr(\"ERROR: you're calling the interact function on an interact component that does not have interact in its parent\")
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pb3tf"]
 size = Vector3(1.8, 4, 0.1)
@@ -14,12 +27,11 @@ script = ExtResource("1_itdt4")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("parent")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 2.5, 0)
-collision_layer = 5
 gravity_scale = 0.0
 freeze = true
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("2_y4pih")
+script = SubResource("GDScript_itdt4")
 parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]

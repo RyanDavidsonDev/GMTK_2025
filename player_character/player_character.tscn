@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbxrja4pb2r53"]
+[gd_scene load_steps=7 format=3 uid="uid://dbxrja4pb2r53"]
 
 [ext_resource type="Script" uid="uid://l8u643plyhow" path="res://player_character/player_character.gd" id="1_qlps6"]
 [ext_resource type="PackedScene" uid="uid://c4ep4njqkiq13" path="res://Scenes/UI_overlay.tscn" id="2_1ty04"]
@@ -8,11 +8,16 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2i27r"]
 radius = 0.25
 
-[node name="PlayerCharacter" type="CharacterBody3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bvxdu"]
+height = 50.0
+radius = 0.125
+
+[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("_interaction_shape_cast", "_interaction_shape_cast_pivot_point")]
 collision_mask = 3
 script = ExtResource("1_qlps6")
 _move_speed = 3.0
-raycast_collison_mask = 4
+_interaction_shape_cast = NodePath("InteractableShapeCast/ShapeCast3D")
+_interaction_shape_cast_pivot_point = NodePath("InteractableShapeCast")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_2i27r")
@@ -141,5 +146,14 @@ gizmo_extents = 0.59
 [node name="UiOverlay" parent="." instance=ExtResource("2_1ty04")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[node name="InteractableShapeCast" type="Node3D" parent="."]
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="InteractableShapeCast"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -25)
+shape = SubResource("CylinderShape3D_bvxdu")
+target_position = Vector3(0, 0, 0)
+collision_mask = 5
+collide_with_areas = true
 
 [editable path="Camera3D/GunHandres"]

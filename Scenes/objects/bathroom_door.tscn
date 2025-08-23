@@ -1,10 +1,24 @@
-[gd_scene load_steps=11 format=4 uid="uid://b3muaqn5kji0"]
+[gd_scene load_steps=13 format=4 uid="uid://b3muaqn5kji0"]
 
 [ext_resource type="Script" uid="uid://cxqhi5wqp70r2" path="res://Scripts/door.gd" id="1_1tmfm"]
-[ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_ykg0y"]
 [ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="3_d5itp"]
+[ext_resource type="PackedScene" uid="uid://drdaxc8fl5tfp" path="res://core/interactable.tscn" id="5_t3cp4"]
 [ext_resource type="Texture2D" uid="uid://bcmyth8x8nv1t" path="res://assets/Modeling/MapSwatches_1_8.png" id="6_dguoc"]
 [ext_resource type="Texture2D" uid="uid://ckhtonrrjhv6k" path="res://assets/Modeling/MapSwatches_1_10.png" id="7_uv4bb"]
+
+[sub_resource type="GDScript" id="GDScript_itdt4"]
+script/source = "extends RigidBody3D
+
+
+@export var parent:Node3D 
+
+func interact(player:PlayerCharacter):
+	
+	if(parent.has_method(\"interact\")):
+		parent.interact(player)
+	else:
+		printerr(\"ERROR: you're calling the interact function on an interact component that does not have interact in its parent\")
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri6yp"]
 size = Vector3(1.48578, 2.78607, 0.155371)
@@ -81,17 +95,22 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c4t02")
 
-[node name="Door" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3cp4"]
+resource_local_to_scene = true
+size = Vector3(1.49298, 2.7877, 0.134766)
+
+[node name="Door" type="Node3D" node_paths=PackedStringArray("_interactable")]
 script = ExtResource("1_1tmfm")
 OutwardRotationDeg = -90.0
+_interactable = NodePath("Interactable")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("parent")]
-collision_layer = 6
+collision_layer = 2
 gravity_scale = 0.0
 freeze = true
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("2_ykg0y")
+script = SubResource("GDScript_itdt4")
 parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
@@ -111,3 +130,11 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7649, -1.3938, 0)
 script = ExtResource("3_d5itp")
 metadata/_custom_type_script = "uid://vkvc081bupt5"
+
+[node name="Interactable" parent="." instance=ExtResource("5_t3cp4")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0270691, 0.00460052, 0.00683594)
+shape = SubResource("BoxShape3D_t3cp4")
+
+[editable path="Interactable"]

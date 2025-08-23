@@ -8,10 +8,11 @@ class_name Door extends Node3D
 @export var NeedsKey: bool = false;
 
 @onready var rigid_body_3d: RigidBody3D = $RigidBody3D
-@onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
 #@onready var pivot_point: PivotPoint = $PivotPoint
 
 @onready var pivot_point: PivotPoint = $PivotPoint
+
+@export var _interactable : Interactable = null
 
 #@onready var rigid_body_3d: RigidBody3D = $PivotPoint/RigidBody3D
 #@onready var collision_shape_3d: CollisionShape3D = %CollisionShape3D
@@ -21,8 +22,12 @@ var doorIsOpening : bool = false;
 var doorIsAlreadyOpen : bool = false;
 
 func _ready():
+	
 	rigid_body_3d.body_entered.connect(receiveCollision)
-	return
+	
+	_interactable.hovered.connect(_on_interactable_hovered)
+	_interactable.unhovered.connect(_on_interactable_unhovered)
+	_interactable.selected.connect(_on_interactable_selected)
 	
 func _physics_process(_delta):
 	
@@ -50,14 +55,10 @@ func resetDoor():
 
 func open() -> void:
 	pivot_point.pivot_around_point(self, global_basis.y, OutwardRotationDeg, RotationTimeSec)
-	collision_shape_3d.disabled = true
+	if _interactable:
+		_interactable.set_enabled(false)
 	#doorIsOpening = true;
-	#root.translate(Vector3(1,1,1))
-
-func interact(player: PlayerCharacter) -> void :
-	if(_check_if_door_can_be_opened(player)):
-		open()
-	
+	#root.translate(Vector3(1,1,1))	
 
 #intended to be overridden with other doors
 func _check_if_door_can_be_opened(player: PlayerCharacter) ->bool:
@@ -82,3 +83,15 @@ func _on_button_pressed() -> void:
 	else:
 		resetDoor()
 		
+
+
+func _on_interactable_hovered() -> void:
+	GameManager.hud_controller.interact_crosshair()
+
+func _on_interactable_unhovered() -> void:
+	GameManager.hud_controller.normal_crosshair()
+
+func _on_interactable_selected() -> void:
+	
+	if(_check_if_door_can_be_opened(GameManager.player_character)):
+		open()

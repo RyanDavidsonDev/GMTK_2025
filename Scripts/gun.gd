@@ -12,24 +12,14 @@ var is_reloading: bool = false
 func _ready() ->void:
 	reload_timer.timeout.connect(finish_reload)
 
-func try_fire():
-	if loaded_bullet_count >0:
-		fire()
-	else :
-		GameManager.hud_controller.show_text_timer("\"my gun isn't loaded\"")
-
 func fire():
-	print("\"bang\"")
+
 	GameManager.player_character.play_animation("GunAnimLibrary/Firing Hand")
 	#GameManager.player_character.play_animation_2("GunAnimLibrary/Firing Gun")
 	GameManager.hud_controller.show_text_timer("\"bang\"")
 	
 	GameManager.hud_controller.hide_bullet()
 	GameManager.hud_controller.hide_ready_text()
-	
-	GameManager.enemy_ai.get_hit()
-	
-	GameManager.hud_controller.show_health_bar()
 	
 	loaded_bullet_count -=1
 

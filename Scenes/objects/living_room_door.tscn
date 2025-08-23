@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://dk8577djp7t2l"]
+[gd_scene load_steps=12 format=4 uid="uid://dk8577djp7t2l"]
 
 [ext_resource type="Script" uid="uid://cxqhi5wqp70r2" path="res://Scripts/door.gd" id="1_hn6it"]
-[ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_ercph"]
 [ext_resource type="Texture2D" uid="uid://bcmyth8x8nv1t" path="res://assets/Modeling/MapSwatches_1_8.png" id="3_57k7h"]
 [ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="3_jk1ur"]
 [ext_resource type="Texture2D" uid="uid://ckhtonrrjhv6k" path="res://assets/Modeling/MapSwatches_1_10.png" id="4_r1y2u"]
+[ext_resource type="PackedScene" uid="uid://drdaxc8fl5tfp" path="res://core/interactable.tscn" id="5_57k7h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri6yp"]
 size = Vector3(1.50586, 2.79395, 0.158789)
@@ -81,18 +81,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_t1bxq")
 
-[node name="Door" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1y2u"]
+resource_local_to_scene = true
+size = Vector3(1.49298, 2.7877, 0.134766)
+
+[node name="Door" type="Node3D" node_paths=PackedStringArray("_interactable")]
 script = ExtResource("1_hn6it")
 OutwardRotationDeg = -90.0
+_interactable = NodePath("Interactable")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("parent")]
-collision_layer = 6
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
 gravity_scale = 0.0
 freeze = true
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("2_ercph")
-parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 unique_name_in_owner = true
@@ -111,3 +114,11 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.770221, -1.39245, 0)
 script = ExtResource("3_jk1ur")
 metadata/_custom_type_script = "uid://vkvc081bupt5"
+
+[node name="Interactable" parent="." instance=ExtResource("5_57k7h")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0270691, 0.00460052, 0.00683594)
+shape = SubResource("BoxShape3D_r1y2u")
+
+[editable path="Interactable"]

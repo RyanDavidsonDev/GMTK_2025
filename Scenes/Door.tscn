@@ -1,26 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://c50tkqyp5fejp"]
+[gd_scene load_steps=7 format=3 uid="uid://c50tkqyp5fejp"]
 
 [ext_resource type="Script" uid="uid://cxqhi5wqp70r2" path="res://Scripts/door.gd" id="1_38ogf"]
 [ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="2_7mbvs"]
-[ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_j21vs"]
+[ext_resource type="PackedScene" uid="uid://drdaxc8fl5tfp" path="res://core/interactable.tscn" id="3_7mbvs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ri6yp"]
 size = Vector3(2.25, 5, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_38ogf"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1fk65"]
+resource_local_to_scene = true
+size = Vector3(2.24829, 4.99115, 0.134766)
+
 [node name="Door" type="Node3D"]
 script = ExtResource("1_38ogf")
 OutwardRotationDeg = -90.0
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("parent")]
-collision_layer = 6
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
 gravity_scale = 0.0
 freeze = true
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("2_j21vs")
-parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 unique_name_in_owner = true
@@ -34,3 +36,11 @@ mesh = SubResource("BoxMesh_38ogf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, -2.5, 0)
 script = ExtResource("2_7mbvs")
 metadata/_custom_type_script = "uid://vkvc081bupt5"
+
+[node name="Interactable" parent="." instance=ExtResource("3_7mbvs")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00231934, -0.0103455, 0.00683594)
+shape = SubResource("BoxShape3D_1fk65")
+
+[editable path="Interactable"]

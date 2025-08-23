@@ -5,6 +5,8 @@ class_name EnemyAI extends CharacterBody3D
 
 @onready var animation_player: AnimationPlayer = $Stranger/AnimationPlayer
 
+@export var _interactable : Interactable = null
+
 const flop_time = 2
 const rise_time = 4
 
@@ -80,6 +82,10 @@ func _ready() -> void:
 	_nav_agent_3d = $NavigationAgent3D
 	
 	GameManager.register_enemy_ai(self)
+	
+	_interactable.hovered.connect(_on_interactable_hovered)
+	_interactable.unhovered.connect(_on_interactable_unhovered)
+	_interactable.selected.connect(_on_interactable_selected)
 
 func _physics_process(delta: float) -> void:
 	
@@ -108,3 +114,16 @@ func _physics_process(delta: float) -> void:
 	var distance_to_target : float = (GameManager.player_character.global_position - global_position).length()
 	if distance_to_target <= _kill_distance:
 		_kill_player()
+
+func _on_interactable_hovered() -> void:
+	if GameManager.player_character.gun.loaded_bullet_count > 0:
+		GameManager.hud_controller.target_crosshair()
+
+func _on_interactable_unhovered() -> void:
+	GameManager.hud_controller.normal_crosshair()
+
+func _on_interactable_selected() -> void:
+	if GameManager.player_character.gun.loaded_bullet_count > 0:
+		GameManager.player_character.gun.fire()
+		get_hit()
+		GameManager.hud_controller.show_health_bar()

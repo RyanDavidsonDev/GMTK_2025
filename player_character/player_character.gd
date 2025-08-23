@@ -1,11 +1,14 @@
 class_name PlayerCharacter extends CharacterBody3D
 
 const INTERACTION_DISTANCE: float = 2
-const LOOK_DISTANCE: float = 50
+const LOOK_DISTANCE: float = 500
 
 @export var _move_speed : float = 2.0
 @export var _look_sensitivity: float = 1.0
-@export_flags_3d_physics var raycast_collison_mask = 0
+
+@export var _interaction_shape_cast : ShapeCast3D = null
+@export var _interaction_shape_cast_pivot_point : Node3D = null
+
 @onready var gun:Gun = %gun
 
 @onready var camera: Camera3D = $Camera3D
@@ -24,16 +27,22 @@ var _camera_3d : Camera3D = null
 
 var has_key: bool = false
 
-var was_looking_at_interactable: bool = false
-var was_looking_at_enemy: bool = false
-
 var num_times_tried_reload : int = 0
+
+var _hovered_interactable : Interactable = null
 
 func _ready() -> void:
 	
 	_camera_3d = $Camera3D
 	
 	GameManager.register_player_character(self)
+	
+	# Ensure interaction cast comes from the screen's center
+	var screen_center_world = camera.project_ray_origin(get_viewport().size / 2.0)
+	_interaction_shape_cast_pivot_point.position.y = screen_center_world.y - global_position.y
+	
+	# Ensure interaction cast ignores the player
+	_interaction_shape_cast.add_exception(self)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -55,6 +64,8 @@ func _process(delta: float) -> void:
 		_input_move_direction.x -= 1.0
 	if Input.is_action_pressed("reload"):
 		gun.reload()
+	if Input.is_action_just_pressed("Interact") && _hovered_interactable != null:
+		_hovered_interactable.select()
 		
 	if _input_move_direction != Vector2.ZERO && gun.is_reloading:
 		
@@ -70,71 +81,27 @@ func _physics_process(delta: float) -> void:
 	# Update camera rotation
 	_camera_3d.rotation_degrees.x -= _input_mouse_direction.y
 	_camera_3d.rotation_degrees.x = clampf(_camera_3d.rotation_degrees.x, -90.0, 90.0)
-	
 	_input_mouse_direction = Vector2.ZERO
 	
-	# Handle movement
+	# Handle hovering interactables
+	var interactable : Interactable = _get_closest_interactable()
+	if interactable != null:
+		if _hovered_interactable == null:
+			_hovered_interactable = interactable
+			interactable.hover()
+		elif _hovered_interactable != interactable:
+			_hovered_interactable.unhover()
+			_hovered_interactable = interactable
+			interactable.hover()
+	elif _hovered_interactable != null:
+		_hovered_interactable.unhover()
+		_hovered_interactable = null
 	
+	# Handle movement
 	velocity = (transform.basis.z * -_input_move_direction.y) + (transform.basis.x * _input_move_direction.x)
 	velocity *= _move_speed
-	
 	move_and_slide()
 	
-	
-	#raycast 
-	var space_state = get_world_3d().direct_space_state
-	#camera.get_window().wid
-	
-	#var mousepos = get_viewport().get_mouse_position()
-	var mousepos = crosshair.position
-	
-	var origin = camera.project_ray_origin(mousepos)
-	var end = origin + camera.project_ray_normal(mousepos) * LOOK_DISTANCE
-	var query = PhysicsRayQueryParameters3D.create(origin, end)
-	query.collide_with_areas = true
-	query.collision_mask = (raycast_collison_mask)
-	var result:Dictionary = space_state.intersect_ray(query)
-	
-	var EnemyIsInSight : bool = false
-	
-	#if we see something
-	if(!result.is_empty()):
-		var position: Vector3 = result.position
-		var collider: Node3D = result.collider
-		
-		if collider is EnemyAI:
-			GameManager.hud_controller.target_crosshair()
-			if GameManager.player_character.gun.loaded_bullet_count >0 :
-				if !was_looking_at_enemy:
-					#gameman.hudcont.switchcrosshair(fire)
-					GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to fire")
-			else :
-				if !was_looking_at_enemy:
-					GameManager.hud_controller.show_text_timer("Press 'R' to reload")
-			EnemyIsInSight = true
-			was_looking_at_enemy = true
-		else: if (position.distance_to(origin) < INTERACTION_DISTANCE):
-			if !was_looking_at_interactable:
-				GameManager.hud_controller.interact_crosshair()
-				GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to interact")
-			#hide text on look away?
-			if Input.is_action_just_pressed("Interact"):
-				GameManager.hud_controller.interact_crosshair()
-			#gameman.hudcont.switchcrosshair(fire) also maybe
-				collider.interact(self)
-			was_looking_at_interactable = true
-	else: if was_looking_at_interactable or was_looking_at_enemy:
-		was_looking_at_interactable = false
-		was_looking_at_enemy = false
-		#might still wipe unrelated - consider splitting into separate signals or wipe correspective signals
-		GameManager.hud_controller.sig_hide_continual_text.emit()
-		GameManager.hud_controller.normal_crosshair()
-	
-	if Input.is_action_just_pressed("Interact"):
-		if EnemyIsInSight:
-			print("bang")
-			gun.try_fire()
-			
 func play_animation(animation: String):
 	animation_player.play(animation)
 	
@@ -145,4 +112,24 @@ func stop_animations():
 	animation_player.stop()
 	animation_player_2.stop()
 	
+func _get_closest_interactable() -> Interactable:
+	
+	# Update interaction cast rotation
+	_interaction_shape_cast_pivot_point.rotation_degrees.x = _camera_3d.rotation_degrees.x
+	
+	if not _interaction_shape_cast.is_colliding():
+		return null
+	
+	var closest_dist : float = (_interaction_shape_cast.get_collision_point(0) - global_position).length_squared()
+	var closest : Node3D = _interaction_shape_cast.get_collider(0)
+	for i : int in range(1, _interaction_shape_cast.get_collision_count()):
+		var new_dist : float = (_interaction_shape_cast.get_collision_point(i) - global_position).length_squared()
+		if new_dist < closest_dist:
+			closest_dist = new_dist
+			closest = _interaction_shape_cast.get_collider(i)
+	
+	if closest is Interactable:
+		if closest_dist <= closest.selectable_distance:
+			return closest
 			
+	return null

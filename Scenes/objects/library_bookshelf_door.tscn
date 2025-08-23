@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://o80nxrv2tou6"]
+[gd_scene load_steps=8 format=4 uid="uid://o80nxrv2tou6"]
 
 [ext_resource type="Script" uid="uid://dlwa8np6ox305" path="res://Scripts/bookshelf_door.gd" id="1_mu0r0"]
-[ext_resource type="Script" uid="uid://do06k4d70o1do" path="res://Scripts/InteractableCollider.gd" id="2_e6l0i"]
 [ext_resource type="Texture2D" uid="uid://dloo3pvfadlvf" path="res://assets/UI/Modeling/MapSwatches4Realz_9.png" id="3_0n8i7"]
 [ext_resource type="Script" uid="uid://vkvc081bupt5" path="res://Scripts/pivot_point.gd" id="4_hmbxe"]
 
@@ -51,14 +50,11 @@ size = Vector3(1.50231, 2.96381, 0.149268)
 [node name="BookshelfDoor" type="Node3D"]
 script = ExtResource("1_mu0r0")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("parent")]
-collision_layer = 5
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
 gravity_scale = 0.0
 freeze = true
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("2_e6l0i")
-parent = NodePath("..")
 
 [node name="Node3D" type="Node3D" parent="RigidBody3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

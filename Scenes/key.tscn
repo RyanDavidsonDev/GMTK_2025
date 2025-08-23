@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://mqvu01asw6f6"]
+[gd_scene load_steps=8 format=4 uid="uid://mqvu01asw6f6"]
 
 [ext_resource type="Script" uid="uid://byhh655g1bfh7" path="res://Scripts/key.gd" id="1_0x1vt"]
-[ext_resource type="Texture2D" uid="uid://c26k6brfhbh1k" path="res://assets/Modeling/MapSwatches4Realz_0.png" id="2_udxw8"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0hgeg"]
-size = Vector3(0.5, 0.034, 0.5)
+[ext_resource type="PackedScene" uid="uid://drdaxc8fl5tfp" path="res://core/interactable.tscn" id="2_brn0f"]
+[ext_resource type="Texture2D" uid="uid://c26k6brfhbh1k" path="res://assets/UI/Modeling/MapSwatches4Realz_0.png" id="2_udxw8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msg1y"]
 resource_name = "brass"
@@ -48,27 +46,31 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_us5hr")
 
-[node name="Key" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_lc1k7"]
+resource_local_to_scene = true
+radius = 0.197989
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-collision_layer = 5
-gravity_scale = 0.0
+[node name="Key" type="Node3D" node_paths=PackedStringArray("_interactable")]
 script = ExtResource("1_0x1vt")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000671387, 0.00012207, 0.0442505)
-shape = SubResource("BoxShape3D_0hgeg")
-
-[node name="Node3D" type="Node3D" parent="RigidBody3D"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-
-[node name="Cube_005" type="MeshInstance3D" parent="RigidBody3D/Node3D"]
-transform = Transform3D(-4.58616e-08, 0.246331, -0.100391, -0.384715, 0, 7.9275e-09, 0, 0.100391, 0.246331, 0, 0, 0)
-mesh = SubResource("ArrayMesh_5owpv")
-skeleton = NodePath("")
+_interactable = NodePath("Interactable")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(1, 1, 0.356863, 1)
 light_energy = 0.1
 light_indirect_energy = 0.1
 omni_range = 1.0
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Cube_005" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.58616e-08, 0.246331, -0.100391, -0.384715, 0, 7.9275e-09, 0, 0.100391, 0.246331, 0, 0, 0)
+mesh = SubResource("ArrayMesh_5owpv")
+skeleton = NodePath("")
+
+[node name="Interactable" parent="." instance=ExtResource("2_brn0f")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+shape = SubResource("SphereShape3D_lc1k7")
+
+[editable path="Interactable"]

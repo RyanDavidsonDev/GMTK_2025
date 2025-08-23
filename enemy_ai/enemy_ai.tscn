@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://mt8vitibkaxh"]
+[gd_scene load_steps=6 format=3 uid="uid://mt8vitibkaxh"]
 
 [ext_resource type="Script" uid="uid://d4vt7h307ufk" path="res://enemy_ai/enemy_ai.gd" id="1_nm3mo"]
 [ext_resource type="PackedScene" uid="uid://6hossul7kxad" path="res://assets/Enemy/stranger.tscn" id="2_02pas"]
+[ext_resource type="PackedScene" uid="uid://drdaxc8fl5tfp" path="res://core/interactable.tscn" id="3_x3wti"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02pas"]
 radius = 0.25
 
-[node name="EnemyAi" type="CharacterBody3D"]
-collision_layer = 5
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8g0ho"]
+radius = 0.3
+height = 2.5
+
+[node name="EnemyAi" type="CharacterBody3D" node_paths=PackedStringArray("_interactable")]
 script = ExtResource("1_nm3mo")
 _move_speed = 2.0
+_interactable = NodePath("Interactable")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -19,4 +24,13 @@ shape = SubResource("CapsuleShape3D_02pas")
 avoidance_enabled = true
 
 [node name="Stranger" parent="." instance=ExtResource("2_02pas")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33434, 0.705026, 0.156)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0689312, 0.705026, 0.156)
+
+[node name="Interactable" parent="." instance=ExtResource("3_x3wti")]
+selectable_distance = 1000.0
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535541, -0.116021)
+shape = SubResource("CapsuleShape3D_8g0ho")
+
+[editable path="Interactable"]
