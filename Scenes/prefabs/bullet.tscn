@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://dc0hejuojqxl1" path="res://Scripts/bullet.gd" id="1_lbb0w"]
 [ext_resource type="Texture2D" uid="uid://dsvn5u5y5dce8" path="res://assets/Modeling/newBullet_1.png" id="2_fv4em"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fv4em"]
-size = Vector3(0.5, 0.5, 0.095)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fv4em"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_478jr"]
 resource_name = "Material.022"
@@ -48,21 +47,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1sfks")
 
-[node name="RigidBody3D" type="RigidBody3D"]
+[node name="Node3D2" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 5
 script = ExtResource("1_lbb0w")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.102783, 0.104126, 0.00990295)
-shape = SubResource("BoxShape3D_fv4em")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CapsuleShape3D_fv4em")
+debug_color = Color(0, 0.6, 0.701961, 0.72549)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="CollisionShape3D"]
-light_color = Color(0.67451, 0.623529, 0.235294, 1)
-
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-
-[node name="Cylinder_002" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(-0.00837206, -0.0983117, -0.142998, 1.18479e-08, 0.1021, -0.137937, -0.198598, 0.00414441, 0.00602819, 0, 0, 0)
+[node name="Cylinder_002" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(-0.00406747, -0.0331075, 0.046669, -0.00406747, -0.0331075, -0.046669, 0.0657489, -0.00409631, -2.03997e-09, 0.15, 0.2, 0)
 mesh = SubResource("ArrayMesh_8vvk8")
 skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="RigidBody3D/Cylinder_002"]
+transform = Transform3D(-0.933762, -0.933763, 15.0939, -14.9876, -14.9876, -1.85438, 10.7137, -10.7137, -3.55389e-07, 0.326817, 5.24565, 0.535687)
+light_color = Color(0.67451, 0.623529, 0.235294, 1)

@@ -49,4 +49,6 @@ size = Vector3(4, 0.750244, 1.48022)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.77386, 1.89797, -1.99304)
 
 [node name="RigidBody3D" parent="." instance=ExtResource("6_ilue0")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 2, -2)
+transform = Transform3D(1.19209e-07, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, 1.19209e-07, -2, 2, -2)
+
+[editable path="RigidBody3D"]

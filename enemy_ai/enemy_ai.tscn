@@ -1,31 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://mt8vitibkaxh"]
+[gd_scene load_steps=6 format=3 uid="uid://mt8vitibkaxh"]
 
 [ext_resource type="Script" uid="uid://d4vt7h307ufk" path="res://enemy_ai/enemy_ai.gd" id="1_nm3mo"]
 [ext_resource type="PackedScene" uid="uid://6hossul7kxad" path="res://assets/Enemy/stranger.tscn" id="2_02pas"]
 [ext_resource type="PackedScene" uid="uid://dsw1s127wrfsn" path="res://Scenes/win_menu.tscn" id="2_x3wti"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_02pas"]
-height = 2.5
+radius = 0.25
+height = 1.0
 
-[node name="EnemyAi" type="CharacterBody3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3wti"]
+radius = 0.6
+height = 3.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="nav_body" type="CharacterBody3D" parent="."]
 collision_layer = 5
 script = ExtResource("1_nm3mo")
-_move_speed = 2.0
+_move_speed = 0.0
 winscene_ps = ExtResource("2_x3wti")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+[node name="nav_col" type="CollisionShape3D" parent="nav_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, 0)
 shape = SubResource("CapsuleShape3D_02pas")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="nav_body"]
 avoidance_enabled = true
 
-[node name="Stranger" parent="." instance=ExtResource("2_02pas")]
+[node name="Stranger" parent="nav_body" instance=ExtResource("2_02pas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33434, 0.705026, 0.156)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="int_body" type="RigidBody3D" parent="."]
 collision_layer = 4
 
-[node name="hittable" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, 0)
-shape = SubResource("CapsuleShape3D_02pas")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="int_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+shape = SubResource("CapsuleShape3D_x3wti")

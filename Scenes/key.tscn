@@ -1,10 +1,9 @@
 [gd_scene load_steps=7 format=4 uid="uid://mqvu01asw6f6"]
 
 [ext_resource type="Script" uid="uid://byhh655g1bfh7" path="res://Scripts/key.gd" id="1_0x1vt"]
-[ext_resource type="Texture2D" uid="uid://c26k6brfhbh1k" path="res://assets/Modeling/MapSwatches4Realz_0.png" id="2_udxw8"]
+[ext_resource type="Texture2D" uid="uid://c26k6brfhbh1k" path="res://assets/UI/Modeling/MapSwatches4Realz_0.png" id="2_udxw8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0hgeg"]
-size = Vector3(0.5, 0.034, 0.5)
+[sub_resource type="SphereShape3D" id="SphereShape3D_udxw8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msg1y"]
 resource_name = "brass"
@@ -51,13 +50,14 @@ shadow_mesh = SubResource("ArrayMesh_us5hr")
 [node name="Key" type="Node3D"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-collision_layer = 5
+collision_layer = 4
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_0x1vt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000671387, 0.00012207, 0.0442505)
-shape = SubResource("BoxShape3D_0hgeg")
+shape = SubResource("SphereShape3D_udxw8")
 
 [node name="Node3D" type="Node3D" parent="RigidBody3D"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)

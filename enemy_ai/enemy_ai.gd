@@ -11,7 +11,8 @@ var winScene
 const flop_time = 2
 const rise_time = 4
 
-const max_health: float = 1
+const max_health: float = 3
+
 var health: float = max_health
 
 var _nav_agent_3d : NavigationAgent3D = null

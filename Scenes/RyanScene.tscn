@@ -25,7 +25,6 @@ offset_bottom = 43.0
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_sfcxm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.12893, 2.35196, 5.89916)
 _move_speed = 4.0
-_look_sensitivity = 0.5
 
 [node name="Key" parent="." instance=ExtResource("3_3fb54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)

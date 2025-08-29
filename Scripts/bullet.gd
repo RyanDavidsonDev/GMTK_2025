@@ -5,6 +5,9 @@ const bob_speed = 3
 const bob_height = .2
 var bob_timer = 0
 
+@onready var bullet_model: MeshInstance3D = $Cylinder_002
+
+
 @onready var start_y : float = global_position.y
 
 func interact(player:PlayerCharacter):
@@ -17,10 +20,10 @@ func interact(player:PlayerCharacter):
 
 
 func _physics_process(delta: float) -> void:
-	rotate(Vector3.UP, spin_speed*delta)
+	bullet_model.rotate(Vector3.UP, spin_speed*delta)
 	bob_timer += delta
 	
 	var d = (sin(bob_timer * bob_speed) +1)/2
-	global_position.y = start_y + (d*bob_height)
+	bullet_model.global_position.y = start_y + (d*bob_height)
 	
 	
