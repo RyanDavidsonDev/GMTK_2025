@@ -364,7 +364,7 @@ theme_override_font_sizes/bold_italics_font_size = 30
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
-text = "[center][b][i]Idea Guys tm[/i][/b]"
+text = "[center][b][i]Design Consultation, Special Thanks[/i][/b]"
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
