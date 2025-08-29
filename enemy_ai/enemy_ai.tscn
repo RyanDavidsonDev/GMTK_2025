@@ -14,8 +14,9 @@ height = 2.5
 
 [node name="EnemyAi" type="CharacterBody3D" node_paths=PackedStringArray("_interactable")]
 script = ExtResource("1_nm3mo")
-_move_speed = 1.5
+_move_speed = 2.0
 _interactable = NodePath("Interactable")
+step_phase_offset = 0.32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.748772, 0)

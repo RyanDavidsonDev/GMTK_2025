@@ -34,7 +34,7 @@ shader_parameter/amplitude = 2.0
 shader_parameter/noise_scale = 5.0
 shader_parameter/noise_speed = 2.0
 
-[node name="MainMenu" type="Node"]
+[node name="MainMenu2" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -95,8 +95,7 @@ layout_mode = 2
 
 [node name="Exit" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2"]
 layout_mode = 2
-text = "Go Back
-"
+text = "Go Back"
 
 [node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/Exit"]
 script = ExtResource("6_1mrn1")

@@ -10,6 +10,13 @@ class_name EnemyAI extends CharacterBody3D
 const flop_time = 2
 const rise_time = 4
 
+@export var cycle_duration: float = 2.035 
+@export var min_speed: float = 0.6
+@export var max_speed: float = 1.0
+@export var step_phase_offset: float = 0.0 #foot offset
+
+var step_phase: float = 0.0
+
 const max_health: float = 3
 var health: float = 3
 
@@ -83,34 +90,37 @@ func _ready() -> void:
 	_interactable.selected.connect(_on_interactable_selected)
 
 func _physics_process(delta: float) -> void:
-	
-	if _killing_player:
-		return
-		
-	if health == 0:
+	if _killing_player or health == 0 or GameManager.player_character == null:
 		return
 	
-	if GameManager.player_character == null:
-		return
-	
-	# Update the target position (target may have moved)
 	_nav_agent_3d.target_position = GameManager.player_character.global_position
 	
-	# Get the movement direction from the navigation path
-	var move_dir : Vector3 = _nav_agent_3d.get_next_path_position() - global_position
-	move_dir = move_dir.normalized()
-	velocity = move_dir * _move_speed
+	#direction prob
+	var move_dir: Vector3 = (_nav_agent_3d.get_next_path_position() - global_position)
+	if move_dir.length() > 0.01:
+		move_dir = move_dir.normalized()
+	else:
+		move_dir = Vector3.ZERO
 	
-	# Rotation
-	var angle : float = Vector3.FORWARD.angle_to(move_dir)
-	var progress : float = angle - rotation.y
-	rotate_y(progress * delta)
+	#TIME FOR FOOT MATH
+	step_phase += delta
+	if step_phase > cycle_duration:
+		step_phase -= cycle_duration
+	
+	var theta = ((step_phase + step_phase_offset) / cycle_duration) * PI * 2
+	var stagger_multiplier = min_speed + (max_speed - min_speed) * max(0.0, -sin(theta))
+
+	velocity = move_dir * _move_speed * stagger_multiplier
+	
+	#rotation i think
+	if move_dir != Vector3.ZERO:
+		var target_rotation = move_dir.angle_to(Vector3.FORWARD)
+		var rotation_diff = target_rotation - rotation.y
+		rotate_y(rotation_diff * delta)
 	
 	move_and_slide()
-
-	# Kill the target if within distance
-	var distance_to_target : float = (GameManager.player_character.global_position - global_position).length()
-	if distance_to_target <= _kill_distance:
+	
+	if (GameManager.player_character.global_position - global_position).length() <= _kill_distance:
 		_kill_player()
 
 func _on_interactable_hovered() -> void:

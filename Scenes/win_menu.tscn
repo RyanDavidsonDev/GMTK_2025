@@ -140,8 +140,7 @@ layout_mode = 2
 
 [node name="Quit" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
-text = "Quit
-"
+text = "Quit"
 
 [node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer/Quit"]
 script = ExtResource("8_0jw5e")
