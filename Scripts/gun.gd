@@ -19,7 +19,8 @@ func fire():
 	_gunshot_audio_player.seek(0)
 	_gunshot_audio_player.play()
 	
-	GameManager.player_character.play_animation("GunAnimLibrary/Firing Hand")
+	#add function here to do a quick rotation of the rig
+	#GameManager.player_character.play_animation("GunAnimLibrary/Firing Hand")
 	#GameManager.player_character.play_animation_2("GunAnimLibrary/Firing Gun")
 	GameManager.hud_controller.show_text_timer("\"bang\"")
 	
@@ -46,7 +47,7 @@ func reload():
 		GameManager.hud_controller.show_text_timer("\"I don't have any bullets\"")
 		return
 	if(!is_reloading):
-		GameManager.player_character.play_animation("GunAnimLibrary/Reloading Handres")
+		GameManager.player_character.play_animation("GunAnimLibrary/Reload Animation")
 		#GameManager.player_character.play_animation_2("GunAnimLibrary/Reloading Gun")
 		
 		if GameManager.player_character._input_move_direction != Vector2.ZERO:

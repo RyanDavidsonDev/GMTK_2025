@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwt5qvq23xnyl"
-path.s3tc="res://.godot/imported/RevolverReloading_6.png-7bfcdb164e56972745b245a133c6439a.s3tc.ctex"
+uid="uid://i7j677ao14wr"
+path.s3tc="res://.godot/imported/Jackett.png-c630e880f9a103554237be01e9515442.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "107d3df42bea94dd30d4fbf62e9a4d5e"
-}
 
 [deps]
 
-source_file="res://assets/Gun/Textures/RevolverReloading_6.png"
-dest_files=["res://.godot/imported/RevolverReloading_6.png-7bfcdb164e56972745b245a133c6439a.s3tc.ctex"]
+source_file="res://assets/Gun/Textures/Jackett.png"
+dest_files=["res://.godot/imported/Jackett.png-c630e880f9a103554237be01e9515442.s3tc.ctex"]
 
 [params]
 

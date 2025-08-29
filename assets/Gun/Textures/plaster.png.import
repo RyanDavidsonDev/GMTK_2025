@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsptpukqkmq23"
-path.s3tc="res://.godot/imported/RevolverReloading_2.png-7d0ab4f1e8b6567f5ce39c7980897b3d.s3tc.ctex"
+uid="uid://cusd7ab6pilmi"
+path.s3tc="res://.godot/imported/plaster.png-9cff673e74504d1502bfa4d832fc8a23.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "76d33c33ed2d836a8b9aac2097a6c67f"
-}
 
 [deps]
 
-source_file="res://assets/Gun/Textures/RevolverReloading_2.png"
-dest_files=["res://.godot/imported/RevolverReloading_2.png-7d0ab4f1e8b6567f5ce39c7980897b3d.s3tc.ctex"]
+source_file="res://assets/Gun/Textures/plaster.png"
+dest_files=["res://.godot/imported/plaster.png-9cff673e74504d1502bfa4d832fc8a23.s3tc.ctex"]
 
 [params]
 

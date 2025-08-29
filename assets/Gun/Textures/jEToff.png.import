@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://or2mrfncpe0c"
-path.s3tc="res://.godot/imported/RevolverFiring_8.png-49c9ee472f704d436c548deff8b20cc2.s3tc.ctex"
+uid="uid://bviaxcnu7ap1m"
+path.s3tc="res://.godot/imported/jEToff.png-09905f84ee7cbe565913a97a5c7932a7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "16a8694b8ef4ba1ba70910e0518f6436"
-}
 
 [deps]
 
-source_file="res://assets/Gun/Textures/RevolverFiring_8.png"
-dest_files=["res://.godot/imported/RevolverFiring_8.png-49c9ee472f704d436c548deff8b20cc2.s3tc.ctex"]
+source_file="res://assets/Gun/Textures/jEToff.png"
+dest_files=["res://.godot/imported/jEToff.png-09905f84ee7cbe565913a97a5c7932a7.s3tc.ctex"]
 
 [params]
 

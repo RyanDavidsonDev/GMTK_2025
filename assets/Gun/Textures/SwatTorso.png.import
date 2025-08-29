@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2t2t5dvdt881"
-path.s3tc="res://.godot/imported/RevolverReloading_5.png-a7aa8a7c391a9c7f38945992fb37f040.s3tc.ctex"
+uid="uid://dap6xm4wrhwb"
+path.s3tc="res://.godot/imported/SwatTorso.png-909715b8c9098930f70f0e07cd854ee6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "a8009ae0de956bb2478627051ecd6341"
-}
 
 [deps]
 
-source_file="res://assets/Gun/Textures/RevolverReloading_5.png"
-dest_files=["res://.godot/imported/RevolverReloading_5.png-a7aa8a7c391a9c7f38945992fb37f040.s3tc.ctex"]
+source_file="res://assets/Gun/Textures/SwatTorso.png"
+dest_files=["res://.godot/imported/SwatTorso.png-909715b8c9098930f70f0e07cd854ee6.s3tc.ctex"]
 
 [params]
 

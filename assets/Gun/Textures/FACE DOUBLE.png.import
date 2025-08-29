@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpbwvtwck6xsj"
-path="res://.godot/imported/RevolverReloading_4.png-b4496dacdf7faa2255385a9e443dbd49.ctex"
+uid="uid://1gur38tmdpvg"
+path="res://.godot/imported/FACE DOUBLE.png-bbcf7f2957958ac48d755276b31f7014.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "b3380e2e82aea015613b9b20fd504954"
 }
 
 [deps]
 
-source_file="res://assets/Gun/Textures/RevolverReloading_4.png"
-dest_files=["res://.godot/imported/RevolverReloading_4.png-b4496dacdf7faa2255385a9e443dbd49.ctex"]
+source_file="res://assets/Gun/Textures/FACE DOUBLE.png"
+dest_files=["res://.godot/imported/FACE DOUBLE.png-bbcf7f2957958ac48d755276b31f7014.ctex"]
 
 [params]
 
@@ -24,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
