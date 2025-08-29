@@ -133,7 +133,10 @@ func _physics_process(delta: float) -> void:
 	#if move_dir != Vector3.ZERO:
 	var angle : float = Vector3.FORWARD.angle_to(move_dir)
 	var progress : float = angle - rotation.y
-	rotate_y(progress * delta)
+	#rotation.y = move_dir.y +deg_to_rad(90)
+	look_at(GameManager.player_character.global_position)
+	#rotate_y(rotation.y + angle)
+	#rotate_y(progress * delta)
 	
 	move_and_slide()
 	
