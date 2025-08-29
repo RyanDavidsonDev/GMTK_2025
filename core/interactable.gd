@@ -6,6 +6,8 @@ signal selected
 
 @export var selectable_distance : float = 5.0
 
+@export var isEnemy :bool  = false
+
 @export var _enabled : bool = true
 
 func hover() -> void:

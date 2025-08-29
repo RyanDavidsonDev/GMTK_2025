@@ -30,6 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0689312, 1.40301, 0.156)
 [node name="Interactable" parent="." instance=ExtResource("3_x3wti")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697979, 0)
 selectable_distance = 1000.0
+isEnemy = true
 
 [node name="CollisionShape3D" parent="Interactable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535541, -0.116021)

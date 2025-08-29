@@ -62,6 +62,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("reload"):
 		gun.reload()
 	if Input.is_action_just_pressed("Interact") && _hovered_interactable != null:
+		GameManager.hud_controller.hide_text()
 		_hovered_interactable.select()
 		
 	if _input_move_direction != Vector2.ZERO && gun.is_reloading:
@@ -85,12 +86,26 @@ func _physics_process(delta: float) -> void:
 	if interactable != null:
 		if _hovered_interactable == null:
 			_hovered_interactable = interactable
+			if interactable.isEnemy:
+				if GameManager.player_character.gun.loaded_bullet_count >0:
+					GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to fire")
+				else:
+					if GameManager.player_character.gun.bullet_count >0:
+						GameManager.hud_controller.show_text_continual("Press \'R\' or click Right Mouse Button to reload")
+					else:
+						GameManager.hud_controller.show_text_continual("I need ammo")
+						
+			else:
+				GameManager.hud_controller.show_text_continual("Press \'E\' or click Left Mouse Button to interact")
+				
 			interactable.hover()
 		elif _hovered_interactable != interactable:
+			
 			_hovered_interactable.unhover()
 			_hovered_interactable = interactable
 			interactable.hover()
 	elif _hovered_interactable != null:
+		GameManager.hud_controller.hide_text()
 		_hovered_interactable.unhover()
 		_hovered_interactable = null
 	

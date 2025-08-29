@@ -32,5 +32,6 @@ func _on_interactable_selected() -> void:
 	
 	GameManager.hud_controller.show_next_bullet()
 	GameManager.player_character.gun.bullet_count+=1
-	
+	GameManager.hud_controller.show_text_timer("Press \'R\' or click Right Mouse Button to reload")
+
 	queue_free()
