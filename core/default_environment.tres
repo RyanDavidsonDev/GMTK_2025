@@ -1,3 +1,9 @@
 [gd_resource type="Environment" format=3 uid="uid://bgq4csmdrk7a5"]
 
 [resource]
+ambient_light_color = Color(0.0142119, 1.26437e-08, 7.70844e-09, 1)
+fog_enabled = true
+fog_light_color = Color(0.0763773, 0.0128949, 0.0150481, 1)
+fog_density = 0.1205
+adjustment_enabled = true
+adjustment_brightness = 0.71

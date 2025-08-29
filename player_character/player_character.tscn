@@ -1,12 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbxrja4pb2r53"]
+[gd_scene load_steps=11 format=3 uid="uid://dbxrja4pb2r53"]
 
 [ext_resource type="Script" uid="uid://l8u643plyhow" path="res://player_character/player_character.gd" id="1_qlps6"]
 [ext_resource type="PackedScene" uid="uid://c4ep4njqkiq13" path="res://Scenes/UI_overlay.tscn" id="2_1ty04"]
 [ext_resource type="PackedScene" uid="uid://botemyf0vmhjr" path="res://assets/Gun/revolver_reloading.tscn" id="2_5l2xy"]
 [ext_resource type="PackedScene" uid="uid://6343ayqlyhx2" path="res://Scenes/prefabs/gun.tscn" id="3_5l2xy"]
+[ext_resource type="Shader" uid="uid://1puy7tvn0yfn" path="res://Scenes/rooms/static.gdshader" id="4_3f5wo"]
+[ext_resource type="Shader" uid="uid://3ho5q2lfmp4f" path="res://Scripts/Shaders & Themes/gradient.gdshader" id="5_731wj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2i27r"]
 radius = 0.25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_731wj"]
+shader = ExtResource("4_3f5wo")
+shader_parameter/resolution = Vector2(960, 1080)
+shader_parameter/scan_line_amount = 0.253
+shader_parameter/warp_amount = 0.055
+shader_parameter/noise_amount = 0.015
+shader_parameter/interference_amount = 0.374
+shader_parameter/grille_amount = 0.128
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.667
+shader_parameter/vignette_intensity = 0.563
+shader_parameter/aberation_amount = 0.599
+shader_parameter/roll_line_amount = 0.0
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -7.444
+shader_parameter/pixel_strength = -2.427
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n4q7y"]
+shader = ExtResource("5_731wj")
+shader_parameter/exposure = 0.739
+shader_parameter/contrast = 0.949
+shader_parameter/saturation = 1.529
+shader_parameter/enable_pixelate = false
+shader_parameter/pixel_factor = 1.115
+shader_parameter/enable_posterize = true
+shader_parameter/color_levels = 16.0
+shader_parameter/dither_strength = 1.0
+shader_parameter/chrom_aberration = 0.016
+shader_parameter/vignette_strength = 1.0
+shader_parameter/grain_strength = 0.0
+shader_parameter/tint_color = Vector3(0, 0, 0.9)
+shader_parameter/tint_strength = 0.06
+shader_parameter/viewport_size_override = Vector2(0, 0)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bvxdu"]
 height = 50.0
@@ -30,6 +66,29 @@ transform = Transform3D(-0.0385333, 0, 0.000875115, 0, 0.0385432, 0, -0.00087511
 
 [node name="gun" parent="Camera3D" instance=ExtResource("3_5l2xy")]
 unique_name_in_owner = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D/CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_731wj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ColorRect2" type="ColorRect" parent="Camera3D/CanvasLayer"]
+material = SubResource("ShaderMaterial_n4q7y")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00504051, 0.474974, -0.865486)
