@@ -262,6 +262,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.644
 
 [node name="Door10" parent="." instance=ExtResource("2_m1i5j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6842, 1.9, -0.25376)
+OutwardRotationDeg = 90.0
 
 [node name="Door2" parent="." instance=ExtResource("2_m1i5j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4255, 1.9, -3.75565)
@@ -273,16 +274,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.873, 1.9, -2.77388)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.9036, 1.9, 5.89415)
 
 [node name="Door8" parent="." instance=ExtResource("2_m1i5j")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.9036, 1.9, 9.39662)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -13.9036, 1.9, 9.39662)
+OutwardRotationDeg = 90.0
 
 [node name="Door9" parent="." instance=ExtResource("2_m1i5j")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.7458, 1.9, -1.87217)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.7458, 1.9, -1.87217)
+OutwardRotationDeg = 90.0
 
 [node name="Door7" parent="." instance=ExtResource("2_m1i5j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4684, 1.9, 3.69908)
 
 [node name="Door6" parent="." instance=ExtResource("2_m1i5j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.90498, 1.9, 5.73773)
+OutwardRotationDeg = 90.0
 
 [node name="Door4" parent="." instance=ExtResource("2_m1i5j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.2582, 1.9, -4.63705)
