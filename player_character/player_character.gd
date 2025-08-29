@@ -11,9 +11,9 @@ class_name PlayerCharacter extends CharacterBody3D
 @onready var camera: Camera3D = $Camera3D
 @onready var ui_overlay: Node = $UiOverlay
 #@onready var crosshair
+@onready var revolver_reloading: Node3D = $Camera3D/RevolverReloading
 
-@onready var animation_player :AnimationPlayer = $Camera3D/RevolverReloading/AnimationPlayer #NEW
-#@onready var animation_player_2:AnimationPlayer = $Camera3D/GunHandres/AnimationPlayer2
+@onready var animation_player:AnimationPlayer = $Camera3D/RevolverReloading/AnimationPlayer
 
 @onready var crosshair:TextureRect = ui_overlay.find_child("crosshair")
 
@@ -99,10 +99,31 @@ func _physics_process(delta: float) -> void:
 	velocity *= _move_speed
 	move_and_slide()
 	
+	
+func rotate_hands():
+	var tween = get_tree().create_tween().set_trans(Tween.TransitionType.TRANS_BOUNCE).set_parallel(false)
+	
+	revolver_reloading.rotation
+	stop_animations()
+	var initPos = revolver_reloading.global_rotation_degrees
+	
+	var firstDuration: float = 1
+	print("rotating")
+	
+	var finalVar :Vector3 = revolver_reloading.global_rotation_degrees + Vector3(-60, 0, 0)
+	var finalVar2 :Vector3 = revolver_reloading.global_rotation_degrees + Vector3(60, 0, 0)
+	var tweener : PropertyTweener = tween.tween_property(revolver_reloading, "global_rotation_degrees", finalVar, firstDuration )
+	#await get_tree().create_timer(firstDuration).timeout
+	print("resetting")
+	tween.tween_property(revolver_reloading, "global_rotation_degrees", initPos, 3 )
+	
+
 func play_animation(animation: String):
+	#return
 	animation_player.play(animation)
 
 func stop_animations():
+	#return
 	animation_player.stop()
 	
 func _get_closest_interactable() -> Interactable:

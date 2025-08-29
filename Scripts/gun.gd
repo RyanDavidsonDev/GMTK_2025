@@ -20,6 +20,8 @@ func fire():
 	_gunshot_audio_player.play()
 	
 	#add function here to do a quick rotation of the rig
+	GameManager.player_character.rotate_hands()
+	
 	#GameManager.player_character.play_animation("GunAnimLibrary/Firing Hand")
 	#GameManager.player_character.play_animation_2("GunAnimLibrary/Firing Gun")
 	GameManager.hud_controller.show_text_timer("\"bang\"")

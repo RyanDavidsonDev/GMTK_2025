@@ -262,7 +262,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.644
 
 [node name="Door10" parent="." instance=ExtResource("2_m1i5j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6842, 1.9, -0.25376)
-OutwardRotationDeg = 90.0
 
 [node name="Door2" parent="." instance=ExtResource("2_m1i5j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4255, 1.9, -3.75565)

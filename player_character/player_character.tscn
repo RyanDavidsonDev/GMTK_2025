@@ -26,10 +26,11 @@ shape = SubResource("CapsuleShape3D_2i27r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="RevolverReloading" parent="Camera3D" instance=ExtResource("2_5l2xy")]
-transform = Transform3D(-0.0385333, 0, 0.000875115, 0, 0.0385432, 0, -0.000875115, 0, -0.0385333, 0.308184, -0.234005, -0.198025)
+transform = Transform3D(-0.0385432, 0, -3.36956e-09, 0, 0.0385432, 0, 3.36956e-09, 0, -0.0385432, 0.308184, -0.234005, -0.198025)
 
 [node name="gun" parent="Camera3D" instance=ExtResource("3_5l2xy")]
 unique_name_in_owner = true
+reload_time = 1.0
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00504051, 0.474974, -0.865486)
