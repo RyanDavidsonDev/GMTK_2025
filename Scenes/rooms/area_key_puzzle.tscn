@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://du17i1kd8yvtj"]
+[gd_scene load_steps=37 format=3 uid="uid://du17i1kd8yvtj"]
 
 [ext_resource type="PackedScene" uid="uid://dk8577djp7t2l" path="res://Scenes/objects/living_room_door.tscn" id="1_eu0bu"]
 [ext_resource type="Material" uid="uid://wuqdk67ndu8r" path="res://materials/living_room_floor.tres" id="1_g3b8s"]
@@ -13,8 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://mqvu01asw6f6" path="res://Scenes/key.tscn" id="8_0kivo"]
 [ext_resource type="Texture2D" uid="uid://bcytkiodyvmvr" path="res://assets/Home Invasion(1).png" id="8_pb6d7"]
 [ext_resource type="Texture2D" uid="uid://bnwlui2v5kk5g" path="res://assets/Home Invasion(4).png" id="9_03n0l"]
+[ext_resource type="VideoStream" uid="uid://b3di15hl43aps" path="res://assets/Enemy/Animations/Television_static-ezgif.com-gif-to-mp4-converter.ogv" id="13_47jkw"]
 [ext_resource type="Texture2D" uid="uid://4ylypvio5b7x" path="res://assets/Home Invasion.png" id="14_47jkw"]
 [ext_resource type="Texture2D" uid="uid://d24bsa3o73pq1" path="res://assets/Sprite-0004.png" id="14_pb6d7"]
+[ext_resource type="Shader" uid="uid://1puy7tvn0yfn" path="res://Scenes/rooms/static.gdshader" id="15_f3aer"]
+[ext_resource type="Script" uid="uid://bisjhxdw0tsaa" path="res://flickering light.gd" id="15_liafm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3aer"]
 
@@ -33,6 +36,28 @@ albedo_texture = ExtResource("8_pb6d7")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8kj8"]
 albedo_texture = ExtResource("14_47jkw")
 
+[sub_resource type="QuadMesh" id="QuadMesh_stv4e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3aer"]
+shader = ExtResource("15_f3aer")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 2.684
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.72
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f3aer"]
+viewport_path = NodePath("LivingRoomTv/STATIC/SubViewport")
+
 [sub_resource type="QuadMesh" id="QuadMesh_udqcg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47jkw"]
@@ -50,6 +75,13 @@ albedo_texture = ExtResource("6_0kv6s")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aob04"]
 albedo_texture = ExtResource("9_03n0l")
+
+[sub_resource type="QuadMesh" id="QuadMesh_sb16r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xj2pg"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.13
+metallic_specular = 0.42
 
 [node name="AreaKeyPuzzle" type="Node3D"]
 
@@ -262,6 +294,38 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.862
 [node name="LivingRoomTv" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.09415, 1.73464, -2.08661)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv"]
+transform = Transform3D(0.00508354, 0.0429527, -0.983797, -0.000263305, 0.829278, 0.050956, 1.04534, 1.8094e-09, 0.00479707, -0.411811, 0.0287511, 0)
+visible = false
+mesh = SubResource("QuadMesh_stv4e")
+surface_material_override/0 = SubResource("ShaderMaterial_f3aer")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="LivingRoomTv"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("15_liafm")
+flicker_speed = 5.0
+
+[node name="STATIC" type="Node3D" parent="LivingRoomTv"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="LivingRoomTv/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="LivingRoomTv/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("13_47jkw")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="LivingRoomTv/STATIC"]
+transform = Transform3D(0.00241857, -0.0145109, 0.181624, 0.000482706, -0.401866, -0.00656019, -0.357703, -0.000640415, 0.00121918, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_f3aer")
+
 [node name="Key" parent="." instance=ExtResource("8_0kivo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97261, 1.26778, -2.18345)
 
@@ -345,74 +409,194 @@ transform = Transform3D(0.258819, 1.21421e-07, 0.965926, 4.11157e-08, -1, 1.2666
 [node name="LivingRoomTv3" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, -21.445, 1.3118, 9.79836)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv3"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv4" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, -22.868, 1.31134, 8.375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv4"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv5" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, -22.868, 1.31134, 6.875)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv5"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv6" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, -22.868, 1.31134, 5.375)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv6"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv7" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, -1, -22.868, 1.31134, 3.875)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv7"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv9" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -21.445, 2.60263, 9.95153)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv9"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv15" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, -19.945, 1.3118, 9.79836)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv15"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv16" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -19.945, 2.60263, 9.95153)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv16"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv17" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, -18.445, 1.3118, 9.79836)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv17"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv18" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -18.445, 2.60263, 9.95153)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv18"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv19" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, -16.945, 1.3118, 9.79836)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv19"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv20" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -16.945, 2.60263, 9.95153)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv20"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv10" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.021, 2.60218, 8.375)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv10"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv11" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.021, 2.60218, 6.875)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv11"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv12" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.021, 2.60218, 5.375)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv12"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv13" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.021, 2.60218, 3.875)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv13"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv8" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -22.7985, 1.31134, 1.21498)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv8"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv14" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -21.4995, 1.31134, 0.464977)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv14"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv21" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -20.2005, 1.31134, -0.285023)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv21"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv22" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -18.9014, 1.31134, -1.03502)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv22"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv23" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -22.875, 2.60218, 1.08247)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv23"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv24" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -21.576, 2.60218, 0.332471)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv24"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomTv25" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -20.277, 2.60218, -0.417529)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv25"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
+
 [node name="LivingRoomTv26" parent="." instance=ExtResource("7_0kivo")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -18.9779, 2.60218, -1.16753)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LivingRoomTv26"]
+transform = Transform3D(0.0102798, 0.0342749, -0.992935, 0.000413484, 0.833926, 0.0408178, 1.06417, -0.000655116, 0.00957581, -0.382376, 0, 0)
+mesh = SubResource("QuadMesh_sb16r")
+surface_material_override/0 = SubResource("StandardMaterial3D_xj2pg")
 
 [node name="LivingRoomSideTable9" parent="." instance=ExtResource("5_tvtl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5956, 0.495685, 6.11411)

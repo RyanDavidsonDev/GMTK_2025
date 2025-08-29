@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx3db7hws5gpd"]
+[gd_scene load_steps=8 format=3 uid="uid://bx3db7hws5gpd"]
 
 [ext_resource type="Material" uid="uid://wuqdk67ndu8r" path="res://materials/living_room_floor.tres" id="1_frwoo"]
 [ext_resource type="Material" uid="uid://b4ldik55om2be" path="res://materials/living_room_wall.tres" id="2_bsf4o"]
 [ext_resource type="PackedScene" uid="uid://w1f50baq2qas" path="res://Scenes/prefabs/bullet.tscn" id="4_k30mb"]
+[ext_resource type="VideoStream" uid="uid://b3di15hl43aps" path="res://assets/Enemy/Animations/Television_static-ezgif.com-gif-to-mp4-converter.ogv" id="4_mvmql"]
+[ext_resource type="Script" uid="uid://bisjhxdw0tsaa" path="res://flickering light.gd" id="6_7q4ul"]
 [ext_resource type="PackedScene" uid="uid://5s1fw88fmxl" path="res://Scenes/objects/living_room_tv.tscn" id="9_n4udn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sg0nq"]
+viewport_path = NodePath("TVGroup/LivingRoomTv8/STATIC/SubViewport")
 
 [node name="AreaKeyPuzzle" type="Node3D"]
 
@@ -55,26 +60,234 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9.5)
 [node name="LivingRoomTv8" parent="TVGroup" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, -1.3882, 1.31134, 0.350245)
 
+[node name="STATIC" type="Node3D" parent="TVGroup/LivingRoomTv8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup/LivingRoomTv8/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup/LivingRoomTv8/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup/LivingRoomTv8/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup/LivingRoomTv8"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv14" parent="TVGroup" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 0.111769, 1.31134, 0.350223)
+
+[node name="STATIC" type="Node3D" parent="TVGroup/LivingRoomTv14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup/LivingRoomTv14/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup/LivingRoomTv14/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup/LivingRoomTv14/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup/LivingRoomTv14"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv21" parent="TVGroup" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 1.61174, 1.31134, 0.350204)
 
+[node name="STATIC" type="Node3D" parent="TVGroup/LivingRoomTv21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup/LivingRoomTv21/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup/LivingRoomTv21/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup/LivingRoomTv21/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup/LivingRoomTv21"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv22" parent="TVGroup" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 3.11179, 1.31134, 0.350237)
+
+[node name="STATIC" type="Node3D" parent="TVGroup/LivingRoomTv22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup/LivingRoomTv22/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup/LivingRoomTv22/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup/LivingRoomTv22/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup/LivingRoomTv22"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv23" parent="TVGroup" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, -1.3882, 2.60218, 0.197237)
 
+[node name="STATIC" type="Node3D" parent="TVGroup/LivingRoomTv23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup/LivingRoomTv23/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup/LivingRoomTv23/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup/LivingRoomTv23/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup/LivingRoomTv23"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv26" parent="TVGroup" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 3.11179, 2.60218, 0.197231)
+
+[node name="STATIC" type="Node3D" parent="TVGroup/LivingRoomTv26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup/LivingRoomTv26/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup/LivingRoomTv26/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup/LivingRoomTv26/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup/LivingRoomTv26"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv24" parent="TVGroup" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 0.111771, 2.60218, 0.197219)
 
+[node name="STATIC" type="Node3D" parent="TVGroup/LivingRoomTv24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup/LivingRoomTv24/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup/LivingRoomTv24/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup/LivingRoomTv24/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup/LivingRoomTv24"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv25" parent="TVGroup" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 1.61174, 2.60218, 0.1972)
+
+[node name="STATIC" type="Node3D" parent="TVGroup/LivingRoomTv25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup/LivingRoomTv25/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup/LivingRoomTv25/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup/LivingRoomTv25/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup/LivingRoomTv25"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="TVGroup3" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.25, 0, 5)
@@ -82,26 +295,232 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.25,
 [node name="LivingRoomTv8" parent="TVGroup3" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, -1.3882, 1.31134, 0.350245)
 
+[node name="STATIC" type="Node3D" parent="TVGroup3/LivingRoomTv8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup3/LivingRoomTv8/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup3/LivingRoomTv8/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup3/LivingRoomTv8/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup3/LivingRoomTv8"]
+transform = Transform3D(0.112466, -0.36318, 0.924907, -0.0113482, 0.930282, 0.36667, -0.993591, -0.0517339, 0.100504, 0, 0, 0)
+spot_range = 1.07602
+spot_angle = 34.71
+
 [node name="LivingRoomTv14" parent="TVGroup3" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 0.111769, 1.31134, 0.350223)
+
+[node name="STATIC" type="Node3D" parent="TVGroup3/LivingRoomTv14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup3/LivingRoomTv14/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup3/LivingRoomTv14/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup3/LivingRoomTv14/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup3/LivingRoomTv14"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv21" parent="TVGroup3" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 1.61174, 1.31134, 0.350204)
 
+[node name="STATIC" type="Node3D" parent="TVGroup3/LivingRoomTv21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup3/LivingRoomTv21/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup3/LivingRoomTv21/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup3/LivingRoomTv21/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup3/LivingRoomTv21"]
+transform = Transform3D(-0.859637, -0.0292869, -0.510065, -0.235818, 0.908391, 0.345278, 0.453226, 0.417096, -0.787793, 0.0701632, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv22" parent="TVGroup3" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 3.11179, 1.31134, 0.350237)
+
+[node name="STATIC" type="Node3D" parent="TVGroup3/LivingRoomTv22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup3/LivingRoomTv22/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup3/LivingRoomTv22/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup3/LivingRoomTv22/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup3/LivingRoomTv22"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv23" parent="TVGroup3" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, -1.3882, 2.60218, 0.197237)
 
+[node name="STATIC" type="Node3D" parent="TVGroup3/LivingRoomTv23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup3/LivingRoomTv23/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup3/LivingRoomTv23/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup3/LivingRoomTv23/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup3/LivingRoomTv23"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv26" parent="TVGroup3" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 3.11179, 2.60218, 0.197231)
+
+[node name="STATIC" type="Node3D" parent="TVGroup3/LivingRoomTv26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup3/LivingRoomTv26/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup3/LivingRoomTv26/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup3/LivingRoomTv26/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup3/LivingRoomTv26"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv24" parent="TVGroup3" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 0.111771, 2.60218, 0.197219)
 
+[node name="STATIC" type="Node3D" parent="TVGroup3/LivingRoomTv24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup3/LivingRoomTv24/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup3/LivingRoomTv24/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup3/LivingRoomTv24/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup3/LivingRoomTv24"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv25" parent="TVGroup3" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 1.61174, 2.60218, 0.1972)
+
+[node name="STATIC" type="Node3D" parent="TVGroup3/LivingRoomTv25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup3/LivingRoomTv25/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup3/LivingRoomTv25/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup3/LivingRoomTv25/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup3/LivingRoomTv25"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="TVGroup4" type="Node3D" parent="."]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -8.25, 0, 3)
@@ -109,26 +528,234 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 [node name="LivingRoomTv8" parent="TVGroup4" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, -1.3882, 1.31134, 0.350245)
 
+[node name="STATIC" type="Node3D" parent="TVGroup4/LivingRoomTv8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup4/LivingRoomTv8/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup4/LivingRoomTv8/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup4/LivingRoomTv8/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup4/LivingRoomTv8"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv14" parent="TVGroup4" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 0.111769, 1.31134, 0.350223)
+
+[node name="STATIC" type="Node3D" parent="TVGroup4/LivingRoomTv14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup4/LivingRoomTv14/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup4/LivingRoomTv14/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup4/LivingRoomTv14/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup4/LivingRoomTv14"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv21" parent="TVGroup4" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 1.61174, 1.31134, 0.350204)
 
+[node name="STATIC" type="Node3D" parent="TVGroup4/LivingRoomTv21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup4/LivingRoomTv21/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup4/LivingRoomTv21/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup4/LivingRoomTv21/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup4/LivingRoomTv21"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv22" parent="TVGroup4" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 3.11179, 1.31134, 0.350237)
+
+[node name="STATIC" type="Node3D" parent="TVGroup4/LivingRoomTv22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup4/LivingRoomTv22/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup4/LivingRoomTv22/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup4/LivingRoomTv22/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup4/LivingRoomTv22"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv23" parent="TVGroup4" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, -1.3882, 2.60218, 0.197237)
 
+[node name="STATIC" type="Node3D" parent="TVGroup4/LivingRoomTv23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup4/LivingRoomTv23/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup4/LivingRoomTv23/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup4/LivingRoomTv23/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup4/LivingRoomTv23"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv26" parent="TVGroup4" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 3.11179, 2.60218, 0.197231)
+
+[node name="STATIC" type="Node3D" parent="TVGroup4/LivingRoomTv26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup4/LivingRoomTv26/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup4/LivingRoomTv26/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup4/LivingRoomTv26/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup4/LivingRoomTv26"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv24" parent="TVGroup4" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 0.111771, 2.60218, 0.197219)
 
+[node name="STATIC" type="Node3D" parent="TVGroup4/LivingRoomTv24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup4/LivingRoomTv24/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup4/LivingRoomTv24/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup4/LivingRoomTv24/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup4/LivingRoomTv24"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv25" parent="TVGroup4" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 1.61174, 2.60218, 0.1972)
+
+[node name="STATIC" type="Node3D" parent="TVGroup4/LivingRoomTv25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup4/LivingRoomTv25/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup4/LivingRoomTv25/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup4/LivingRoomTv25/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup4/LivingRoomTv25"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="TVGroup2" type="Node3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -9.75, 0, -6.25)
@@ -136,26 +763,235 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 [node name="LivingRoomTv8" parent="TVGroup2" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, -1.3882, 1.31134, 0.350245)
 
+[node name="STATIC" type="Node3D" parent="TVGroup2/LivingRoomTv8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup2/LivingRoomTv8/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup2/LivingRoomTv8/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup2/LivingRoomTv8/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup2/LivingRoomTv8"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40256e-09, -0.993982, -1.14817e-10, 0.109543, -0.0402212, -0.105748, -0.0113192)
+spot_range = 1.641
+spot_angle = 42.75
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv14" parent="TVGroup2" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 0.111769, 1.31134, 0.350223)
+
+[node name="STATIC" type="Node3D" parent="TVGroup2/LivingRoomTv14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup2/LivingRoomTv14/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup2/LivingRoomTv14/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup2/LivingRoomTv14/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup2/LivingRoomTv14"]
+transform = Transform3D(0.00171041, 7.40414e-09, 0.999998, -9.31322e-10, 1, -7.40256e-09, -0.999998, -9.1866e-10, 0.00171041, 1.00961, 0.00105703, 0.0653963)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv21" parent="TVGroup2" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 1.61174, 1.31134, 0.350204)
 
+[node name="STATIC" type="Node3D" parent="TVGroup2/LivingRoomTv21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup2/LivingRoomTv21/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup2/LivingRoomTv21/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup2/LivingRoomTv21/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup2/LivingRoomTv21"]
+transform = Transform3D(0.0459733, -7.35191e-09, -0.998942, -9.31322e-10, 1, -7.40256e-09, 0.998942, 1.27066e-09, 0.0459733, 0.0701628, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_attenuation = 0.91
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv22" parent="TVGroup2" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 3.11179, 1.31134, 0.350237)
+
+[node name="STATIC" type="Node3D" parent="TVGroup2/LivingRoomTv22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup2/LivingRoomTv22/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup2/LivingRoomTv22/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup2/LivingRoomTv22/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup2/LivingRoomTv22"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv23" parent="TVGroup2" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, -1.3882, 2.60218, 0.197237)
 
+[node name="STATIC" type="Node3D" parent="TVGroup2/LivingRoomTv23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup2/LivingRoomTv23/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup2/LivingRoomTv23/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup2/LivingRoomTv23/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup2/LivingRoomTv23"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv26" parent="TVGroup2" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 3.11179, 2.60218, 0.197231)
+
+[node name="STATIC" type="Node3D" parent="TVGroup2/LivingRoomTv26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup2/LivingRoomTv26/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup2/LivingRoomTv26/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup2/LivingRoomTv26/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup2/LivingRoomTv26"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="LivingRoomTv24" parent="TVGroup2" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 0.111771, 2.60218, 0.197219)
 
+[node name="STATIC" type="Node3D" parent="TVGroup2/LivingRoomTv24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup2/LivingRoomTv24/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup2/LivingRoomTv24/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup2/LivingRoomTv24/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup2/LivingRoomTv24"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
+
 [node name="LivingRoomTv25" parent="TVGroup2" instance=ExtResource("9_n4udn")]
 transform = Transform3D(-2.23517e-07, 0, 1, 0, 1, 0, -1, 0, -2.23517e-07, 1.61174, 2.60218, 0.1972)
+
+[node name="STATIC" type="Node3D" parent="TVGroup2/LivingRoomTv25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00275, 0, 0.0683208)
+
+[node name="SubViewport" type="SubViewport" parent="TVGroup2/LivingRoomTv25/STATIC"]
+handle_input_locally = false
+size = Vector2i(300, 200)
+render_target_update_mode = 4
+
+[node name="AnimatedSprite2D" type="VideoStreamPlayer" parent="TVGroup2/LivingRoomTv25/STATIC/SubViewport"]
+offset_right = 300.0
+offset_bottom = 200.0
+stream = ExtResource("4_mvmql")
+autoplay = true
+loop = true
+
+[node name="Sprite3D" type="Sprite3D" parent="TVGroup2/LivingRoomTv25/STATIC"]
+transform = Transform3D(0.00246813, -0.0145107, 0.181635, 0.000492597, -0.40186, -0.00656057, -0.365033, -0.000640407, 0.00121925, 0.60592, 0.0385786, -0.0449305)
+texture = SubResource("ViewportTexture_sg0nq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TVGroup2/LivingRoomTv25"]
+transform = Transform3D(0.109543, 7.46003e-09, 0.993982, -9.31322e-10, 1, -7.40255e-09, -0.993982, -1.14817e-10, 0.109543, 0.070163, 0.264297, 0.0994873)
+spot_range = 2.43887
+spot_angle = 80.46
+script = ExtResource("6_7q4ul")
+flicker_speed = 5.0
 
 [node name="Bullet" parent="." instance=ExtResource("4_k30mb")]
 transform = Transform3D(-4.37114e-08, 1.06581e-14, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, -1.06581e-14, -4.75, 1.831, -2.2837)

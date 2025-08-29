@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://5fh48gma1ok6"]
+
+[ext_resource type="Texture2D" uid="uid://b48atu82t8ueq" path="res://assets/ezgif-76c327045d2bc6.png" id="1_ut4sv"]
+[ext_resource type="Script" uid="uid://17x50v5mwfpm" path="res://assets/UI/tvstaticanim.gd" id="2_5horu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5horu"]
+atlas = ExtResource("1_ut4sv")
+region = Rect2(0, 0, 640, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhn2r"]
+atlas = ExtResource("1_ut4sv")
+region = Rect2(640, 0, 640, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08ecc"]
+atlas = ExtResource("1_ut4sv")
+region = Rect2(1280, 0, 640, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46fug"]
+atlas = ExtResource("1_ut4sv")
+region = Rect2(1920, 0, 640, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpes4"]
+atlas = ExtResource("1_ut4sv")
+region = Rect2(2560, 0, 640, 361)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecorl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5horu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhn2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08ecc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46fug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpes4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TvStaticOne" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(305, 219)
+scale = Vector2(0.951562, 1.20914)
+sprite_frames = SubResource("SpriteFrames_ecorl")
+frame_progress = 0.624181
+script = ExtResource("2_5horu")
