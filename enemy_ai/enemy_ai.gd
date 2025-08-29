@@ -22,6 +22,10 @@ var health: float = 3
 
 var _nav_agent_3d : NavigationAgent3D = null
 
+@export var region : NavigationRegion3D
+var geo_data:  NavigationMeshSourceGeometryData3D
+
+
 var _killing_player : bool = false
 
 func can_see_player() -> bool:
@@ -88,6 +92,19 @@ func _ready() -> void:
 	_interactable.hovered.connect(_on_interactable_hovered)
 	_interactable.unhovered.connect(_on_interactable_unhovered)
 	_interactable.selected.connect(_on_interactable_selected)
+	
+	geo_data = NavigationMeshSourceGeometryData3D.new()
+	
+	
+
+func sigreceive():
+	print("hi")
+
+func rebake_nav_mesh() -> void:
+	print("rebaking mesh")
+	NavigationServer3D.parse_source_geometry_data(region.navigation_mesh, geo_data, self)
+	#NavigationMeshGenerator.bake(region.navigation_mesh, )
+	return
 
 func _physics_process(delta: float) -> void:
 	if _killing_player or health == 0 or GameManager.player_character == null:

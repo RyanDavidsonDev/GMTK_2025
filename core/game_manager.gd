@@ -12,6 +12,8 @@ var hud_controller : HUDController = null
 
 var _in_game : bool = false
 
+var DoorOpenedSignal: Signal
+
 func register_player_character(instance: PlayerCharacter) -> void:
 	
 	if player_character != null:
@@ -25,6 +27,8 @@ func register_enemy_ai(instance: EnemyAI) -> void:
 	if enemy_ai != null:
 		printerr("Reference to enemy ai is already set. Ensure cleanup of previous enemy before registering a new one.")
 		return
+		
+	
 	
 	enemy_ai = instance
 	AudioManager.initialize_killer_audio(enemy_ai)
@@ -96,3 +100,10 @@ func toggle_game_paused() -> bool:
 		get_tree().paused = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		return true
+
+func emit_door_signal() ->void :
+	print("emitting signal")
+	
+	#print(DoorOpenedSignal.get_connections())
+	enemy_ai.rebake_nav_mesh()
+	#DoorOpenedSignal.emit()
