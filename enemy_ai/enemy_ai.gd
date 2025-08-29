@@ -130,10 +130,10 @@ func _physics_process(delta: float) -> void:
 	velocity = move_dir * _move_speed * stagger_multiplier
 	
 	#rotation i think
-	if move_dir != Vector3.ZERO:
-		var target_rotation = move_dir.angle_to(Vector3.FORWARD)
-		var rotation_diff = target_rotation - rotation.y
-		rotate_y(rotation_diff * delta)
+	#if move_dir != Vector3.ZERO:
+	var angle : float = Vector3.FORWARD.angle_to(move_dir)
+	var progress : float = angle - rotation.y
+	rotate_y(progress * delta)
 	
 	move_and_slide()
 	

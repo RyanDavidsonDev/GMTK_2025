@@ -30,7 +30,6 @@ transform = Transform3D(-0.0385432, 0, -3.36956e-09, 0, 0.0385432, 0, 3.36956e-0
 
 [node name="gun" parent="Camera3D" instance=ExtResource("3_5l2xy")]
 unique_name_in_owner = true
-reload_time = 1.0
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00504051, 0.474974, -0.865486)

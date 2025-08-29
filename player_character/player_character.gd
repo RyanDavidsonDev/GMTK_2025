@@ -105,17 +105,17 @@ func rotate_hands():
 	
 	revolver_reloading.rotation
 	stop_animations()
-	var initPos = revolver_reloading.global_rotation_degrees
+	var initPos = revolver_reloading.rotation_degrees
 	
 	var firstDuration: float = 1
 	print("rotating")
 	
-	var finalVar :Vector3 = revolver_reloading.global_rotation_degrees + Vector3(-60, 0, 0)
-	var finalVar2 :Vector3 = revolver_reloading.global_rotation_degrees + Vector3(60, 0, 0)
-	var tweener : PropertyTweener = tween.tween_property(revolver_reloading, "global_rotation_degrees", finalVar, firstDuration )
+	var finalVar :Vector3 = revolver_reloading.rotation_degrees + Vector3(-60, 0, 0)
+	var finalVar2 :Vector3 = revolver_reloading.rotation_degrees + Vector3(60, 0, 0)
+	var tweener : PropertyTweener = tween.tween_property(revolver_reloading, "rotation_degrees", finalVar, firstDuration )
 	#await get_tree().create_timer(firstDuration).timeout
 	print("resetting")
-	tween.tween_property(revolver_reloading, "global_rotation_degrees", initPos, 3 )
+	tween.tween_property(revolver_reloading, "rotation_degrees", initPos, 3 )
 	
 
 func play_animation(animation: String):
