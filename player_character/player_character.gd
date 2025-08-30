@@ -40,6 +40,9 @@ func _ready() -> void:
 	
 	# Ensure interaction cast ignores the player
 	_interaction_shape_cast.add_exception(self)
+	play_animation("GunAnimLibrary/Reload Animation")
+	stop_animations()
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

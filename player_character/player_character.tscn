@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://botemyf0vmhjr" path="res://assets/Gun/revolver_reloading.tscn" id="2_5l2xy"]
 [ext_resource type="PackedScene" uid="uid://6343ayqlyhx2" path="res://Scenes/prefabs/gun.tscn" id="3_5l2xy"]
 [ext_resource type="Shader" uid="uid://1puy7tvn0yfn" path="res://Scenes/rooms/static.gdshader" id="4_3f5wo"]
-[ext_resource type="Shader" uid="uid://3ho5q2lfmp4f" path="res://Scripts/Shaders & Themes/gradient.gdshader" id="5_731wj"]
+[ext_resource type="Shader" path="res://Scripts/Shaders & Themes/gradient.gdshader" id="5_731wj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2i27r"]
 radius = 0.25
