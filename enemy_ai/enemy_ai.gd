@@ -4,6 +4,8 @@ class_name EnemyAI extends CharacterBody3D
 @export var _kill_distance : float = 1.5
 
 @onready var animation_player: AnimationPlayer = $Stranger/AnimationPlayer
+@onready var interactable_collider = $Interactable/CollisionShape3D
+
 
 @export var _interactable : Interactable = null
 
@@ -73,11 +75,15 @@ func get_hit() ->void:
 	animation_player.play("StrangerAnimLibrary/Flop Animation")
 	var p_move_speed = _move_speed
 	_move_speed = 0
+	var _init_kill_distance = _kill_distance
+	_kill_distance = 0
+	interactable_collider.disabled = true
 	await get_tree().create_timer(flop_time).timeout
 	
 	animation_player.play("StrangerAnimLibrary/Rise Animation")
 	await get_tree().create_timer(rise_time).timeout
-	
+	_kill_distance = _init_kill_distance
+	interactable_collider.disabled = false
 	_move_speed = p_move_speed
 	
 	animation_player.play("StrangerAnimLibrary/Walk Animation")
