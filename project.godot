@@ -36,6 +36,9 @@ BlockDoorTurn=""
 animation_library={
 &"fbx/importer": 1
 }
+texture={
+&"compress/mode": 2
+}
 
 [input]
 
