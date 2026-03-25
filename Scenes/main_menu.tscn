@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c3437dd1rbc42"]
 
-[ext_resource type="Script" path="res://core/main_menu.gd" id="1_cp0ys"]
+[ext_resource type="Script" uid="uid://d1q1bfla1rq6d" path="res://core/main_menu.gd" id="1_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://csl1nb5dk65g6" path="res://assets/UI/temporary image.jpg" id="1_n45e2"]
 [ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders & Themes/shakeyLinesUIShader.gdshader" id="2_opfnp"]
 [ext_resource type="PackedScene" uid="uid://ceyfgeftapq78" path="res://Scenes/main_menu_guyMove.tscn" id="2_trj04"]
