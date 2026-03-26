@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc3wiq8fwac0v"]
+[gd_scene load_steps=17 format=3 uid="uid://bc3wiq8fwac0v"]
 
 [ext_resource type="Environment" uid="uid://bgq4csmdrk7a5" path="res://core/default_environment.tres" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://mt8vitibkaxh" path="res://enemy_ai/enemy_ai.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://1p5avy66el8t" path="res://Scenes/door_wall.tscn" id="4_3dryh"]
+[ext_resource type="Script" uid="uid://ctecfp1c0qav1" path="res://assets/Enemy/stranger.gd" id="4_nb51f"]
 [ext_resource type="Material" uid="uid://b8myhavi8tssq" path="res://materials/bedroom_floor.tres" id="4_rfjv2"]
 [ext_resource type="Material" uid="uid://bvh4p4gmf2j7g" path="res://materials/library_wall.tres" id="5_1phco"]
 [ext_resource type="PackedScene" uid="uid://cgnqw7fh8a4we" path="res://Scenes/rooms/area_bathroom.tscn" id="5_wowpa"]
@@ -35,6 +36,9 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2, 1.5, 
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.7347, 0.431254, -2.1717)
 _move_speed = 1.7
 region = NodePath("../NavigationRegion3D")
+
+[node name="Stranger" parent="EnemyAi" index="2"]
+script = ExtResource("4_nb51f")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_wrm1d")
