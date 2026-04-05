@@ -19,6 +19,7 @@ func _ready():
 func _on_button_mouse_entered():
 	var button = get_parent() as Button
 	button.text = hover_text
+	
 
 func _on_button_mouse_exited():
 	var button = get_parent() as Button

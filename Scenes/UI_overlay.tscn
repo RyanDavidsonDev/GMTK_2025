@@ -209,6 +209,7 @@ autowrap_mode = 0
 horizontal_alignment = 1
 
 [node name="Pause Menu" parent="HUD" instance=ExtResource("7_qili6")]
+visible = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 layout_direction = 3
