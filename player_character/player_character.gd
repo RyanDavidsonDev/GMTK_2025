@@ -23,10 +23,11 @@ var _input_mouse_direction : Vector2 = Vector2.ZERO
 var _camera_3d : Camera3D = null
 
 var has_key: bool = false
-
 var num_times_tried_reload : int = 0
 
 var _hovered_interactable : Interactable = null
+
+const reload_anim_len = (preload("res://assets/Gun/Animations/Reload Animation.res") as Animation).length
 
 func _ready() -> void:
 	
@@ -40,6 +41,8 @@ func _ready() -> void:
 	
 	# Ensure interaction cast ignores the player
 	_interaction_shape_cast.add_exception(self)
+	var reload_anim_player = $Camera3D/RevolverReloading/AnimationPlayer as AnimationPlayer
+	reload_anim_player.speed_scale = reload_anim_len / gun.reload_time
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

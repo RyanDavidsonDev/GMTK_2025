@@ -169,6 +169,7 @@ texture_over = ExtResource("3_xm1do")
 texture_progress = ExtResource("4_c4rab")
 
 [node name="Reload Bar" type="TextureProgressBar" parent="HUD"]
+visible = false
 material = SubResource("ShaderMaterial_xm1do")
 anchors_preset = 8
 anchor_left = 0.5
@@ -193,6 +194,7 @@ texture_over = ExtResource("3_xm1do")
 texture_progress = ExtResource("4_c4rab")
 
 [node name="Message Text" type="RichTextLabel" parent="HUD"]
+visible = false
 material = SubResource("ShaderMaterial_06sim")
 anchors_preset = 12
 anchor_top = 1.0

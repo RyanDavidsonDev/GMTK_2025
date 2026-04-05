@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc3wiq8fwac0v"]
+[gd_scene format=3 uid="uid://bc3wiq8fwac0v"]
 
 [ext_resource type="Environment" uid="uid://bgq4csmdrk7a5" path="res://core/default_environment.tres" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://dbxrja4pb2r53" path="res://player_character/player_character.tscn" id="2_qxrlw"]
@@ -23,55 +23,56 @@ geometry_collision_mask = 4294967041
 cell_size = 0.13
 cell_height = 0.13
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node3D" unique_id=1055987164]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1971307356]
 environment = ExtResource("1_ebmjs")
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("2_qxrlw")]
+[node name="PlayerCharacter" parent="." unique_id=2047844832 instance=ExtResource("2_qxrlw")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2, 1.5, -2.09373)
 
-[node name="EnemyAi" parent="." node_paths=PackedStringArray("region") instance=ExtResource("3_wrm1d")]
+[node name="EnemyAi" parent="." unique_id=1339189513 node_paths=PackedStringArray("region") instance=ExtResource("3_wrm1d")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.7347, 0.431254, -2.1717)
+_move_speed = 0.0
 region = NodePath("../NavigationRegion3D")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1242390379]
 navigation_mesh = SubResource("NavigationMesh_wrm1d")
 
-[node name="StartingRoom" type="Node3D" parent="NavigationRegion3D"]
+[node name="StartingRoom" type="Node3D" parent="NavigationRegion3D" unique_id=3270218]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom"]
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom" unique_id=1107884460]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.25, 10)
 use_collision = true
 size = Vector3(4, 0.5, 20)
 material = ExtResource("4_rfjv2")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom" unique_id=1536294986]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.75, 9.75)
 use_collision = true
 size = Vector3(4, 0.5, 19.5)
 material = ExtResource("5_1phco")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom" unique_id=1872670353]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.25, 2, 9.75)
 use_collision = true
 size = Vector3(4, 0.5, 19.5)
 material = ExtResource("6_nb51f")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom" unique_id=95346558]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 3.75, 2, 9.75)
 use_collision = true
 size = Vector3(4, 0.5, 19.5)
 material = ExtResource("6_nb51f")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/StartingRoom" unique_id=1521830699]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 2, 2, 19.25)
 use_collision = true
 size = Vector3(4, 0.5, 4)
 material = ExtResource("7_nnt18")
 
-[node name="DoorWall" parent="NavigationRegion3D/StartingRoom" instance=ExtResource("4_3dryh")]
+[node name="DoorWall" parent="NavigationRegion3D/StartingRoom" unique_id=886053449 instance=ExtResource("4_3dryh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
 [node name="CSGBox3D" parent="NavigationRegion3D/StartingRoom/DoorWall" index="0"]
@@ -81,40 +82,40 @@ material = ExtResource("6_nb51f")
 [node name="CSGBox3D" parent="NavigationRegion3D/StartingRoom/DoorWall/CSGBox3D" index="0"]
 material = ExtResource("6_nb51f")
 
-[node name="EndingRoom" type="Node3D" parent="NavigationRegion3D"]
+[node name="EndingRoom" type="Node3D" parent="NavigationRegion3D" unique_id=804236250]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -107.711, 0, -4)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom"]
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom" unique_id=1653445020]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.25, 10)
 use_collision = true
 size = Vector3(4, 0.5, 20)
 material = ExtResource("4_rfjv2")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom" unique_id=2066877235]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3.75, 9.75)
 use_collision = true
 size = Vector3(4, 0.5, 19.5)
 material = ExtResource("5_1phco")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom" unique_id=196924105]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.25, 2, 9.75)
 use_collision = true
 size = Vector3(4, 0.5, 19.5)
 material = ExtResource("6_nb51f")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom" unique_id=1473407957]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 3.75, 2, 9.75)
 use_collision = true
 size = Vector3(4, 0.5, 19.5)
 material = ExtResource("6_nb51f")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom"]
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/EndingRoom" unique_id=310785994]
 transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 2, 2, 19.25)
 use_collision = true
 size = Vector3(4, 0.5, 4)
 material = ExtResource("7_nnt18")
 
-[node name="DoorWall" parent="NavigationRegion3D/EndingRoom" instance=ExtResource("4_3dryh")]
+[node name="DoorWall" parent="NavigationRegion3D/EndingRoom" unique_id=585046353 instance=ExtResource("4_3dryh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
 [node name="CSGBox3D" parent="NavigationRegion3D/EndingRoom/DoorWall" index="0"]
@@ -124,24 +125,24 @@ material = ExtResource("6_nb51f")
 [node name="CSGBox3D" parent="NavigationRegion3D/EndingRoom/DoorWall/CSGBox3D" index="0"]
 material = ExtResource("6_nb51f")
 
-[node name="AreaBulletRoom" parent="NavigationRegion3D" instance=ExtResource("9_1phco")]
+[node name="AreaBulletRoom" parent="NavigationRegion3D" unique_id=288385143 instance=ExtResource("9_1phco")]
 
-[node name="AreaBathroom" parent="NavigationRegion3D" instance=ExtResource("5_wowpa")]
+[node name="AreaBathroom" parent="NavigationRegion3D" unique_id=779017174 instance=ExtResource("5_wowpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
-[node name="AreaKeyPuzzle" parent="NavigationRegion3D" instance=ExtResource("7_1l0tm")]
+[node name="AreaKeyPuzzle" parent="NavigationRegion3D" unique_id=99665576 instance=ExtResource("7_1l0tm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 0)
 
-[node name="AreaKeyPuzzle2" parent="NavigationRegion3D" instance=ExtResource("9_h4fw4")]
+[node name="AreaKeyPuzzle2" parent="NavigationRegion3D" unique_id=1786996998 instance=ExtResource("9_h4fw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.5, 0, 0.5)
 
-[node name="AreaBedroom" parent="NavigationRegion3D" instance=ExtResource("6_i6g32")]
+[node name="AreaBedroom" parent="NavigationRegion3D" unique_id=158449981 instance=ExtResource("6_i6g32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.7512, 0, 0)
 
-[node name="AreaBookshelfPuzzle" parent="NavigationRegion3D" instance=ExtResource("8_v158k")]
+[node name="AreaBookshelfPuzzle" parent="NavigationRegion3D" unique_id=1949933382 instance=ExtResource("8_v158k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.7539, 0, 0)
 
-[node name="AreaBulletRoom3" parent="NavigationRegion3D" instance=ExtResource("9_1phco")]
+[node name="AreaBulletRoom3" parent="NavigationRegion3D" unique_id=1993646655 instance=ExtResource("9_1phco")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.717, 0, 0)
 
 [editable path="EnemyAi"]
