@@ -17,7 +17,7 @@ var ready_text_active_queue: Array[RichTextLabel] = []
 var bullet_icon_inactive_queue: Array[TextureRect] = []
 var ready_text_inactive_queue: Array[RichTextLabel] = []
 
-@export var _pause_menu : Panel = null
+@onready var pause_menu: PauseMenu = $"HUD/Pause Menu"
 signal sig_hide_continual_text()
 
 const DEFAULT_MESSAGE_DURATION = 2
@@ -30,6 +30,7 @@ func _ready():
 	message_text.visible = false
 	key_icon.visible = false
 	GameManager.register_hud(self)
+	pause_menu.hud_controller = self
 	
 	for item :VBoxContainer in h_box_container.get_children():
 		var bullet_icon:TextureRect = item.find_child("BulletIcon")
@@ -55,7 +56,6 @@ func hide_bullet():
 	bullet_icon_inactive_queue.push_front(bullet_icon)
 	
 	bullet_icon.visible = false
-
 
 
 func show_next_ready_text():
@@ -111,11 +111,11 @@ func hide_text():
 # Returns true if it opened and false if it closed
 func toggle_pause_menu() -> bool:
 	print("hi")
-	if _pause_menu.visible == false:
-		_pause_menu.visible = true
+	if pause_menu.visible == false:
+		pause_menu.visible = true
 		return true
 	else:
-		_pause_menu.visible = false
+		pause_menu.visible = false
 		return false
 
 
@@ -150,9 +150,9 @@ func _process(delta: float) -> void:
 		
 		if paused:
 			AudioManager.play_pause_audio()
-			_pause_menu.visible = true
+			pause_menu.visible = true
 		else:
-			_pause_menu.visible = false
+			pause_menu.visible = false
 			AudioManager.play_killer_audio()
 	
 	if GameManager.player_character.gun.is_reloading:
@@ -167,13 +167,10 @@ func show_health_bar():
 	var enemy:EnemyAI = GameManager.enemy_ai
 	boss_health.value = lerp(0,100, ( enemy.health)/enemy.max_health)
 
-func _on_resume_pressed() -> void:
+func receive_resume() -> void:
 	
 	GameManager.toggle_game_paused()
-	_pause_menu.visible = false
-
-func _on_quit_pressed() -> void:
-	GameManager.load_menu()
+	pause_menu.visible = false
 
 func _on_wake_up_button_down() -> void:
 	GameManager.load_game()
