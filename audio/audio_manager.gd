@@ -12,9 +12,12 @@ var _menu_audio_player : AudioStreamPlayer2D = null
 
 var _required_out_of_sight_time_for_reset : float = 10.0
 var _chase_time_remaining : float = 0.0
-var lin_vol_max
 
-@export var max_chase_audio_vol :float = -1.0
+var vol_lin_max
+var vol_lin_min
+@export var vol_dec_max :float = -1.0
+@export var vol_dec_min :float = -1.0
+
 
 func initialize_killer_audio(killer: EnemyAI) -> void:
 	
@@ -33,9 +36,9 @@ func initialize_killer_audio(killer: EnemyAI) -> void:
 	
 
 func update_vol_calcs():
-	
-	_killer_chase_audio_player.volume_db = max_chase_audio_vol
-	lin_vol_max = _killer_chase_audio_player.volume_linear
+	# translates between dec and lin vols, 
+	_killer_chase_audio_player.volume_db = vol_dec_max
+	vol_lin_max = _killer_chase_audio_player.volume_linear
 
 func play_killer_audio() -> void:
 	
