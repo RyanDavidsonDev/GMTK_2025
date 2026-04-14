@@ -13,10 +13,13 @@ var _menu_audio_player : AudioStreamPlayer2D = null
 var _required_out_of_sight_time_for_reset : float = 10.0
 var _chase_time_remaining : float = 0.0
 
-var vol_lin_max
-var vol_lin_min
-@export var vol_dec_max :float = -1.0
-@export var vol_dec_min :float = -1.0
+#var vol_lin_min = 0.0
+@export var vol_scale_univ :float = 1
+@export var vol_scale_background :float = .6
+@export var vol_scale_surprise :float = .735
+@export var vol_scale_chase :float = .5
+
+#var vol_lin_max = db_to_linear(vol_dec_max)
 
 
 func initialize_killer_audio(killer: EnemyAI) -> void:
@@ -30,15 +33,17 @@ func initialize_killer_audio(killer: EnemyAI) -> void:
 	_killer_chase_audio_player.seek(0)
 	_killer_chase_audio_player.play()
 	_killer_chase_audio_player.stream_paused = true
-	update_vol_calcs()
+	_killer_default_audio_player.volume_linear = vol_scale_background * vol_scale_univ * _killer_default_audio_player.volume_linear
+	_killer_chase_audio_player.volume_linear = vol_scale_chase * vol_scale_univ * _killer_chase_audio_player.volume_linear
+	_killer_surprise_audio_player.volume_linear = vol_scale_surprise * vol_scale_univ * _killer_surprise_audio_player.volume_linear
 	
 	play_killer_audio()
 	
 
-func update_vol_calcs():
-	# translates between dec and lin vols, 
-	_killer_chase_audio_player.volume_db = vol_dec_max
-	vol_lin_max = _killer_chase_audio_player.volume_linear
+#func update_vol_calcs():
+	## translates between dec and lin vols, 
+	#_killer_chase_audio_player.volume_db = vol_dec_max
+	#vol_lin_max = _killer_chase_audio_player.volume_linear
 
 func play_killer_audio() -> void:
 	
@@ -67,7 +72,7 @@ func cut_audio() -> void:
 	_killer_chase_audio_player.stream_paused = true
 	
 func _play_menu_audio(stream:AudioStream) -> void:
-	
+	print("uwu")
 	_killer_default_audio_player.stream_paused = true
 	_killer_chase_audio_player.stream_paused = true
 	
@@ -82,7 +87,7 @@ func _ready() -> void:
 	_killer_chase_audio_player = $KillerChasePlayer
 	_menu_audio_player = $MenuPlayer
 	
-	#play_main_menu_audio()
+	play_main_menu_audio()
 
 func _physics_process(delta: float) -> void:
 	
@@ -105,11 +110,15 @@ func _physics_process(delta: float) -> void:
 		
 		_chase_time_remaining = _required_out_of_sight_time_for_reset
 	
-	update_vol_calcs()
+	#update_vol_calcs()
 	
-	_killer_chase_audio_player.volume_linear =( max(0.0, _chase_time_remaining) / _required_out_of_sight_time_for_reset)
-	var newVol :float =linear_to_db(lerp(0.0, lin_vol_max, _killer_chase_audio_player.volume_linear))
-	print ("new vol = " +str(newVol))
-	_killer_chase_audio_player.volume_db = newVol
+	
+	
+	_killer_chase_audio_player.volume_linear = vol_scale_chase * (max(0.0, _chase_time_remaining) / _required_out_of_sight_time_for_reset)
+	#var newVol :float =_killer_chase_audio_player.volume_db * vol_scale
+	#_killer_chase_audio_player.volume_db = newVol
+	print ("new vol = " +str(_killer_chase_audio_player.volume_linear))
+	
+	#_killer_chase_audio_player.volume_db = newVol
 	#_killer_default_audio_player.volume_db = 
 	_chase_time_remaining -= delta

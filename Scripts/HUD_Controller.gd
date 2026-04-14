@@ -5,9 +5,12 @@ class_name HUDController extends Node
 @onready var message_text: RichTextLabel = $"HUD/Message Text"
 @onready var hide_text_timer: Timer = $Timer
 @onready var game_over_panel: Panel = $"CanvasLayer/Game Over"
+#@onready var GameOverQuit: Button = $"CanvasLayer/Game Over/VBoxContainer/MarginContainer/quit"
 @onready var hud_layer: CanvasLayer = $HUD
 @onready var key_icon: TextureRect = $"HUD/Key Icon"
 @onready var boss_health: TextureProgressBar = $"HUD/Boss Health"
+
+
 
 @onready var h_box_container: HBoxContainer = $HUD/HBoxContainer
 
@@ -31,6 +34,8 @@ func _ready():
 	key_icon.visible = false
 	GameManager.register_hud(self)
 	pause_menu.hud_controller = self
+	#GameOverQuit.pressed.connect(func(): get_tree().quit())
+
 	
 	for item :VBoxContainer in h_box_container.get_children():
 		var bullet_icon:TextureRect = item.find_child("BulletIcon")

@@ -1,6 +1,6 @@
 class_name PauseMenu extends Panel
 
-var hud_controller :HUDController
+@onready var hud_controller :HUDController = get_parent().get_parent()
 @onready var quit_game_button: Button = $"VBoxContainer/Button Stack/Quit_Game_Margin/Quit_Game_Button"
 
 @onready var quit_menu_button: Button = $"VBoxContainer/Button Stack/Quit_Menu_margin/Quit_Menu_Button"
@@ -11,9 +11,10 @@ func _on_quit_pressed() -> void:
 	GameManager.load_menu()
 
 func _ready() -> void:
+	hud_controller.pause_menu = self
 	print("hi")
 	quit_game_button.pressed.connect(func(): get_tree().quit())
-	quit_menu_button.pressed.connect(quit_menu)
+	resume.pressed.connect(_resume)
 	quit_menu_button.pressed.connect(quit_menu)
 	pass
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dbvmdy0w5dntq"]
 
 [ext_resource type="FontFile" uid="uid://dbjf8cichqm70" path="res://assets/UI/Leander.ttf" id="1_05uyy"]
-[ext_resource type="Script" path="res://pause_menu.gd" id="1_p81d2"]
+[ext_resource type="Script" uid="uid://c8r4vgbr0767b" path="res://pause_menu.gd" id="1_p81d2"]
 [ext_resource type="Theme" uid="uid://b1frqnmpmcxlw" path="res://Scripts/Shaders & Themes/Menu_Button_Theme.tres" id="2_p81d2"]
 [ext_resource type="Script" uid="uid://ccamawjk2n20c" path="res://Scripts/buttonHover_animationComponent.gd" id="3_2nc7s"]
 
@@ -96,17 +96,6 @@ text = "Quit Game"
 script = ExtResource("3_2nc7s")
 metadata/_custom_type_script = "uid://ccamawjk2n20c"
 
-[node name="Quit_Game_Margin" type="MarginContainer" parent="VBoxContainer/Button Stack"]
-layout_mode = 2
-
-[node name="Quit_Game_Button" type="Button" parent="VBoxContainer/Button Stack/Quit_Game_Margin"]
-layout_mode = 2
-text = "Quit Game"
-
-[node name="BH_AnimationComponent" type="Node" parent="VBoxContainer/Button Stack/Quit_Game_Margin/Quit_Game_Button"]
-script = ExtResource("3_2nc7s")
-metadata/_custom_type_script = "uid://ccamawjk2n20c"
-
 [node name="Quit_Menu_margin" type="MarginContainer" parent="VBoxContainer/Button Stack"]
 layout_mode = 2
 
@@ -115,5 +104,16 @@ layout_mode = 2
 text = "Quit To Menu"
 
 [node name="BH_AnimationComponent" type="Node" parent="VBoxContainer/Button Stack/Quit_Menu_margin/Quit_Menu_Button"]
+script = ExtResource("3_2nc7s")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"
+
+[node name="Quit_Game_Margin" type="MarginContainer" parent="VBoxContainer/Button Stack"]
+layout_mode = 2
+
+[node name="Quit_Game_Button" type="Button" parent="VBoxContainer/Button Stack/Quit_Game_Margin"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="BH_AnimationComponent" type="Node" parent="VBoxContainer/Button Stack/Quit_Game_Margin/Quit_Game_Button"]
 script = ExtResource("3_2nc7s")
 metadata/_custom_type_script = "uid://ccamawjk2n20c"

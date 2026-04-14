@@ -24,6 +24,8 @@ bone_idx = 7
 
 [node name="Skeleton3D" parent="Stranger Armature" index="0"]
 bones/0/rotation = Quaternion(-0.0805682, 0.720499, 0.679467, -0.112763)
+bones/5/rotation = Quaternion(0.001, 0.001, 0.001, 1)
+bones/6/rotation = Quaternion(0.001, 0.001, 0.001, 1)
 bones/7/rotation = Quaternion(0.0332282, 0.0520801, 0.759392, 0.647694)
 bones/8/rotation = Quaternion(-0.187036, 0.0112991, 0.567753, 0.80159)
 bones/10/rotation = Quaternion(-0.0824795, -0.105131, 0.0216184, 0.990796)

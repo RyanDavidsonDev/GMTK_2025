@@ -54,9 +54,6 @@ size = Vector3(0.831543, 0.5, 6.5)
 [node name="PlayerCharacter" parent="." instance=ExtResource("3_qf25u")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 2, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(7.10543e-15, 1.39091e-08, 1, -1, -8.74228e-08, 8.3214e-15, 8.74228e-08, -1, 1.39091e-08, -9, 4, -4.76837e-07)
-
 [node name="Furniture" type="Node3D" parent="."]
 
 [node name="Bookshelf" type="CSGBox3D" parent="Furniture"]

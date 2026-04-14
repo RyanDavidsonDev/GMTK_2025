@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c3437dd1rbc42"]
 
-[ext_resource type="Script" path="res://core/main_menu.gd" id="1_cp0ys"]
+[ext_resource type="Script" uid="uid://d1q1bfla1rq6d" path="res://core/main_menu.gd" id="1_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://csl1nb5dk65g6" path="res://assets/UI/temporary image.jpg" id="1_n45e2"]
 [ext_resource type="Shader" uid="uid://pufcm3vckd7h" path="res://Scripts/Shaders & Themes/shakeyLinesUIShader.gdshader" id="2_opfnp"]
 [ext_resource type="PackedScene" uid="uid://ceyfgeftapq78" path="res://Scenes/main_menu_guyMove.tscn" id="2_trj04"]
@@ -138,6 +138,17 @@ layout_mode = 2
 text = "Credits"
 
 [node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer2/Credits"]
+script = ExtResource("6_opfnp")
+metadata/_custom_type_script = "uid://ccamawjk2n20c"
+
+[node name="MarginContainer4" type="MarginContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="quit" type="Button" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+text = "Quit"
+
+[node name="BH_AnimationComponent" type="Node" parent="CanvasLayer/Panel/VBoxContainer/MarginContainer4/quit"]
 script = ExtResource("6_opfnp")
 metadata/_custom_type_script = "uid://ccamawjk2n20c"
 

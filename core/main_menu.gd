@@ -1,6 +1,10 @@
 extends Node
 
 @export var _credits : CanvasLayer = null
+@onready var quit: Button = $CanvasLayer/Panel/VBoxContainer/MarginContainer4/quit
+
+func ready():
+	quit.pressed.connect(func(): get_tree().quit())
 
 func _on_play_pressed() -> void:
 	GameManager.load_game()
